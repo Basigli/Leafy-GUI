@@ -1,0 +1,78 @@
+{
+  "custom": {},
+  "params": {
+    "mode": 1
+  },
+  "propConfig": {
+    "params.mode": {
+      "paramDirection": "output",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 63,
+      "width": 381
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "marginLeft": "20px"
+          },
+          "text": "@ui.text.mode@"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "ModeSelector"
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.mode"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "options": [
+            {
+              "label": "@ui.mode.auto@",
+              "value": 0
+            },
+            {
+              "label": "@ui.mode.manual@",
+              "value": 1
+            }
+          ],
+          "style": {
+            "marginRight": "20px"
+          }
+        },
+        "type": "ia.input.dropdown"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "alignItems": "center",
+      "justify": "center"
+    },
+    "type": "ia.container.flex"
+  }
+}

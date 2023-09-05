@@ -1,0 +1,88 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 118,
+      "width": 212
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Icon"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "color": "#297552",
+          "path": "material/account_circle"
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "meta": {
+          "name": "User"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "session.props.auth.user.userName"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn value if value is not None else \u0027\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "color": "#297552",
+            "fontSize": "20px",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onMouseOut": {
+          "config": {
+            "script": "\tself.getChild(\"Icon\").props.color \u003d \u0027#297552\u0027\n\tself.getChild(\"User\").props.style.color \u003d \u0027#297552\u0027"
+          },
+          "scope": "G",
+          "type": "script"
+        },
+        "onMouseOver": {
+          "config": {
+            "script": "\tself.getChild(\"Icon\").props.color \u003d \u0027#40B681\u0027\n\tself.getChild(\"User\").props.style.color \u003d \u0027#40B681\u0027"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "Colors/Text/Light/TitlesTextDarken",
+        "cursor": "pointer"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

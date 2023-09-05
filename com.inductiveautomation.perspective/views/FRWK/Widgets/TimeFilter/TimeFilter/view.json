@@ -1,0 +1,93 @@
+{
+  "custom": {},
+  "params": {
+    "endDate": {
+      "$": [
+        "ts",
+        201,
+        1692717160350
+      ],
+      "$ts": 1692230400000
+    },
+    "startDate": {
+      "$": [
+        "ts",
+        201,
+        1692717158423
+      ],
+      "$ts": 1691625600000
+    }
+  },
+  "propConfig": {
+    "params.endDate": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "path": "/root/TimeFilterDesktop.props.params.endDate"
+        },
+        "type": "property"
+      },
+      "paramDirection": "output",
+      "persistent": true
+    },
+    "params.startDate": {
+      "binding": {
+        "config": {
+          "bidirectional": true,
+          "path": "/root/TimeFilterDesktop.props.params.startDate"
+        },
+        "type": "property"
+      },
+      "paramDirection": "output",
+      "persistent": true
+    }
+  },
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "TimeFilterDesktop"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "params": {
+            "endDate": {
+              "$": [
+                "ts",
+                0,
+                1692717160350
+              ],
+              "$ts": 1692230400000
+            },
+            "startDate": {
+              "$": [
+                "ts",
+                0,
+                1692717158423
+              ],
+              "$ts": 1691625600000
+            }
+          },
+          "path": "FRWK/Widgets/TimeFilter/TimeFilterDesktop"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "TimeFilterMobile"
+        },
+        "props": {
+          "path": "FRWK/Widgets/TimeFilter/TimeFilterMobile"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.breakpt"
+  }
+}

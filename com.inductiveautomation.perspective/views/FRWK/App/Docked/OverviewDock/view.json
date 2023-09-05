@@ -1,0 +1,92 @@
+{
+  "custom": {
+    "manualMode": true,
+    "mode": 1
+  },
+  "params": {},
+  "propConfig": {
+    "custom.manualMode": {
+      "binding": {
+        "config": {
+          "path": "view.custom.mode"
+        },
+        "transforms": [
+          {
+            "code": "\treturn False if value \u003d\u003d 0 else True",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.mode": {
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 330
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "ModeSelector"
+        },
+        "position": {
+          "basis": "44px"
+        },
+        "propConfig": {
+          "props.params.mode": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.mode"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "path": "FRWK/Widgets/OverviewDock/ModeSelector"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "ManualMode"
+        },
+        "position": {
+          "basis": "320px"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "path": "view.custom.manualMode"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "path": "FRWK/Faceplates/OverviewDock/ManualMode"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#F7F6F3",
+        "boxShadow": "-20px 9px 6px 6px #8F8E8D"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

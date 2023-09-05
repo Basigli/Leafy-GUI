@@ -1,0 +1,382 @@
+{
+  "custom": {
+    "UVLight": false,
+    "airHumidity": "65",
+    "airTemperature": "27",
+    "irrigationPump": false,
+    "isTankEmpty": false,
+    "lightQuantity": "69",
+    "name": "Serra 1",
+    "terrainHumidity": "65",
+    "ventilation": false
+  },
+  "params": {
+    "id": 1
+  },
+  "propConfig": {
+    "custom.UVLight": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "id": "{view.params.id}"
+          },
+          "tagPath": "[default]GreenHouses/{id}/UVLight"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.airHumidity": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "id": "{view.params.id}"
+          },
+          "tagPath": "[default]GreenHouses/{id}/AirHumidity"
+        },
+        "transforms": [
+          {
+            "formatType": "numeric",
+            "formatValue": "#",
+            "type": "format"
+          }
+        ],
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.airTemperature": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "id": "{view.params.id}"
+          },
+          "tagPath": "[default]GreenHouses/{id}/AirTemperature"
+        },
+        "transforms": [
+          {
+            "formatType": "numeric",
+            "formatValue": "#",
+            "type": "format"
+          }
+        ],
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.irrigationPump": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "id": "{view.params.id}"
+          },
+          "tagPath": "[default]GreenHouses/{id}/IrrigationPump"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.isTankEmpty": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "id": "{view.params.id}"
+          },
+          "tagPath": "[default]GreenHouses/{id}/IsTankEmpty"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.lightQuantity": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "id": "{view.params.id}"
+          },
+          "tagPath": "[default]GreenHouses/{id}/LightQuantity"
+        },
+        "transforms": [
+          {
+            "formatType": "numeric",
+            "formatValue": "#",
+            "type": "format"
+          }
+        ],
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.name": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "id": "{view.params.id}"
+          },
+          "tagPath": "[default]GreenHouses/{id}/Name"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.terrainHumidity": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "id": "{view.params.id}"
+          },
+          "tagPath": "[default]GreenHouses/{id}/TerrainHumidity"
+        },
+        "transforms": [
+          {
+            "formatType": "numeric",
+            "formatValue": "#",
+            "type": "format"
+          }
+        ],
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.ventilation": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "id": "{view.params.id}"
+          },
+          "tagPath": "[default]GreenHouses/{id}/Ventilation"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "params.id": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 300,
+      "width": 300
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "basis": "170px"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.name"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "fontSize": "25px",
+                "fontWeight": "bolder",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "basis": "78px"
+        },
+        "props": {
+          "alignItems": "center",
+          "justify": "center"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "FlexRepeater"
+            },
+            "position": {
+              "basis": "320px"
+            },
+            "propConfig": {
+              "props.instances[0].value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.airTemperature"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn str(value) + u\u0027°\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.instances[1].value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.irrigationPump"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn \u0027@ui.state.active@\u0027 if value else \u0027@ui.state.notActive@\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.instances[2].value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.ventilation"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn \u0027@ui.state.active@\u0027 if value else \u0027@ui.state.notActive@\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
+              "props.instances[3].value": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.lightQuantity"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn str(value) + u\u0027%\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "alignContent": "center",
+              "alignItems": "center",
+              "elementPosition": {
+                "basis": "120px",
+                "grow": 0,
+                "shrink": 0
+              },
+              "instances": [
+                {
+                  "icon": "Icons/thermostat.svg",
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "icon": "Icons/water_pump_non_active.svg",
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "icon": "Icons/air.svg",
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                },
+                {
+                  "icon": "Icons/sun_non_active.svg",
+                  "instancePosition": {},
+                  "instanceStyle": {
+                    "classes": ""
+                  }
+                }
+              ],
+              "justify": "center",
+              "path": "FRWK/Widgets/Cards/CardInfo",
+              "useDefaultViewHeight": false,
+              "useDefaultViewWidth": false,
+              "wrap": "wrap"
+            },
+            "type": "ia.display.flex-repeater"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "params": {
+              "greenHouseId": "{view.params.id}"
+            },
+            "view": "FRWK/App/GreenHouse/GreenHouseOverview"
+          },
+          "scope": "C",
+          "type": "nav"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#CDB59F",
+        "borderBottomLeftRadius": "60px",
+        "borderBottomRightRadius": "60px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "60px",
+        "borderTopRightRadius": "60px",
+        "boxShadow": "8px 7px 6px 2px rgba(123,122,121,0.64)",
+        "color": "#62584E",
+        "cursor": "pointer"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

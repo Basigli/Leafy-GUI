@@ -1,0 +1,57 @@
+{
+  "custom": {},
+  "params": {
+    "greenHouseId": 1
+  },
+  "propConfig": {
+    "params.greenHouseId": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 938,
+      "width": 1774
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "GreenHouseOverviewDesktop"
+        },
+        "position": {
+          "size": "large"
+        },
+        "propConfig": {
+          "props.params.greenHouseId": {
+            "binding": {
+              "config": {
+                "path": "view.params.greenHouseId"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "path": "FRWK/App/GreenHouse/GreenHouseOverviewDesktop"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "GreenHouseOverviewMobile"
+        },
+        "props": {
+          "path": "FRWK/App/GreenHouse/GreenHouseOverviewMobile"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.breakpt"
+  }
+}

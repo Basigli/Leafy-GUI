@@ -1,0 +1,111 @@
+{
+  "pages": {
+    "/": {
+      "docks": {
+        "top": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "push",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "",
+            "modal": false,
+            "resizable": false,
+            "show": "visible",
+            "size": 80,
+            "viewParams": {},
+            "viewPath": "FRWK/Faceplates/Headers/MainHeader"
+          }
+        ]
+      },
+      "title": "",
+      "viewPath": "FRWK/App/Main/HomePage"
+    },
+    "/create-preset": {
+      "docks": {
+        "top": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "push",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "",
+            "modal": false,
+            "resizable": false,
+            "show": "visible",
+            "size": 80,
+            "viewParams": {},
+            "viewPath": "FRWK/Faceplates/Headers/MainHeader"
+          }
+        ]
+      },
+      "title": "",
+      "viewPath": "FRWK/App/Preset/CreatePreset"
+    },
+    "/history": {
+      "docks": {
+        "top": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "push",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "",
+            "modal": false,
+            "resizable": false,
+            "show": "visible",
+            "size": 80,
+            "viewParams": {},
+            "viewPath": "FRWK/Faceplates/Headers/MainHeader"
+          }
+        ]
+      },
+      "title": "",
+      "viewPath": "FRWK/App/Log/GreenHouseHistory"
+    },
+    "/overview": {
+      "docks": {
+        "right": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "show",
+            "iconUrl": "material/dehaze",
+            "id": "OvervewDock",
+            "modal": false,
+            "resizable": false,
+            "show": "auto",
+            "size": 300,
+            "viewParams": {},
+            "viewPath": "FRWK/App/Docked/OverviewDock"
+          }
+        ],
+        "top": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "push",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "",
+            "modal": false,
+            "resizable": false,
+            "show": "visible",
+            "size": 80,
+            "viewParams": {},
+            "viewPath": "FRWK/Faceplates/Headers/MainHeader"
+          }
+        ]
+      },
+      "title": "",
+      "viewPath": "FRWK/App/GreenHouse/GreenHouseOverview"
+    }
+  },
+  "sharedDocks": {
+    "cornerPriority": "top-bottom"
+  }
+}

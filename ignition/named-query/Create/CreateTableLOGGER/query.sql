@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS LOGGER (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    functionName TEXT NOT NULL,
+    timestamp DATETIME NOT NULL,
+    description TEXT,
+    type TEXT
+)

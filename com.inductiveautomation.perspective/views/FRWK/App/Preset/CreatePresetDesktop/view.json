@@ -1,0 +1,336 @@
+{
+  "custom": {
+    "description": "",
+    "name": "",
+    "refreshTrigger": true,
+    "stages": {
+      "1": {
+        "EndDate": {
+          "$": [
+            "ts",
+            0,
+            1693603697174
+          ],
+          "$ts": 1692230400000
+        },
+        "IrrigationPump": {
+          "EndTime": {
+            "$": [
+              "ts",
+              0,
+              1693603697174
+            ],
+            "$ts": 1692309600000
+          },
+          "HighSetpoint": "",
+          "IsTemp": false,
+          "LowSetpoint": "",
+          "StartTime": {
+            "$": [
+              "ts",
+              0,
+              1693603697174
+            ],
+            "$ts": 1692306000000
+          }
+        },
+        "StartDate": {
+          "$": [
+            "ts",
+            0,
+            1693603697174
+          ],
+          "$ts": 1691625600000
+        },
+        "UVLight": {
+          "EndTime": {
+            "$": [
+              "ts",
+              0,
+              1693603697174
+            ],
+            "$ts": 1692309600000
+          },
+          "HighSetpoint": "",
+          "IsTemp": false,
+          "LowSetpoint": "",
+          "StartTime": {
+            "$": [
+              "ts",
+              0,
+              1693603697174
+            ],
+            "$ts": 1693137600682
+          }
+        },
+        "Ventilation": {
+          "EndTime": {
+            "$": [
+              "ts",
+              0,
+              1693603697174
+            ],
+            "$ts": 1692309600000
+          },
+          "HighSetpoint": "",
+          "IsTemp": false,
+          "LowSetpoint": "",
+          "StartTime": {
+            "$": [
+              "ts",
+              0,
+              1693603697174
+            ],
+            "$ts": 1692302400000
+          }
+        }
+      }
+    },
+    "stagesNumber": 1
+  },
+  "params": {},
+  "propConfig": {
+    "custom.description": {
+      "persistent": true
+    },
+    "custom.name": {
+      "persistent": true
+    },
+    "custom.refreshTrigger": {
+      "persistent": true
+    },
+    "custom.stages": {
+      "binding": {
+        "config": {
+          "path": "/root/LeftContainer/FlexRepeater.props.instances"
+        },
+        "transforms": [
+          {
+            "code": "\tres \u003d {}\n\t\n\tfor instance in value:\n\t\tres.update({\n\t\t\tstr(instance.stageNumber): instance.stage\n\t\t})\n\treturn res",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.stagesNumber": {
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1341,
+      "width": 1390
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "PresetAdditionalInfo"
+                },
+                "position": {
+                  "basis": "500px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.params.presetDescription": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.description"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.presetName": {
+                    "binding": {
+                      "config": {
+                        "bidirectional": true,
+                        "path": "view.custom.name"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "path": "FRWK/Widgets/Preset/PresetAdditionalInfo"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "children": [
+                  {
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "config": {
+                            "script": "\tname \u003d self.view.custom.name\n\tdescription \u003d self.view.custom.description\n\tstages \u003d self.view.custom.stages\n\tstages_number \u003d self.view.custom.stagesNumber\n\t\n\tif name not in [None, \u0027\u0027]:\n\t\tpreset \u003d {\n\t\t\t\u0027Stages\u0027: stages,\n\t\t\t\u0027Name\u0027: name,\n\t\t\t\u0027StagesNumber\u0027: stages_number,\n\t\t\t\u0027Description\u0027: description\n\t\t}\t\n\t\tcore.greenhouse.controller.save_preset_to_tag(preset)\n\t\tself.view.custom.refreshTrigger \u003d not self.view.custom.refreshTrigger\n\t\tsystem.perspective.openPopup(\u0027confirm-popup\u0027, \u0027FRWK/Popup/SuccessPopup\u0027, draggable\u003dFalse, overlayDismiss\u003dTrue, modal\u003dTrue)\n\t\t\n"
+                          },
+                          "scope": "G",
+                          "type": "script"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "name": "SaveButton"
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "grow": 1
+                    },
+                    "props": {
+                      "style": {
+                        "marginLeft": "40px",
+                        "marginRight": "40px",
+                        "maxWidth": "100px"
+                      },
+                      "text": "@ui.text.save@"
+                    },
+                    "type": "ia.input.button"
+                  }
+                ],
+                "meta": {
+                  "name": "SaveContainer"
+                },
+                "position": {
+                  "basis": "80px",
+                  "grow": 1
+                },
+                "props": {
+                  "alignItems": "center",
+                  "justify": "center"
+                },
+                "type": "ia.container.flex"
+              }
+            ],
+            "meta": {
+              "name": "Header"
+            },
+            "position": {
+              "basis": "120px"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "meta": {
+              "name": "StagesSelector"
+            },
+            "position": {
+              "basis": "64px"
+            },
+            "propConfig": {
+              "props.params.stagesNumber": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.stagesNumber"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "path": "FRWK/Widgets/Preset/StagesSelector"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "FlexRepeater"
+            },
+            "position": {
+              "basis": "320px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.stagesNumber"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tinstances \u003d []\n\tfor i in range(1, value + 1):\n\t\tinstances.append({\n\t\t\t\u0027stageNumber\u0027: i,\n\t\t\t\u0027stage\u0027: {}\n\t\t})\n\treturn instances",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "alignItems": "flex-start",
+              "direction": "column",
+              "path": "FRWK/Widgets/Preset/StageSetting"
+            },
+            "type": "ia.display.flex-repeater"
+          }
+        ],
+        "meta": {
+          "name": "LeftContainer"
+        },
+        "position": {
+          "basis": "400px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "borderRightColor": "#D5D5D5",
+            "borderRightStyle": "solid"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "PresetsList"
+            },
+            "position": {
+              "basis": "1336px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.params.refreshTrigger": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.refreshTrigger"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "path": "FRWK/Faceplates/Preset/PresetsList"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "RightContainer"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "custom": {},
+  "params": {
+    "endDate": {
+      "$": [
+        "ts",
+        0,
+        1692717160350
+      ],
+      "$ts": 1692230400000
+    },
+    "startDate": {
+      "$": [
+        "ts",
+        0,
+        1692717158423
+      ],
+      "$ts": 1691625600000
+    }
+  },
+  "propConfig": {
+    "params.endDate": {
+      "paramDirection": "output",
+      "persistent": true
+    },
+    "params.startDate": {
+      "paramDirection": "output",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 99,
+      "width": 869
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "text": "@ui.text.timePicker@"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "TitleContainer"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "StartDateInput"
+            },
+            "propConfig": {
+              "props.locale": {
+                "binding": {
+                  "config": {
+                    "path": "session.props.locale"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.startDate"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "formattedValue": "Aug 10, 2023 12:00 AM"
+            },
+            "type": "ia.input.date-time-input"
+          },
+          {
+            "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "30px"
+            },
+            "props": {
+              "path": "material/sync_alt"
+            },
+            "type": "ia.display.icon"
+          },
+          {
+            "meta": {
+              "name": "EndDateInput"
+            },
+            "propConfig": {
+              "props.locale": {
+                "binding": {
+                  "config": {
+                    "path": "session.props.locale"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.value": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.endDate"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "formattedValue": "Aug 17, 2023 12:00 AM"
+            },
+            "type": "ia.input.date-time-input"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "justify": "center",
+          "style": {
+            "paddingBottom": "10px",
+            "paddingTop": "10px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,535 @@
+{
+  "custom": {
+    "UVEndTime": {
+      "$": [
+        "ts",
+        0,
+        1693133971779
+      ],
+      "$ts": 1692309600000
+    },
+    "UVHighSp": "",
+    "UVIsTemp": true,
+    "UVLowSp": "",
+    "UVStartTime": {
+      "$": [
+        "ts",
+        0,
+        1693133288716
+      ],
+      "$ts": 1693137600682
+    },
+    "pumpEndTime": {
+      "$": [
+        "ts",
+        0,
+        1693133792520
+      ],
+      "$ts": 1692309600000
+    },
+    "pumpHighSp": "",
+    "pumpIsTemp": true,
+    "pumpLowSp": "",
+    "pumpStartTime": {
+      "$": [
+        "ts",
+        0,
+        1693133790735
+      ],
+      "$ts": 1692306000000
+    },
+    "stageEndDate": {
+      "$": [
+        "ts",
+        201,
+        1693133967588
+      ],
+      "$ts": 1692230400000
+    },
+    "stageStartDate": {
+      "$": [
+        "ts",
+        201,
+        1693133596447
+      ],
+      "$ts": 1691625600000
+    },
+    "ventilationEndTime": {
+      "$": [
+        "ts",
+        0,
+        1693134003473
+      ],
+      "$ts": 1692309600000
+    },
+    "ventilationHighSp": "",
+    "ventilationIsTemp": true,
+    "ventilationLowSp": "",
+    "ventilationStartTime": {
+      "$": [
+        "ts",
+        0,
+        1693133784547
+      ],
+      "$ts": 1692302400000
+    }
+  },
+  "params": {
+    "stage": {
+      "EndDate": {
+        "$": [
+          "ts",
+          192,
+          1693247191972
+        ],
+        "$ts": 1692230400000
+      },
+      "IrrigationPump": {
+        "EndTime": {
+          "$": [
+            "ts",
+            192,
+            1693247191972
+          ],
+          "$ts": 1692309600000
+        },
+        "HighSetpoint": "",
+        "IsTemp": true,
+        "LowSetpoint": "",
+        "StartTime": {
+          "$": [
+            "ts",
+            192,
+            1693247191972
+          ],
+          "$ts": 1692306000000
+        }
+      },
+      "StartDate": {
+        "$": [
+          "ts",
+          192,
+          1693247191972
+        ],
+        "$ts": 1691625600000
+      },
+      "UVLight": {
+        "EndTime": {
+          "$": [
+            "ts",
+            192,
+            1693247191972
+          ],
+          "$ts": 1692309600000
+        },
+        "HighSetpoint": "",
+        "IsTemp": true,
+        "LowSetpoint": "",
+        "StartTime": {
+          "$": [
+            "ts",
+            192,
+            1693247191972
+          ],
+          "$ts": 1693137600682
+        }
+      },
+      "Ventilation": {
+        "EndTime": {
+          "$": [
+            "ts",
+            192,
+            1693247191972
+          ],
+          "$ts": 1692309600000
+        },
+        "HighSetpoint": "",
+        "IsTemp": true,
+        "LowSetpoint": "",
+        "StartTime": {
+          "$": [
+            "ts",
+            192,
+            1693247191972
+          ],
+          "$ts": 1692302400000
+        }
+      }
+    },
+    "stageNumber": 1
+  },
+  "propConfig": {
+    "custom.UVEndTime": {
+      "persistent": true
+    },
+    "custom.UVHighSp": {
+      "persistent": true
+    },
+    "custom.UVIsTemp": {
+      "persistent": true
+    },
+    "custom.UVLowSp": {
+      "persistent": true
+    },
+    "custom.UVStartTime": {
+      "persistent": true
+    },
+    "custom.pumpEndTime": {
+      "persistent": true
+    },
+    "custom.pumpHighSp": {
+      "persistent": true
+    },
+    "custom.pumpIsTemp": {
+      "persistent": true
+    },
+    "custom.pumpLowSp": {
+      "persistent": true
+    },
+    "custom.pumpStartTime": {
+      "persistent": true
+    },
+    "custom.stageEndDate": {
+      "persistent": true
+    },
+    "custom.stageStartDate": {
+      "persistent": true
+    },
+    "custom.ventilationEndTime": {
+      "persistent": true
+    },
+    "custom.ventilationHighSp": {
+      "persistent": true
+    },
+    "custom.ventilationIsTemp": {
+      "persistent": true
+    },
+    "custom.ventilationLowSp": {
+      "persistent": true
+    },
+    "custom.ventilationStartTime": {
+      "persistent": true
+    },
+    "params.stage": {
+      "binding": {
+        "config": {
+          "struct": {
+            "UVEndTime": "{view.custom.UVEndTime}",
+            "UVHighSp": "{view.custom.UVHighSp}",
+            "UVIsTemp": "{view.custom.UVIsTemp}",
+            "UVLowSp": "{view.custom.UVLowSp}",
+            "UVStartTime": "{view.custom.UVStartTime}",
+            "pumpEndTime": "{view.custom.pumpEndTime}",
+            "pumpHighSp": "{view.custom.pumpHighSp}",
+            "pumpIsTemp": "{view.custom.pumpIsTemp}",
+            "pumpLowSp": "{view.custom.pumpLowSp}",
+            "pumpStartTime": "{view.custom.pumpStartTime}",
+            "stageEndDate": "{view.custom.stageEndDate}",
+            "stageStartDate": "{view.custom.stageStartDate}",
+            "ventilationEndTime": "{view.custom.ventilationEndTime}",
+            "ventilationHighSp": "{view.custom.ventilationHighSp}",
+            "ventilationIsTemp": "{view.custom.ventilationIsTemp}",
+            "ventilationLowSp": "{view.custom.ventilationLowSp}",
+            "ventilationStartTime": "{view.custom.ventilationStartTime}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\t\n\tventilation_stage \u003d {\n\t\t\u0027EndTime\u0027: value.ventilationEndTime,\n\t\t\u0027StartTime\u0027: value.ventilationStartTime,\n\t\t\u0027LowSetpoint\u0027: value.ventilationLowSp,\n\t\t\u0027HighSetpoint\u0027: value.ventilationHighSp,\n\t\t\u0027IsTemp\u0027: value.ventilationIsTemp\n\t}\n\t\n\tirrigation_stage \u003d {\n\t\t\u0027EndTime\u0027: value.pumpEndTime,\n\t\t\u0027StartTime\u0027: value.pumpStartTime,\n\t\t\u0027LowSetpoint\u0027: value.pumpLowSp,\n\t\t\u0027HighSetpoint\u0027: value.pumpHighSp,\n\t\t\u0027IsTemp\u0027: value.pumpIsTemp\n\t}\n\t\n\tUV_stage \u003d {\n\t\t\u0027EndTime\u0027: value.UVEndTime,\n\t\t\u0027StartTime\u0027: value.UVStartTime,\n\t\t\u0027LowSetpoint\u0027: value.UVLowSp,\n\t\t\u0027HighSetpoint\u0027: value.UVHighSp,\n\t\t\u0027IsTemp\u0027: value.UVIsTemp\n\t}\n\t\n\t\n\tres \u003d {\n\t\t\u0027StartDate\u0027: value.stageStartDate,\n\t\t\u0027EndDate\u0027: value.stageEndDate,\n\t\t\u0027IrrigationPump\u0027: irrigation_stage,\n\t\t\u0027UVLight\u0027: UV_stage,\n\t\t\u0027Ventilation\u0027: ventilation_stage\n\t}\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\treturn res",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "paramDirection": "output",
+      "persistent": true
+    },
+    "params.stageNumber": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 412,
+      "width": 985
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "basis": "150px"
+            },
+            "props": {
+              "style": {
+                "textAlign": "right"
+              },
+              "text": "@ui.text.stage@"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "StageNumber"
+            },
+            "position": {
+              "basis": "50px"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.stageNumber"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": "10px"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "TimeFilter"
+            },
+            "position": {
+              "basis": "876px"
+            },
+            "propConfig": {
+              "props.params.endDate": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.stageEndDate"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.params.startDate": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.stageStartDate"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "path": "FRWK/Widgets/TimeFilter/TimeFilter"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "basis": "70px"
+        },
+        "props": {
+          "style": {
+            "backgroundColor": "#D5D5D5"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "basis": "252px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances[0].endTime": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.ventilationEndTime"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[0].highSetpoint": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.ventilationHighSp"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[0].isTemp": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.ventilationIsTemp"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[0].lowSetpoint": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.ventilationLowSp"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[0].startTime": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.ventilationStartTime"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[1].endTime": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.pumpEndTime"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[1].highSetpoint": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.pumpHighSp"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[1].isTemp": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.pumpIsTemp"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[1].lowSetpoint": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.pumpLowSp"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[1].startTime": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.pumpStartTime"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[2].endTime": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.UVEndTime"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[2].highSetpoint": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.UVHighSp"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[2].isTemp": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.UVIsTemp"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[2].lowSetpoint": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.UVLowSp"
+              },
+              "type": "property"
+            }
+          },
+          "props.instances[2].startTime": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.UVStartTime"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "alignItems": "center",
+          "direction": "column",
+          "instances": [
+            {
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "parameterName": "ventilation",
+              "parameterNameUI": "@ui.params.ventilation@"
+            },
+            {
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "parameterName": "irrigationPump",
+              "parameterNameUI": "@ui.params.irrigationPump@"
+            },
+            {
+              "instancePosition": {},
+              "instanceStyle": {
+                "classes": ""
+              },
+              "parameterName": "UVLight",
+              "parameterNameUI": "@ui.params.UVLight@"
+            }
+          ],
+          "path": "FRWK/Widgets/Preset/ParameterPreset"
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

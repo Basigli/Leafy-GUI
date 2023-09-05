@@ -1,0 +1,117 @@
+{
+  "custom": {},
+  "params": {
+    "id": 1,
+    "parameterName": "IrrigationPump",
+    "parameterNameUI": "@ui.params.irrigationPump@",
+    "value": false
+  },
+  "propConfig": {
+    "params.id": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.parameterName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.parameterNameUI": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.value": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 50,
+      "width": 300
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "ParameterName"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.parameterNameUI"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "marginLeft": "20px",
+            "textAlign": "left"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\t\n\tgreenhouse_id \u003d self.view.params.id\n\tactuator_name \u003d self.view.params.parameterName\n\tif self.props.selected:\n\t\tcore.greenhouse.controller.turn_on(greenhouse_id, actuator_name)\n\telse:\n\t\tcore.greenhouse.controller.turn_off(greenhouse_id, actuator_name)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "ToggleSwitch"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.label.text": {
+            "binding": {
+              "config": {
+                "path": "this.props.selected"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn \u0027ON\u0027 if value else \u0027OFF\u0027",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.selected": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.value"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "label": {},
+          "style": {
+            "textAlign": "right"
+          }
+        },
+        "type": "ia.input.toggle-switch"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.flex"
+  }
+}

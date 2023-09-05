@@ -1,0 +1,144 @@
+{
+  "custom": {},
+  "params": {
+    "presetDescription": "",
+    "presetName": ""
+  },
+  "propConfig": {
+    "params.presetDescription": {
+      "paramDirection": "output",
+      "persistent": true
+    },
+    "params.presetName": {
+      "paramDirection": "output",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 149,
+      "width": 550
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Name"
+            },
+            "position": {
+              "basis": "223px"
+            },
+            "props": {
+              "text": "@ui.text.name@"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "PresetName"
+            },
+            "position": {
+              "basis": "316px"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.presetName"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Colors/BackgroundColorLight Colors/Container/Borders",
+                "minHeight": "30px",
+                "overflow": "auto"
+              }
+            },
+            "type": "ia.input.text-field"
+          }
+        ],
+        "meta": {
+          "name": "NameContainer"
+        },
+        "position": {
+          "basis": "72px"
+        },
+        "props": {
+          "alignItems": "center"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Description"
+            },
+            "position": {
+              "basis": "223px"
+            },
+            "props": {
+              "text": "@ui.text.description@"
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "PresetDescription"
+            },
+            "position": {
+              "basis": "315px"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.presetDescription"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "classes": "Colors/BackgroundColorLight Colors/Container/Borders",
+                "minHeight": "30px",
+                "overflow": "auto"
+              }
+            },
+            "type": "ia.input.text-area"
+          }
+        ],
+        "meta": {
+          "name": "DescriptionContainer"
+        },
+        "position": {
+          "basis": "72px"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "justify": "center",
+      "style": {
+        "marginBottom": "20px",
+        "marginLeft": "20px",
+        "marginRight": "20px",
+        "marginTop": "20px"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

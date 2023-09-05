@@ -1,0 +1,16 @@
+{
+  "scope": "A",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "data.bin"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "basigli",
+      "timestamp": "2023-07-27T13:06:47Z"
+    },
+    "lastModificationSignature": "dfd9bfe89d023935fd38546002f1c79f3e07c6f71d225024acf9b3024f321711"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "custom": {
+    "intances": [
+      {
+        "description": "Preset per piantina basilico",
+        "name": "Basilico",
+        "presetId": "1"
+      },
+      {
+        "description": "Test di preset",
+        "name": "Menta",
+        "presetId": "2"
+      }
+    ]
+  },
+  "params": {
+    "refreshTrigger": false
+  },
+  "propConfig": {
+    "custom.intances": {
+      "binding": {
+        "config": {
+          "struct": {
+            "refresh": "{view.params.refreshTrigger}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\treturn core.greenhouse.controller.get_formatted_presets_list()",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "params.refreshTrigger": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 513
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "props": {
+          "style": {
+            "fontSize": "30px",
+            "fontWeight": "bold",
+            "marginBottom": "20px",
+            "textAlign": "center"
+          },
+          "text": "Preset"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "PresetCards"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.custom.intances"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "elementPosition": {
+            "grow": 0,
+            "shrink": 0
+          },
+          "elementStyle": {
+            "maxHeight": "120px",
+            "minWidth": "350px"
+          },
+          "justify": "center",
+          "path": "FRWK/Widgets/Preset/PresetCard",
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false,
+          "wrap": "wrap"
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "scripts": {
+      "customMethods": [],
+      "extensionFunctions": null,
+      "messageHandlers": [
+        {
+          "messageType": "refresh-presets-intances",
+          "pageScope": true,
+          "script": "\tself.view.params.refreshTrigger \u003d not self.view.params.refreshTrigger",
+          "sessionScope": false,
+          "viewScope": false
+        }
+      ]
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,509 @@
+{
+  "custom": {
+    "endDate": {
+      "$": [
+        "ts",
+        201,
+        1693041155875
+      ],
+      "$ts": 1692230400000
+    },
+    "startDate": {
+      "$": [
+        "ts",
+        201,
+        1692881555868
+      ],
+      "$ts": 1691625600000
+    }
+  },
+  "params": {
+    "id": 1
+  },
+  "propConfig": {
+    "custom.endDate": {
+      "persistent": true
+    },
+    "custom.startDate": {
+      "persistent": true
+    },
+    "params.id": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1143,
+      "width": 1920
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "GreenHouseSelector"
+            },
+            "position": {
+              "basis": "320px"
+            },
+            "propConfig": {
+              "props.params.selectedId": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.params.id"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "path": "FRWK/Widgets/Search/GreenHouseSelector"
+            },
+            "type": "ia.display.view"
+          },
+          {
+            "meta": {
+              "name": "TimeFilter"
+            },
+            "position": {
+              "basis": "1165px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.params.endDate": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.endDate"
+                  },
+                  "type": "property"
+                }
+              },
+              "props.params.startDate": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.startDate"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "path": "FRWK/Widgets/TimeFilter/TimeFilter"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "basis": "94px"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "VentilationGraph"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "propConfig": {
+                  "props.params.endDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.endDate"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.greenHouseId": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.id"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.startDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.startDate"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "isInput": false,
+                    "lineColor": "#90B6A6",
+                    "paramName": "ventilation",
+                    "render": "step line"
+                  },
+                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "UVLightGraph"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "propConfig": {
+                  "props.params.endDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.endDate"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.greenHouseId": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.id"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.startDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.startDate"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "isInput": false,
+                    "lineColor": "#7030A0",
+                    "paramName": "UVLight",
+                    "render": "step line"
+                  },
+                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "IrrigationGraph"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "propConfig": {
+                  "props.params.endDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.endDate"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.greenHouseId": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.id"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.startDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.startDate"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "isInput": false,
+                    "lineColor": "#002060",
+                    "paramName": "irrigationPump",
+                    "render": "step line"
+                  },
+                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "TerrainHumGraph"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "propConfig": {
+                  "props.params.endDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.endDate"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.greenHouseId": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.id"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.startDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.startDate"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "isInput": true,
+                    "lineColor": "#A54C1F",
+                    "paramName": "terrainHum"
+                  },
+                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "LeftContainer"
+            },
+            "position": {
+              "basis": "200px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "meta": {
+                  "name": "AirHumGraph"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "propConfig": {
+                  "props.params.endDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.endDate"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.greenHouseId": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.id"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.startDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.startDate"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "isInput": true,
+                    "lineColor": "#002060",
+                    "paramName": "airHum"
+                  },
+                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "AirTempGraph"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "propConfig": {
+                  "props.params.endDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.endDate"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.greenHouseId": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.id"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.startDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.startDate"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "isInput": true,
+                    "lineColor": "#C93F49",
+                    "paramName": "airTemp"
+                  },
+                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "TankGraph"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "propConfig": {
+                  "props.params.endDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.endDate"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.greenHouseId": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.id"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.startDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.startDate"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "isInput": false,
+                    "lineColor": "#767171",
+                    "paramName": "isTankEmpty",
+                    "render": "step line"
+                  },
+                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "LightGraph"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "propConfig": {
+                  "props.params.endDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.endDate"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.greenHouseId": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.id"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.startDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.startDate"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "isInput": true,
+                    "lineColor": "#EDAF01",
+                    "paramName": "lightQuantity"
+                  },
+                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                },
+                "type": "ia.display.view"
+              }
+            ],
+            "meta": {
+              "name": "RightContainer"
+            },
+            "position": {
+              "basis": "200px",
+              "grow": 1
+            },
+            "props": {
+              "direction": "column"
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "basis": "200px",
+          "grow": 1
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

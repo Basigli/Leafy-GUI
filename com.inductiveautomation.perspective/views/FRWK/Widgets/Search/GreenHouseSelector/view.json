@@ -1,0 +1,100 @@
+{
+  "custom": {
+    "greenhouses": [
+      {
+        "label": "Serra 1",
+        "value": 1
+      },
+      {
+        "label": "Serra 2",
+        "value": 2
+      }
+    ]
+  },
+  "params": {
+    "selectedId": 1
+  },
+  "propConfig": {
+    "custom.greenhouses": {
+      "binding": {
+        "config": {
+          "struct": {},
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\treturn core.greenhouse.controller.get_all_formatted_greenhouse()",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "params.selectedId": {
+      "paramDirection": "output",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 103,
+      "width": 417
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          },
+          "text": "@ui.text.greenhouse@"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "Dropdown"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.options": {
+            "binding": {
+              "config": {
+                "path": "view.custom.greenhouses"
+              },
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.selectedId"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.input.dropdown"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "alignItems": "center",
+      "justify": "center"
+    },
+    "type": "ia.container.flex"
+  }
+}

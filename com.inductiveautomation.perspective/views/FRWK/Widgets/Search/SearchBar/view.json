@@ -1,0 +1,59 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 30,
+      "width": 163
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "TextField"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "borderStyle": "none"
+          }
+        },
+        "type": "ia.input.text-field"
+      },
+      {
+        "meta": {
+          "name": "SearchButton"
+        },
+        "position": {
+          "basis": "40px"
+        },
+        "props": {
+          "image": {
+            "icon": {
+              "path": "material/search"
+            }
+          },
+          "primary": false,
+          "style": {
+            "borderStyle": "none"
+          },
+          "text": ""
+        },
+        "type": "ia.input.button"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "classes": "Colors/BackgroundColorLight Colors/Container/Borders"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "custom": {
+    "UVLight": false,
+    "irrigationPump": false,
+    "ventilation": false
+  },
+  "params": {
+    "id": 1
+  },
+  "propConfig": {
+    "custom.UVLight": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "id": "{view.params.id}"
+          },
+          "tagPath": "[default]GreenHouses/{id}/UVLight"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.irrigationPump": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "id": "{view.params.id}"
+          },
+          "tagPath": "[default]GreenHouses/{id}/IrrigationPump"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "custom.ventilation": {
+      "binding": {
+        "config": {
+          "fallbackDelay": 2.5,
+          "mode": "indirect",
+          "references": {
+            "id": "{view.params.id}"
+          },
+          "tagPath": "[default]GreenHouses/{id}/Ventilation"
+        },
+        "type": "tag"
+      },
+      "persistent": true
+    },
+    "params.id": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 231,
+      "width": 300
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "FlexRepeater"
+        },
+        "position": {
+          "basis": "320px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "UVLight": "{view.custom.UVLight}",
+                  "id": "{view.params.id}",
+                  "irrigationPump": "{view.custom.irrigationPump}",
+                  "ventilation": "{view.custom.ventilation}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\tinstances \u003d []\n\t\n\tinstances.append({\n\t\t\u0027parameterNameUI\u0027: \u0027@ui.params.UVLight@\u0027,\n\t\t\u0027id\u0027: value.id,\n\t\t\u0027parameterName\u0027: core.greenhouse.classes.Actuators.UV_LIGHT,\n\t\t\u0027value\u0027: value.UVLight\n\t})\n\t\n\tinstances.append({\n\t\t\u0027parameterNameUI\u0027: \u0027@ui.params.irrigationPump@\u0027,\n\t\t\u0027id\u0027: value.id,\n\t\t\u0027parameterName\u0027: core.greenhouse.classes.Actuators.IRRIGATION,\n\t\t\u0027value\u0027: value.irrigationPump\n\t})\n\t\n\tinstances.append({\n\t\t\u0027parameterNameUI\u0027: \u0027@ui.params.ventilation@\u0027,\n\t\t\u0027id\u0027: value.id,\n\t\t\u0027parameterName\u0027: core.greenhouse.classes.Actuators.VENTILATION,\n\t\t\u0027value\u0027: value.ventilation\n\t})\n\t\n\treturn instances",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "direction": "column",
+          "path": "FRWK/Widgets/OverviewDock/ParameterController"
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

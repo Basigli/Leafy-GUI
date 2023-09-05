@@ -1,0 +1,60 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "UpdateQuery",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "LeafyData",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "e29da750628b6bdf54d10db7c3d3fa54d1db333cb3859f7d5737cdaff9158f7f",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "basigli",
+      "timestamp": "2023-08-03T12:21:34Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "greenHouseId",
+        "sqlType": 3
+      },
+      {
+        "type": "Parameter",
+        "identifier": "irrigationPump",
+        "sqlType": 6
+      },
+      {
+        "type": "Parameter",
+        "identifier": "UVLight",
+        "sqlType": 6
+      },
+      {
+        "type": "Parameter",
+        "identifier": "ventilation",
+        "sqlType": 6
+      },
+      {
+        "type": "Parameter",
+        "identifier": "timeStamp",
+        "sqlType": 8
+      }
+    ]
+  }
+}

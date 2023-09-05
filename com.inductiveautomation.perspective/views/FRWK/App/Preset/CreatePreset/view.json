@@ -1,0 +1,34 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "CreatePresetDesktop"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "path": "FRWK/App/Preset/CreatePresetDesktop"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "CreatePresetMobile"
+        },
+        "props": {
+          "path": "FRWK/App/Preset/CreatePresetMobile"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.breakpt"
+  }
+}

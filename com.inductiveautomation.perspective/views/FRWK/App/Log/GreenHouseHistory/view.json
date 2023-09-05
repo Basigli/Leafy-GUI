@@ -1,0 +1,34 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "GreenHouseHistoryDesktop"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "path": "FRWK/App/Log/GreenHouseHistoryDesktop"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "GreenHouseHistoryMobile"
+        },
+        "props": {
+          "path": "FRWK/App/Log/GreenHouseHistoryMobile"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.breakpt"
+  }
+}

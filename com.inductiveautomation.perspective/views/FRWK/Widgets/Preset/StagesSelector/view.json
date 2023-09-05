@@ -1,0 +1,74 @@
+{
+  "custom": {},
+  "params": {
+    "stagesNumber": 1
+  },
+  "propConfig": {
+    "params.stagesNumber": {
+      "paramDirection": "output",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 83,
+      "width": 294
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "167px"
+        },
+        "props": {
+          "style": {
+            "textAlign": "center"
+          },
+          "text": "@ui.text.stages@"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "NumericEntryField"
+        },
+        "position": {
+          "basis": "80px"
+        },
+        "propConfig": {
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.params.stagesNumber"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "format": "0,0",
+          "inputBounds": {
+            "maximum": 10,
+            "minimum": 1
+          },
+          "style": {
+            "height": "40px"
+          }
+        },
+        "type": "ia.input.numeric-entry-field"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "alignItems": "center"
+    },
+    "type": "ia.container.flex"
+  }
+}

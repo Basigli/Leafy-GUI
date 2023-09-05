@@ -1,0 +1,190 @@
+{
+  "custom": {},
+  "params": {
+    "description": "Questo preset serve per far crescere una pianta di menta, Questo preset serve per far crescere una pianta di menta",
+    "name": "Menta",
+    "presetId": 1
+  },
+  "propConfig": {
+    "params.description": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.name": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.presetId": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 99,
+      "width": 373
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "PresetName"
+            },
+            "position": {
+              "basis": "32px"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.name"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "fontSize": "20px",
+                "fontWeight": "bolder",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          },
+          {
+            "meta": {
+              "name": "PresetDescription"
+            },
+            "position": {
+              "basis": "32px",
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.description"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\tif len(value) \u003e 50:\n\t\treturn value[0:50] + \u0027...\u0027\n\treturn value",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": "20px"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "basis": "273.7px"
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Edit"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "path": "material/edit"
+                }
+              },
+              "primary": false,
+              "text": ""
+            },
+            "type": "ia.input.button"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\tpreset_id \u003d str(self.view.params.presetId)\n\tcore.greenhouse.controller.delete_preset(preset_id)\n\tsystem.perspective.sendMessage(\u0027refresh-presets-intances\u0027, {})\n\tself.props.value \u003d 0"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "Delete"
+            },
+            "position": {
+              "grow": 1
+            },
+            "props": {
+              "confirm": {
+                "enabled": true
+              },
+              "primary": false,
+              "readyState": {
+                "icon": {
+                  "path": "material/delete",
+                  "style": {
+                    "height": "24px",
+                    "width": "2rem"
+                  }
+                },
+                "text": ""
+              },
+              "writingState": {
+                "icon": {
+                  "path": "material/hourglass_empty",
+                  "style": {
+                    "height": "24px",
+                    "width": "2rem"
+                  }
+                },
+                "text": "Writing..."
+              }
+            },
+            "type": "ia.input.oneshotbutton"
+          }
+        ],
+        "meta": {
+          "name": "Actions"
+        },
+        "position": {
+          "basis": "100px"
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "classes": "Colors/Container/Borders"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

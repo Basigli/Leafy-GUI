@@ -1,0 +1,2 @@
+INSERT INTO INPUT_SENSORS(airHum, airTemp, greenHouseId, isTankEmpty, lightQuantity, terrainHum, timeStamp)
+VALUES (:airHum, :airTemp, :greenHouseId, :isTankEmpty, :lightQuantity, :terrainHum, :timeStamp)

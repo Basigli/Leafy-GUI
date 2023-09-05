@@ -1,0 +1,299 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 80,
+      "width": 1920
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "LeafyLogo"
+            },
+            "position": {
+              "basis": "120px"
+            },
+            "props": {
+              "fit": {
+                "mode": "cover"
+              },
+              "source": "/system/images/Logo serra png-2.png"
+            },
+            "type": "ia.display.image"
+          }
+        ],
+        "meta": {
+          "name": "LogoContainer"
+        },
+        "position": {
+          "basis": "137px"
+        },
+        "props": {
+          "alignItems": "center",
+          "direction": "column",
+          "justify": "center"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "events": {
+              "dom": {
+                "onClick": {
+                  "config": {
+                    "page": "/"
+                  },
+                  "scope": "C",
+                  "type": "nav"
+                }
+              }
+            },
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "basis": "47px"
+            },
+            "props": {
+              "style": {
+                "borderRightColor": "#7EC4A3",
+                "borderRightStyle": "solid",
+                "borderRightWidth": "2px",
+                "cursor": "pointer",
+                "fontSize": "45px",
+                "fontWeight": "bolder",
+                "paddingRight": "30px",
+                "textAlign": "left"
+              },
+              "text": "Leafy"
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "NameContainer"
+        },
+        "position": {
+          "basis": "179px",
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "flex-start",
+          "direction": "column",
+          "justify": "center"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "page": "/create-preset"
+                      },
+                      "scope": "C",
+                      "type": "nav"
+                    },
+                    "onMouseOut": {
+                      "config": {
+                        "script": "\tself.parent.props.style.classes \u003d \u0027Colors/Text/Light/TitlesTextDarken\u0027"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    },
+                    "onMouseOver": {
+                      "config": {
+                        "script": "\tself.parent.props.style.classes \u003d \u0027Colors/Text/Light/TitlesText\u0027"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "20px"
+                },
+                "props": {
+                  "text": "@ui.header.configure @",
+                  "textStyle": {
+                    "fontSize": "20px"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "ConfigureContainer"
+            },
+            "position": {
+              "basis": "200px"
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Colors/Text/Light/TitlesTextDarken",
+                "cursor": "pointer"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "page": "/history"
+                      },
+                      "scope": "C",
+                      "type": "nav"
+                    },
+                    "onMouseOut": {
+                      "config": {
+                        "script": "\tself.parent.props.style.classes \u003d \u0027Colors/Text/Light/TitlesTextDarken\u0027"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    },
+                    "onMouseOver": {
+                      "config": {
+                        "script": "\tself.parent.props.style.classes \u003d \u0027Colors/Text/Light/TitlesText\u0027"
+                      },
+                      "scope": "G",
+                      "type": "script"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "30px"
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "20px"
+                  },
+                  "text": "@ui.text.history@"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "HistoryContainer"
+            },
+            "position": {
+              "basis": "200px"
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Colors/Text/Light/TitlesTextDarken",
+                "cursor": "pointer"
+              }
+            },
+            "type": "ia.container.flex"
+          }
+        ],
+        "meta": {
+          "name": "NavContainer"
+        },
+        "position": {
+          "basis": "329px"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "SearchBar"
+            },
+            "position": {
+              "basis": "36px"
+            },
+            "props": {
+              "path": "FRWK/Widgets/Search/SearchBar"
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "SearchContainer"
+        },
+        "position": {
+          "basis": "339px"
+        },
+        "props": {
+          "alignItems": "flex-start",
+          "direction": "column",
+          "justify": "center",
+          "style": {
+            "paddingLeft": "40px"
+          }
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "ProfileInfo"
+            },
+            "position": {
+              "basis": "63px"
+            },
+            "props": {
+              "path": "FRWK/Widgets/Profile/ProfileInfo",
+              "style": {
+                "marginRight": "20px"
+              }
+            },
+            "type": "ia.display.view"
+          }
+        ],
+        "meta": {
+          "name": "ProfileContainer"
+        },
+        "position": {
+          "basis": "936px"
+        },
+        "props": {
+          "alignItems": "flex-end",
+          "direction": "column",
+          "justify": "center"
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "style": {
+        "borderBottomStyle": "solid",
+        "borderBottomWidth": "2px",
+        "classes": "Colors/BackgroundColorLight Colors/Text/Light/TitlesText"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

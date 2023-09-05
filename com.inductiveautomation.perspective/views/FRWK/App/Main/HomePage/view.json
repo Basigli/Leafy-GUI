@@ -1,0 +1,39 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 900,
+      "width": 1253
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "HomePageDesktop"
+        },
+        "position": {
+          "size": "large"
+        },
+        "props": {
+          "path": "FRWK/App/Main/HomePageDesktop"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "HomePageMobile"
+        },
+        "props": {
+          "path": "FRWK/App/Main/HomePageMobile"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "type": "ia.container.breakpt"
+  }
+}

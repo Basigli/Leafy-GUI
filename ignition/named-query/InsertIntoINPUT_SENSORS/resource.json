@@ -1,0 +1,70 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "UpdateQuery",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "LeafyData",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "55ba040fa30e72104ca81211881d0ff8773d48e7c979d5c6bd807634b468f601",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "basigli",
+      "timestamp": "2023-08-03T10:48:27Z"
+    },
+    "parameters": [
+      {
+        "type": "Parameter",
+        "identifier": "airHum",
+        "sqlType": 5
+      },
+      {
+        "type": "Parameter",
+        "identifier": "airTemp",
+        "sqlType": 5
+      },
+      {
+        "type": "Parameter",
+        "identifier": "greenHouseId",
+        "sqlType": 2
+      },
+      {
+        "type": "Parameter",
+        "identifier": "isTankEmpty",
+        "sqlType": 2
+      },
+      {
+        "type": "Parameter",
+        "identifier": "lightQuantity",
+        "sqlType": 5
+      },
+      {
+        "type": "Parameter",
+        "identifier": "terrainHum",
+        "sqlType": 5
+      },
+      {
+        "type": "Parameter",
+        "identifier": "timeStamp",
+        "sqlType": 8
+      }
+    ]
+  }
+}

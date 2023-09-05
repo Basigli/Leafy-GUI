@@ -1,0 +1,42 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "height": 118,
+      "width": 266
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Text"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "props": {
+          "style": {
+            "fontSize": "30px",
+            "fontWeight": "bold",
+            "textAlign": "center"
+          },
+          "text": "@ui.text.pupup.success@"
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "backgroundColor": "#D5D5D5"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

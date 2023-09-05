@@ -1,0 +1,99 @@
+{
+  "custom": {
+    "instances": [
+      {
+        "id": "1"
+      },
+      {
+        "id": "2"
+      }
+    ]
+  },
+  "params": {},
+  "propConfig": {
+    "custom.instances": {
+      "binding": {
+        "config": {
+          "struct": {},
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\treturn [ {\u0027id\u0027: gh} for gh in core.greenhouse.controller.get_greenhouses()]",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 1080,
+      "width": 1920
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "FlexRepeater"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.instances"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "elementStyle": {
+                "marginBottom": "20px",
+                "marginLeft": "20px",
+                "marginRight": "20px",
+                "marginTop": "20px"
+              },
+              "path": "FRWK/Faceplates/Cards/GreenHouseCard"
+            },
+            "type": "ia.display.flex-repeater"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "marginBottom": "30px",
+            "marginLeft": "30px",
+            "marginRight": "30px",
+            "marginTop": "30px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "classes": "Colors/BackgroundColorLight"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

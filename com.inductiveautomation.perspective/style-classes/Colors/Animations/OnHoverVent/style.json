@@ -1,0 +1,20 @@
+{
+  "base": {
+    "style": {}
+  },
+  "variants": [
+    {
+      "pseudo": "hover",
+      "animation": {
+        "duration": "0.5s",
+        "iterationCount": "1",
+        "keyframes": {
+          "0%": {},
+          "100%": {
+            "backgroundColor": "#CCDAD0"
+          }
+        }
+      }
+    }
+  ]
+}

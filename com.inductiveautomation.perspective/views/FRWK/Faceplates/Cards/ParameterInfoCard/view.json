@@ -1,0 +1,320 @@
+{
+  "custom": {
+    "endDate": {
+      "$": [
+        "ts",
+        192,
+        1692864284390
+      ],
+      "$ts": 1692864284390
+    },
+    "startDate": {
+      "$": [
+        "ts",
+        192,
+        1692864284391
+      ],
+      "$ts": 1690156800000
+    }
+  },
+  "params": {
+    "backgroundColor": "#7A98D2",
+    "greenHouseId": 1,
+    "icon": "Icons/sun_non_active.svg",
+    "input": true,
+    "onHoverClass": "value",
+    "paramActualName": "lightQuantity",
+    "paramsName": "value",
+    "paramsValue": "value",
+    "textColor": "value"
+  },
+  "propConfig": {
+    "custom.endDate": {
+      "persistent": true
+    },
+    "custom.startDate": {
+      "binding": {
+        "config": {
+          "struct": {},
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\t\n\tnow \u003d system.date.now()\n\tyear \u003d system.date.getYear(now)\n\tmonth \u003d system.date.getMonth(now)\n\tday \u003d system.date.getDayOfMonth(now)\n\t\n\tmonth -\u003d 1\n\tif month \u003d\u003d 0:  # Se il mese è gennaio, imposta il mese a dicembre e decrementa l\u0027anno\n\t\tmonth \u003d 12\n\t\tyear -\u003d 1\n\tself.custom.endDate \u003d now\n\treturn system.date.getDate(year, month, day)",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "params.backgroundColor": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.greenHouseId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.icon": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.input": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.onHoverClass": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.paramActualName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.paramsName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.paramsValue": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.textColor": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 300,
+      "width": 300
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "InputInfo"
+        },
+        "position": {
+          "basis": "320px"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "path": "view.params.input"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.image": {
+            "binding": {
+              "config": {
+                "path": "view.params.icon"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.paramsName": {
+            "binding": {
+              "config": {
+                "path": "view.params.paramsName"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.paramsValue": {
+            "binding": {
+              "config": {
+                "path": "view.params.paramsValue"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.textColor": {
+            "binding": {
+              "config": {
+                "path": "view.params.textColor"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "path": "FRWK/Widgets/Cards/InputInfo",
+          "style": {
+            "marginBottom": "50px",
+            "marginTop": "40px"
+          }
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "OutputInfo"
+        },
+        "position": {
+          "basis": "320px"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "path": "view.params.input"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn not value",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.params.image": {
+            "binding": {
+              "config": {
+                "path": "view.params.icon"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.paramsName": {
+            "binding": {
+              "config": {
+                "path": "view.params.paramsName"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.paramsValue": {
+            "binding": {
+              "config": {
+                "path": "view.params.paramsValue"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.textColor": {
+            "binding": {
+              "config": {
+                "path": "view.params.textColor"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "path": "FRWK/Widgets/Cards/OutputInfo",
+          "style": {
+            "marginBottom": "50px",
+            "marginTop": "40px"
+          }
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "draggable": false,
+            "id": "Graph/ParamGraphPopup",
+            "modal": true,
+            "overlayDismiss": true,
+            "resizable": false,
+            "showCloseIcon": true,
+            "type": "open",
+            "viewParams": {
+              "endDate": "{view.custom.endDate}",
+              "greenHouseId": "{view.params.greenHouseId}",
+              "isInput": "{view.params.input}",
+              "lineColor": "{view.params.textColor}",
+              "paramName": "{view.params.paramActualName}",
+              "startDate": "{view.custom.startDate}"
+            },
+            "viewPath": "FRWK/Faceplates/Graph/ParamGraph",
+            "viewportBound": false
+          },
+          "scope": "C",
+          "type": "popup"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.backgroundColor": {
+        "binding": {
+          "config": {
+            "path": "view.params.backgroundColor"
+          },
+          "type": "property"
+        }
+      },
+      "props.style.borderTopLeftRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.input"
+          },
+          "transforms": [
+            {
+              "code": "\treturn \u00270px\u0027 if value else \u0027200px\u0027",
+              "type": "script"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.style.borderTopRightRadius": {
+        "binding": {
+          "config": {
+            "path": "view.params.input"
+          },
+          "transforms": [
+            {
+              "code": "\treturn \u0027200px\u0027 if value else \u00270px\u0027",
+              "type": "script"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.style.boxShadow": {
+        "binding": {
+          "config": {
+            "path": "view.params.input"
+          },
+          "transforms": [
+            {
+              "code": "\treturn \u0027-11px 9px 6px 1px rgba(53,53,52,0.32)\u0027 if value else \u002711px 9px 6px 1px rgba(53,53,52,0.32)\u0027",
+              "type": "script"
+            }
+          ],
+          "type": "property"
+        }
+      },
+      "props.style.classes": {
+        "binding": {
+          "config": {
+            "path": "view.params.onHoverClass"
+          },
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "borderBottomLeftRadius": "200px",
+        "borderBottomRightRadius": "200px",
+        "cursor": "pointer",
+        "opacity": "1,00"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}
