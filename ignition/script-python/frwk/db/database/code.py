@@ -1,18 +1,22 @@
 def log_input_sensors(greenhouse_id, air_hum, air_temp, light_quantity, terrain_hum, is_tank_empty):
 	"""
-	Saves input sensors data into the db
-
+	Saves input sensor data into the database.
+	
 	Args:
-		* greenhouse_id (int): id of the greenhouse
-		* air_hum (float):
-		* air_temp (float):
-		* light_quantity (float):
-		* terrain_hum (float):
-		* is_tank_empty (bool): 
+	    * greenhouse_id (int): The ID of the greenhouse where the sensor data is recorded.
+	    * air_hum (float): The air humidity value.
+	    * air_temp (float): The air temperature value.
+	    * light_quantity (float): The quantity of light in the greenhouse.
+	    * terrain_hum (float): The humidity of the terrain in the greenhouse.
+	    * is_tank_empty (bool): A boolean indicating whether the tank is empty or not.
+	
 	Returns:
-		True if the action is performed, False otherwise 
+	    bool: True if the action is successfully performed and the sensor data is saved in the database, False otherwise.
+	
+	Notes:
+	    This function records sensor data into the database for a specific greenhouse. It takes various sensor readings as input and stores them along with a timestamp in the database. If the data recording is successful, the function returns True. If there is an error during the database operation, it logs the error and returns False.
 	"""
-
+	
 	params = {
 		'airHum': air_hum,
 		'airTemp': air_temp,
@@ -34,16 +38,19 @@ def log_input_sensors(greenhouse_id, air_hum, air_temp, light_quantity, terrain_
 		
 def log_output_actuators(greenhouse_id, irrigation_pump, uv_light, ventilation):
 	"""
-	Saves output actuators data into the db
-
+	Saves output actuator data into the database.
+	
 	Args:
-		* greenhouse_id (int): id of the greenhouse
-		* irrigation_pump (bool):
-		* uv_light (bool):
-		* ventilation (bool):
-
+	    * greenhouse_id (int): The ID of the greenhouse where the actuator data is recorded.
+	    * irrigation_pump (bool): A boolean indicating the status of the irrigation pump (True for on, False for off).
+	    * uv_light (bool): A boolean indicating the status of UV lights (True for on, False for off).
+	    * ventilation (bool): A boolean indicating the status of ventilation (True for on, False for off).
+	
 	Returns:
-		(bool) True if the action is performed, False otherwise 
+	    bool: True if the action is successfully performed, False otherwise.
+	
+	Notes:
+	    This function records actuator data into the database for a specific greenhouse. It takes the status of various actuators as input and stores them along with a timestamp in the database. If the data recording is successful, the function returns True. If there is an error during the database operation, it logs the error and returns False.
 	"""
 	params = {
 		'greenHouseId': greenhouse_id,
@@ -62,6 +69,20 @@ def log_output_actuators(greenhouse_id, irrigation_pump, uv_light, ventilation):
 	
 
 def get_sensors_data(greenhouse_id, start_date, end_date):
+	"""
+	Retrieves sensor data from the database for a specified greenhouse within a given date range.
+	
+	Args:
+	    * greenhouse_id (int): The ID of the greenhouse for which sensor data is requested.
+	    * start_date (str): The start date of the data retrieval period (in string format).
+	    * end_date (str): The end date of the data retrieval period (in string format).
+	
+	Returns:
+	    list or None: A list of sensor data records as PyDataSet, or None if an error occurs during data retrieval.
+	
+	Notes:
+	    This function retrieves sensor data from the database for a specific greenhouse within the specified date range. It returns the data as a list of records in PyDataSet format. If an error occurs during data retrieval, it logs the error and returns None.
+	"""
 	params = {
 		'greenHouseId': greenhouse_id,
 		'startDate': start_date,
@@ -76,6 +97,20 @@ def get_sensors_data(greenhouse_id, start_date, end_date):
 	
 	
 def get_actuators_data(greenhouse_id, start_date, end_date):
+	"""
+    Retrieves actuator data from the database for a specified greenhouse within a given date range.
+
+    Args:
+        * greenhouse_id (int): The ID of the greenhouse for which actuator data is requested.
+        * start_date (str): The start date of the data retrieval period (in string format).
+        * end_date (str): The end date of the data retrieval period (in string format).
+
+    Returns:
+        list or None: A list of actuator data records as PyDataSet, or None if an error occurs during data retrieval.
+
+    Notes:
+        This function retrieves actuator data from the database for a specific greenhouse within the specified date range. It returns the data as a list of records in PyDataSet format. If an error occurs during data retrieval, it logs the error and returns None.
+    """
 	params = {
 		'greenHouseId': greenhouse_id,
 		'startDate': start_date,

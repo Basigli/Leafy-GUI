@@ -1,15 +1,28 @@
 def get_greenhouses():
+	"""
+	Retrieves a dictionary of greenhouse tags with greenhouse IDs as keys.
+	
+	Returns:
+	    dict: A dictionary where keys are greenhouse IDs and values are formatted greenhouse tags.
+	
+	Notes:
+	    This function retrieves a dictionary of greenhouse tags, where each tag is associated with a specific greenhouse ID. The dictionary is typically used to map greenhouse IDs to their corresponding tags, providing a convenient way to access information about available greenhouses within the system.
+	"""
 	return frwk.framework.tags.get_formatted_tags('[default]GreenHouses')
 
 
 def log_greenhouses_input_sensors():
 	"""
-	Saves input sensors data into the db
-
+	Saves input sensor data for all greenhouses into the database.
+	
 	Args:
-		* none
+	    None
+	
 	Returns:
-		none
+	    None
+	
+	Notes:
+	    This function retrieves input sensor data for all greenhouses, including air humidity, air temperature, light quantity, terrain humidity, and tank status. It then logs this data into the database for each greenhouse. There are no arguments, and the function doesn't return anything.
 	"""
 	greenhouses = get_greenhouses()
 	
@@ -26,13 +39,17 @@ def log_greenhouses_input_sensors():
 		
 def log_greenhouses_output_actuators():
 	"""
-	Saves input sensors data into the db
-
+	Saves output actuator data for all greenhouses into the database.
+	
 	Args:
-		* none
+	    None
+	
 	Returns:
-		none
-	"""	
+	    None
+	
+	Notes:
+	    This function retrieves output actuator data for all greenhouses, including irrigation pump status, UV light status, and ventilation status. It then logs this data into the database for each greenhouse. There are no arguments, and the function doesn't return anything.
+	"""
 	greenhouses = get_greenhouses()
 	
 	for i, greenhouse in greenhouses.items():
@@ -41,20 +58,23 @@ def log_greenhouses_output_actuators():
 		uv_light = greenhouse.get('UVLight').get_value()
 		ventilation = greenhouse.get('Ventilation').get_value()
 		frwk.db.database.log_output_actuators(greenhouse_id, irrigation_pump, uv_light, ventilation)
-	
-			
+
+
 def get_formatted_sensor_data(greenhouse_id, sensor_name, start_date, end_date):
 	"""
-	Retrieves from db data of a given sensor
-
+	Retrieves sensor data for a specific sensor in a greenhouse from the database.
+	
 	Args:
-		* greenhouse_id (int):
-		* sensor_name (str) 
-		* start_date (date):
-		* end_date (date):
-		
+	    * greenhouse_id (int): The ID of the greenhouse for which sensor data is requested.
+	    * sensor_name (str): The name of the sensor for which data is requested.
+	    * start_date (date): The start date of the data retrieval period.
+	    * end_date (date): The end date of the data retrieval period.
+	
 	Returns:
-		none
+	    list: A list of dictionaries containing sensor data for the specified sensor within the specified date range.
+	
+	Notes:
+	    This function retrieves sensor data for a specific sensor in a greenhouse from the database. It takes the greenhouse ID, sensor name, and date range as arguments and returns the data in a formatted list of dictionaries. Each dictionary includes the sensor data and its timestamp.
 	"""
 	data = []
 	raw_data = frwk.db.database.get_sensors_data(greenhouse_id, start_date, end_date)
@@ -70,17 +90,20 @@ def get_formatted_sensor_data(greenhouse_id, sensor_name, start_date, end_date):
 
 def get_formatted_actuator_data(greenhouse_id, actuator_name, start_date, end_date):
 	"""
-	Retrieves from db data of a given actuator
+    Retrieves actuator data for a specific actuator in a greenhouse from the database.
 
-	Args:
-		* greenhouse_id (int):
-		* actuator_name (str) 
-		* start_date (date):
-		* end_date (date):
-		
-	Returns:
-		none
-	"""
+    Args:
+        * greenhouse_id (int): The ID of the greenhouse for which actuator data is requested.
+        * actuator_name (str): The name of the actuator for which data is requested.
+        * start_date (date): The start date of the data retrieval period.
+        * end_date (date): The end date of the data retrieval period.
+
+    Returns:
+        list: A list of dictionaries containing actuator data for the specified actuator within the specified date range.
+
+    Notes:
+        This function retrieves actuator data for a specific actuator in a greenhouse from the database. It takes the greenhouse ID, actuator name, and date range as arguments and returns the data in a formatted list of dictionaries. Each dictionary includes the actuator data and its timestamp.
+    """
 	data = []
 	raw_data = frwk.db.database.get_actuators_data(greenhouse_id, start_date, end_date)
 	for row in raw_data:
@@ -93,6 +116,18 @@ def get_formatted_actuator_data(greenhouse_id, actuator_name, start_date, end_da
 
 
 def get_greenhouse_from_id(greenhouse_id):
+	"""
+	Retrieves information about a specific greenhouse based on its ID.
+	
+	Args:
+	    * greenhouse_id (int): The ID of the greenhouse for which information is requested.
+	
+	Returns:
+	    dict: A dictionary containing information about the specified greenhouse, or an empty dictionary if the greenhouse is not found.
+	
+	Notes:
+	    This function retrieves information about a specific greenhouse based on its ID. It takes the greenhouse ID as an argument and returns a dictionary containing greenhouse information, including tags and attributes. If the specified greenhouse ID is not found, an empty dictionary is returned.
+	"""
 	greenhouses = get_greenhouses()
 	try:
 		return greenhouses[greenhouse_id]
@@ -103,11 +138,36 @@ def get_greenhouse_from_id(greenhouse_id):
 
 
 def write_tag(tag_path, value):
+	"""
+	Writes a value to a specified tag in the system.
+	
+	Args:
+	    * tag_path (str): The path to the tag that needs to be written.
+	    * value: The value to be written to the tag.
+	
+	Returns:
+	    None
+	
+	Notes:
+	    This function is used to write a value to a specific tag in the system. It takes the tag's path as a string and the value to be written. The function performs a blocking write operation to update the tag's value. It does not return any value.
+	"""
 	system.tag.writeBlocking(tag_path, [value])
 
 
 def turn_off(greenhouse_id, actuator_name):
+	"""
+	Turns off an actuator for a specific greenhouse.
 	
+	Args:
+	    * greenhouse_id (int): The ID of the greenhouse for which the actuator needs to be turned off.
+	    * actuator_name (str): The name of the actuator to be turned off.
+	
+	Returns:
+	    bool: True if the actuator is successfully turned off, False otherwise.
+	
+	Notes:
+	    This function turns off a specified actuator for a specific greenhouse. It retrieves the actuator's tag path based on the greenhouse ID and actuator name, writes a 'False' value to the tag to turn off the actuator, and logs the action. If successful, it returns True; otherwise, it returns False.
+	    """
 	greenhouse = get_greenhouse_from_id(str(greenhouse_id))
 	
 	actuator_tag_path = greenhouse[actuator_name].tag_path
@@ -123,7 +183,19 @@ def turn_off(greenhouse_id, actuator_name):
 
 
 def turn_on(greenhouse_id, actuator_name):
+	"""
+	Turns on an actuator for a specific greenhouse.
 	
+	Args:
+	    * greenhouse_id (int): The ID of the greenhouse for which the actuator needs to be turned on.
+	    * actuator_name (str): The name of the actuator to be turned on.
+	
+	Returns:
+	    bool: True if the actuator is successfully turned on, False otherwise.
+	
+	Notes:
+	    This function turns on a specified actuator for a specific greenhouse. It retrieves the actuator's tag path based on the greenhouse ID and actuator name, writes a 'True' value to the tag to turn on the actuator, and logs the action. If successful, it returns True; otherwise, it returns False.
+	"""
 	greenhouse = get_greenhouse_from_id(str(greenhouse_id))
 	
 	actuator_tag_path = greenhouse[actuator_name].tag_path
@@ -139,11 +211,34 @@ def turn_on(greenhouse_id, actuator_name):
 
 
 def get_all_formatted_greenhouse():
+	"""
+	Retrieves information about all greenhouses in a formatted list.
+
+    Returns:
+        list: A list of dictionaries containing information about all greenhouses, including labels (names) and values (IDs).
+
+    Notes:
+        This function retrieves information about all greenhouses and formats it into a list of dictionaries. Each dictionary contains a 'label' representing the greenhouse name and a 'value' representing the greenhouse ID. It provides a convenient way to access and display information about all greenhouses within the system.
+    """
 	greenhouses = get_greenhouses()
 	return [{'label': value['Name'].get_value(), 'value': value['Id'].get_value()} for key, value in greenhouses.items()]
 
 
 def create_or_override_tag(tag_path, name, value):
+	"""
+	Creates or overrides a tag at the specified path with the given name and value.
+	
+	Args:
+	    * tag_path (str): The path where the tag should be created or overridden.
+	    * name (str): The name of the tag.
+	    * value: The value to be assigned to the tag.
+	
+	Returns:
+	    None
+	
+	Notes:
+	    This function creates a new tag or overrides an existing tag at the specified path. It takes the tag's path, name, and value as arguments and determines the tag's data type based on the provided value. It then configures the tag with the specified attributes, including the data type, name, and value. If a tag already exists at the specified path, it will be overridden with the new configuration.
+	"""
 	tag_type=frwk.configurations.base.get_type(value)
 	if tag_type == 'Document':
 		value = system.util.jsonEncode(value)
@@ -158,20 +253,29 @@ def create_or_override_tag(tag_path, name, value):
 	}
 	
 	collisionPolicy = "o"
-				 
-	# Create the tag.
+	# Create the tag or override the existing tag.	
 	system.tag.configure(tag_path, [tag], collisionPolicy)
 
 
+##----------------- TO DO -------------------------------
 def greenhouse_auto_mode(greenhouse):
 	pass
 
 
 def greenhouses_auto_mode():
 	greenhouses = get_greenhouses()
-
+##-------------------------------------------------------
 
 def get_new_preset_id():
+	"""
+    Retrieves and increments the current preset ID for configuration.
+
+    Returns:
+        str: A string representing the new preset ID.
+
+    Notes:
+        This function retrieves the current preset ID for configuration from a specified path. It increments the current ID by 1 and writes the updated ID back to the same path. The new preset ID is returned as a string. This function is typically used to generate unique IDs for configuration presets.
+    """
 	preset_id_path = '[default]Config/CurrentPresetId'
 	current_preset_id = system.tag.readBlocking(preset_id_path)[0].value
 	
@@ -180,6 +284,18 @@ def get_new_preset_id():
 
 
 def save_preset_to_tag(preset):
+	"""
+	Saves a configuration preset to tags in the system.
+	
+	Args:
+	    * preset (dict): A dictionary containing configuration preset data.
+	
+	Returns:
+	    None
+	
+	Notes:
+	    This function takes a dictionary representing a configuration preset and saves it to tags in the system. It creates or overrides tags with preset data, including description, name, number of stages, stage details, and specific settings for ventilation, UV light, and irrigation pump for each stage. The function is typically used to store and manage configuration presets in the system.
+	"""
 	preset_id = get_new_preset_id()
 	base_path = '[default]Presets/' + preset_id
 	create_or_override_tag(base_path, 'Description', str(preset['Description']))
@@ -223,7 +339,7 @@ def save_preset_to_tag(preset):
 		except:
 			create_or_override_tag(UVLight_path, 'LowSetpoint', 0)
 		create_or_override_tag(UVLight_path, 'StartTime', UVLight['StartTime'])
-
+	
 		#IrrigationPump
 		irrigation_path = stage_path + '/IrrigationPump'
 		irrigation = stage['IrrigationPump']
@@ -242,7 +358,13 @@ def save_preset_to_tag(preset):
 
 def get_formatted_presets_list():
 	"""
-	For GUI use only.
+	Retrieves a list of formatted configuration presets for GUI use.
+	
+	Returns:
+	    list: A list of dictionaries containing information about configuration presets, including preset ID, name, and description.
+	
+	Notes:
+	    This function is intended for GUI use and retrieves a list of formatted configuration presets. It collects preset data from tags in the system and formats it into a list of dictionaries. Each dictionary contains information about a configuration preset, including its preset ID, name, and description. This list can be used to display and select presets within a graphical user interface.
 	"""
 	presets = frwk.framework.tags.get_formatted_tags('[default]Presets')
 	
@@ -259,9 +381,19 @@ def get_formatted_presets_list():
 
 
 def delete_preset(preset_id):
+	"""
+	Deletes a configuration preset based on its ID.
+	
+	Args:
+	    * preset_id (str): The ID of the configuration preset to be deleted.
+	
+	Returns:
+	    None
+	
+	Notes:
+	    This function deletes a configuration preset from the system based on its unique ID. It takes the preset ID as an argument and removes the corresponding tag associated with that preset from the system. After calling this function, the specified configuration preset will no longer be available in the system.
+	"""
 	presets_path = '[default]Presets'
-	
-	
 	system.tag.deleteTags([presets_path + '/' + preset_id])
 
 

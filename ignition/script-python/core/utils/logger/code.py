@@ -3,13 +3,17 @@ import traceback
 
 def exc(function_name, description=''):
 	"""
-	Insert an exception type log into the db
-
+	Records an exception log entry in the database and returns True if the action is successful, otherwise returns False.
+	
 	Args:
-		* function_name (str): name of the function
-		* description (str): optional description 
+	    * function_name (str): The name of the function that generated the exception.
+	    * description (str): An optional description of the exception.
+	
 	Returns:
-		True if the action is performed, False otherwise 
+	    bool: True if the action is successfully executed, and the log is recorded in the database, False otherwise.
+	
+	Notes:
+	    This function logs an entry of type 'Exception' in the database using the provided arguments. If the logging operation succeeds, the function returns True. In case of an error during database logging, an error message will be printed, and the function returns False.
 	"""
 	args = {
 		'functionName': function_name,
@@ -27,13 +31,17 @@ def exc(function_name, description=''):
 
 def err(function_name, description=''):
 	"""
-	Insert an error type log into the db
-
+	Records an error log entry in the database and returns True if the action is successful, otherwise returns False.
+	
 	Args:
-		* function_name (str): name of the function
-		* description (str): optional description 
+	    * function_name (str): The name of the function associated with the error.
+	    * description (str): An optional description of the error.
+	
 	Returns:
-		True if the action is performed, False otherwise 
+	    bool: True if the action is successfully executed, and the error log is recorded in the database, False otherwise.
+	
+	Notes:
+	    This function logs an entry of type 'Error' in the database using the provided arguments. If the logging operation succeeds, the function returns True. In case of an error during database logging, an error message will be printed, and the function returns False.
 	"""
 	args = {
 		'functionName': function_name,
@@ -51,13 +59,17 @@ def err(function_name, description=''):
 
 def info(function_name, description=''):
 	"""
-	Insert an info type log into the db
-
+	Records an information log entry in the database and returns True if the action is successful, otherwise returns False.
+	
 	Args:
-		* function_name (str): name of the function
-		* description (str): optional description 
+	    * function_name (str): The name of the function associated with the information log entry.
+	    * description (str): An optional description of the information.
+	
 	Returns:
-		True if the action is performed, False otherwise 
+	    bool: True if the action is successfully executed, and the information log is recorded in the database, False otherwise.
+	
+	Notes:
+	    This function logs an entry of type 'Info' in the database using the provided arguments. If the logging operation succeeds, the function returns True. In case of an error during database logging, an error message will be printed, and the function returns False.
 	"""
 	args = {
 		'functionName': function_name,
