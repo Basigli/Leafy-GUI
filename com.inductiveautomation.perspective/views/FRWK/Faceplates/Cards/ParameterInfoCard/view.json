@@ -4,17 +4,17 @@
       "$": [
         "ts",
         192,
-        1692864284390
+        1694365338218
       ],
-      "$ts": 1692864284390
+      "$ts": 1694365338218
     },
     "startDate": {
       "$": [
         "ts",
         192,
-        1692864284391
+        1694365338219
       ],
-      "$ts": 1690156800000
+      "$ts": 1694217600000
     }
   },
   "params": {
@@ -30,17 +30,34 @@
   },
   "propConfig": {
     "custom.endDate": {
+      "binding": {
+        "config": {
+          "struct": {
+            "refreshEvery": "now(3600000)"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\treturn system.date.now()",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
       "persistent": true
     },
     "custom.startDate": {
       "binding": {
         "config": {
-          "struct": {},
+          "struct": {
+            "now": "{view.custom.endDate}"
+          },
           "waitOnAll": true
         },
         "transforms": [
           {
-            "code": "\t\n\tnow \u003d system.date.now()\n\tyear \u003d system.date.getYear(now)\n\tmonth \u003d system.date.getMonth(now)\n\tday \u003d system.date.getDayOfMonth(now)\n\t\n\tmonth -\u003d 1\n\tif month \u003d\u003d 0:  # Se il mese è gennaio, imposta il mese a dicembre e decrementa l\u0027anno\n\t\tmonth \u003d 12\n\t\tyear -\u003d 1\n\tself.custom.endDate \u003d now\n\treturn system.date.getDate(year, month, day)",
+            "code": "\t\n\tnow \u003d value.now\n\tyear \u003d system.date.getYear(now)\n\tmonth \u003d system.date.getMonth(now)\n\tday \u003d system.date.getDayOfMonth(now)\n\t\"\"\"\n\tmonth -\u003d 1\n\tif month \u003d\u003d 0:  # Se il mese è gennaio, imposta il mese a dicembre e decrementa l\u0027anno\n\t\tmonth \u003d 12\n\t\tyear -\u003d 1\n\t\"\"\"\n\tday -\u003d 1\n\t\n\tif day \u003d\u003d 0:\n\t\tmonth \u003d -1\n\t\tday \u003d 1\n\t\tif month \u003d\u003d 0:\n\t\t\tmonth \u003d 12\n\t\t\tyear -\u003d 1 \n\t \n\t\n\treturn system.date.getDate(year, month, day)",
             "type": "script"
           }
         ],

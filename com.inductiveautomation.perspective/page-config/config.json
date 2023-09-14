@@ -2,6 +2,22 @@
   "pages": {
     "/": {
       "docks": {
+        "right": [
+          {
+            "anchor": "fixed",
+            "autoBreakpoint": 480,
+            "content": "cover",
+            "handle": "hide",
+            "iconUrl": "",
+            "id": "OverviewDock",
+            "modal": true,
+            "resizable": false,
+            "show": "onDemand",
+            "size": 300,
+            "viewParams": {},
+            "viewPath": "FRWK/App/Docked/OverviewDock"
+          }
+        ],
         "top": [
           {
             "anchor": "fixed",
@@ -73,9 +89,9 @@
             "anchor": "fixed",
             "autoBreakpoint": 480,
             "content": "cover",
-            "handle": "show",
+            "handle": "hide",
             "iconUrl": "material/dehaze",
-            "id": "OvervewDock",
+            "id": "OverviewDock",
             "modal": false,
             "resizable": false,
             "show": "auto",

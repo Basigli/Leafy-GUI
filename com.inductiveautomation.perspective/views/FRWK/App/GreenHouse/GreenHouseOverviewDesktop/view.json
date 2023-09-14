@@ -1,13 +1,13 @@
 {
   "custom": {
     "UVLight": false,
-    "airHumidity": "43",
-    "airTemperature": "21",
-    "irrigationPump": false,
+    "airHumidity": "60",
+    "airTemperature": "26",
+    "irrigationPump": true,
     "isTankEmpty": false,
-    "lightQuantity": "43",
+    "lightQuantity": "63",
     "name": "Serra 1",
-    "terrainHumidity": "43",
+    "terrainHumidity": "60",
     "ventilation": false
   },
   "params": {
@@ -202,10 +202,49 @@
             },
             "props": {
               "style": {
-                "color": "#F7F6F3"
+                "color": "#F7F6F3",
+                "paddingLeft": "34px"
               }
             },
             "type": "ia.display.label"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "id": "OverviewDock",
+                    "type": "open",
+                    "viewParams": {
+                      "id": "{view.params.greenHouseId}"
+                    }
+                  },
+                  "scope": "C",
+                  "type": "dock"
+                }
+              }
+            },
+            "meta": {
+              "name": "DockButton"
+            },
+            "position": {
+              "basis": "34px"
+            },
+            "props": {
+              "image": {
+                "icon": {
+                  "color": "#F7F6F3",
+                  "path": "material/settings"
+                }
+              },
+              "primary": false,
+              "style": {
+                "backgroundColor": "#D7C4B3",
+                "borderStyle": "none"
+              },
+              "text": ""
+            },
+            "type": "ia.input.button"
           }
         ],
         "meta": {
@@ -215,7 +254,6 @@
           "basis": "100px"
         },
         "props": {
-          "direction": "column",
           "style": {
             "backgroundColor": "#D7C4B3",
             "fontSize": "50px",

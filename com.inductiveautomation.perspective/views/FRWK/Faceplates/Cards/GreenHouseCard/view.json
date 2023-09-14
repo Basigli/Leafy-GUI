@@ -1,13 +1,13 @@
 {
   "custom": {
     "UVLight": false,
-    "airHumidity": "65",
-    "airTemperature": "27",
-    "irrigationPump": false,
+    "airHumidity": "60",
+    "airTemperature": "26",
+    "irrigationPump": true,
     "isTankEmpty": false,
-    "lightQuantity": "69",
+    "lightQuantity": "63",
     "name": "Serra 1",
-    "terrainHumidity": "65",
+    "terrainHumidity": "60",
     "ventilation": false
   },
   "params": {

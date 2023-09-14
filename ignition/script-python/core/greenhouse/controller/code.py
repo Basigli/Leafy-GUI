@@ -257,13 +257,71 @@ def create_or_override_tag(tag_path, name, value):
 	system.tag.configure(tag_path, [tag], collisionPolicy)
 
 
+def get_presets():
+	"""
+	Retrieves a list of formatted configuration presets.
+	
+	Returns:
+	    dict: A dictionary containing configuration presets with their unique IDs as keys.
+	
+	Notes:
+	    This function retrieves a dictionary of formatted configuration presets. It collects preset data from tags in the system and formats it as a dictionary, where each key represents a unique preset ID. This collection of presets can be used to manage and access configuration presets in the system.
+	""" 
+	return frwk.framework.tags.get_formatted_tags('[default]Presets')
+ 	
+ 	
+def get_preset_from_id(preset_id):
+ 	"""
+    Retrieves a configuration preset based on its ID.
+
+    Args:
+        * preset_id (str): The ID of the configuration preset to be retrieved.
+
+    Returns:
+        dict: A dictionary containing information about the specified configuration preset, or an empty dictionary if the preset is not found.
+
+    Notes:
+        This function retrieves a configuration preset from the system based on its unique ID. It takes the preset ID as an argument and returns a dictionary containing information about the specified preset. If the preset ID is not found, an empty dictionary is returned.
+    """
+ 	presets = get_presets()
+ 	return presets[str(preset_id)]
+
+
+def get_current_stage(stages):
+	
+	now = system.date.now()
+	system.date.toMillis(now)
+	
+
+
 ##----------------- TO DO -------------------------------
 def greenhouse_auto_mode(greenhouse):
-	pass
+	current_preset_id = greenhouse['PresetId']
+	current_preset = get_preset_form_id(current_preset_id)
+	stages_number = current_preset['StagesNumber']
+	stages = current_preset['Stages']
+	current_stage = get_current_stage(stages)
+	
+	
 
 
 def greenhouses_auto_mode():
+	"""
+    Activates automatic mode for greenhouses.
+
+    Returns:
+        None
+
+    Notes:
+        This function enables automatic mode for greenhouses by iterating through all available greenhouses in the system. It checks the 'Auto' status for each greenhouse, and if it is set to True, it activates the automatic mode for that specific greenhouse by calling the 'greenhouse_auto_mode' function. Automatic mode typically involves managing and controlling various environmental parameters and actuators within the greenhouse.
+    """
 	greenhouses = get_greenhouses()
+	for i, greenhouse in greenhouses.items():
+		auto_mode = greenhouse.get('Auto').get_value()
+		if auto_mode:
+			greenhouse_auto_mode(greenhouse)
+	
+	
 ##-------------------------------------------------------
 
 def get_new_preset_id():
@@ -271,7 +329,7 @@ def get_new_preset_id():
     Retrieves and increments the current preset ID for configuration.
 
     Returns:
-        str: A string representing the new preset ID.
+    	* str: A string representing the new preset ID.
 
     Notes:
         This function retrieves the current preset ID for configuration from a specified path. It increments the current ID by 1 and writes the updated ID back to the same path. The new preset ID is returned as a string. This function is typically used to generate unique IDs for configuration presets.

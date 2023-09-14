@@ -3,7 +3,9 @@
     "manualMode": true,
     "mode": 1
   },
-  "params": {},
+  "params": {
+    "id": 1
+  },
   "propConfig": {
     "custom.manualMode": {
       "binding": {
@@ -21,6 +23,10 @@
       "persistent": true
     },
     "custom.mode": {
+      "persistent": true
+    },
+    "params.id": {
+      "paramDirection": "input",
       "persistent": true
     }
   },
@@ -66,6 +72,14 @@
             "binding": {
               "config": {
                 "path": "view.custom.manualMode"
+              },
+              "type": "property"
+            }
+          },
+          "props.params.id": {
+            "binding": {
+              "config": {
+                "path": "view.params.id"
               },
               "type": "property"
             }
