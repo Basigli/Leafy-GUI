@@ -288,11 +288,34 @@ def get_preset_from_id(preset_id):
 
 
 def get_current_stage(stages):
-	
-	now = system.date.now()
-	system.date.toMillis(now)
-	
+	"""
+    Retrieves the current stage from a dictionary of stages based on the current date and time.
 
+    Args:
+		* stages (dict): A dictionary containing stage information with stage numbers as keys.
+
+    Returns:
+        int or dict: The current stage number or a dictionary containing information about the current stage. Returns -1 if no current stage is found.
+
+    Notes:
+        This function determines the current stage from a dictionary of stages by comparing the current date and time with the start and end dates of each stage. It returns the current stage number or a dictionary with stage details if a current stage is found. If no current stage is found or an error occurs, it returns -1.
+    """
+
+	now = system.date.now()
+	now_millis = system.date.toMillis(now)
+	
+	if len(stages.keys()) < 1:
+		return -1
+	
+	for stage_number, stage in stages.items():
+		try:
+			if(now_millis  >= system.date.toMillis(stage['StartDate'].get_value()) and now_millis < system.date.toMillis(stage['EndDate'].get_value())):
+				return stage
+		except:
+			import traceback
+			core.utils.logger.exc('get_current_stage', traceback.format_exc())
+	
+	return -1
 
 ##----------------- TO DO -------------------------------
 def greenhouse_auto_mode(greenhouse):
