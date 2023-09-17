@@ -10,3 +10,10 @@ class Sensors():
 	IS_TANK_EMPTY = 'IsTankEmpty'
 	LIGHT_QUANTITY = 'LightQuantity'
 	TERRAIN_HUM = 'TerrainHumidity'
+
+
+SensorForActuator = {
+	Actuators.IRRIGATION: Sensors.TERRAIN_HUM,
+	Actuators.UV_LIGHT: Sensors.LIGHT_QUANTITY,
+	Actuators.VENTILATION: Sensors.AIR_TEMP,
+}
