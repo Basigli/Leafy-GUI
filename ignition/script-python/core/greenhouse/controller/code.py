@@ -171,6 +171,10 @@ def turn_off(greenhouse_id, actuator_name):
 	greenhouse = get_greenhouse_from_id(str(greenhouse_id))
 	
 	actuator_tag_path = greenhouse[actuator_name].tag_path
+	
+	if not greenhouse[actuator_name].get_value():
+		return True
+	
 	try:
 		write_tag(actuator_tag_path, False)
 		log_greenhouses_output_actuators()
@@ -199,6 +203,10 @@ def turn_on(greenhouse_id, actuator_name):
 	greenhouse = get_greenhouse_from_id(str(greenhouse_id))
 	
 	actuator_tag_path = greenhouse[actuator_name].tag_path
+	
+	if greenhouse[actuator_name].get_value():
+		return True
+	
 	try:
 		write_tag(actuator_tag_path, True)
 		log_greenhouses_output_actuators()
@@ -477,6 +485,25 @@ def delete_preset(preset_id):
 	presets_path = '[default]Presets'
 	system.tag.deleteTags([presets_path + '/' + preset_id])
 
+def timed_parameter_handler(greenhouse_id, start_date, end_date, actuator_name):
+	"""
+	Handles temporized parameters, turning on or off actuators if needed.
+	
+	Args:
+		* greenhouse_id (int): the ID of the greenhouse involved.
+		* start_date (date): The start date of the actuator's activation period.
+		* end_date (date): The end date of the actuator's activation period.
+		* actuator_name (str): The name of the actuator involved.
+	
+	Returns:
+		None
+	"""
+	
+	if system.date.isBetween(system.date.now(), start_date, end_date):
+		turn_on(greenhouse_id, actuator_name)
+	else:
+		turn_off(greenhouse_id, actuator_name)
+	
 
 
 
