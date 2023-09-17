@@ -554,9 +554,6 @@ def setpoints_parameter_handler(greenhouse, greenhouse_id, actuator_name, low_se
 		turn_on(greenhouse_id, actuator_name)
 
 
-# --------------------------- MODIFICA DA FARE ------------------------------------------------------------------------------------------
-# il controllo avviene su: ore, minuti -> alla funzione viengono passati dei datetime da cui vanno estratte queste informazione, 
-# la data è da ignorare, così come i secondi e i millisecondi
 def timed_parameter_handler(greenhouse_id, start_time, end_time, actuator_name):
 	"""
 	Handles temporized parameters, turning on or off actuators if needed.
@@ -570,9 +567,19 @@ def timed_parameter_handler(greenhouse_id, start_time, end_time, actuator_name):
 	Returns:
 		None
 	"""
+	now = system.date.now()
+	now_minute = system.date.getMinute(now)
+	now_hour = system.date.getHour24(now)
+	start_date_minute = system.date.getMinute(start_date)
+	start_date_hour = system.date.getHour24(start_date)
+	end_date_minute = system.date.getMinute(end_date)
+	end_date_hour = system.date.getHour24(end_date)
 	
-	if system.date.isBetween(system.date.now(), start_date, end_date):
+	if now_hour > start_date_hour and now_hour < end_date_hour:
 		turn_on(greenhouse_id, actuator_name)
+	elif now_hour == start_date_hour or now_hour == end_date_hour:
+		if now_minute >= start_date_minute and now_hour <= end_date_hour and now_minute < end_date_minute:
+				turn_on(greenhouse_id, actuator_name)
 	else:
 		turn_off(greenhouse_id, actuator_name)
 
