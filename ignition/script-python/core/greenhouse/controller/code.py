@@ -120,7 +120,7 @@ def get_greenhouse_from_id(greenhouse_id):
 	Retrieves information about a specific greenhouse based on its ID.
 	
 	Args:
-	    * greenhouse_id (int): The ID of the greenhouse for which information is requested.
+	    * greenhouse_id (str): The ID of the greenhouse for which information is requested.
 	
 	Returns:
 	    dict: A dictionary containing information about the specified greenhouse, or an empty dictionary if the greenhouse is not found.
@@ -130,7 +130,7 @@ def get_greenhouse_from_id(greenhouse_id):
 	"""
 	greenhouses = get_greenhouses()
 	try:
-		return greenhouses[greenhouse_id]
+		return greenhouses[str(greenhouse_id)]
 	except:
 		import traceback
 		core.utils.logger.exc('get_greenhouse_from_id', traceback.format_exc())
@@ -265,6 +265,70 @@ def create_or_override_tag(tag_path, name, value):
 	system.tag.configure(tag_path, [tag], collisionPolicy)
 
 
+def greenhouse_auto_mode(greenhouse, greenhouse_id):
+	"""
+	Activates automatic mode for a greenhouse and manages its actuators based on the current preset.
+	
+	Args:
+	    * greenhouse (dict): A dictionary containing greenhouse configuration data.
+	    * greenhouse_id (int): The ID of the greenhouse.
+	
+	Returns:
+	    None
+	
+	Notes:
+	    This function enables automatic mode for a greenhouse by retrieving and managing its actuators based on the current preset. It first determines the current preset ID for the greenhouse and fetches the corresponding preset. It then retrieves the current stage and manages each actuator's parameters using the `parameter_handler` function. This function is typically used to automate greenhouse operations based on predefined presets.
+	"""
+	current_preset_id = greenhouse.get('PresetId').get_value()
+	current_preset = get_preset_form_id(current_preset_id)
+	stages = current_preset.get('Stages')
+	current_stage = get_current_stage(stages)
+
+	for actuator_name, actuator_stage in current_stage.items():
+		if actuator_name in [ 'StartTime', 'EndTime' ]:
+			continue
+		parameter_handler(greenhouse, greenhouse_id, actuator_name, actuator_stage)
+
+
+def greenhouses_auto_mode():
+	"""
+    Activates automatic mode for greenhouses.
+
+    Returns:
+        None
+
+    Notes:
+        This function enables automatic mode for greenhouses by iterating through all available greenhouses in the system. It checks the 'Auto' status for each greenhouse, and if it is set to True, it activates the automatic mode for that specific greenhouse by calling the 'greenhouse_auto_mode' function. Automatic mode typically involves managing and controlling various environmental parameters and actuators within the greenhouse.
+    """
+	greenhouses = get_greenhouses()
+	for greenhouse_id, greenhouse in greenhouses.items():
+		auto_mode = greenhouse.get('Auto').get_value()
+		if auto_mode:
+			greenhouse_auto_mode(greenhouse, greenhouse_id)
+
+# PRESET FUNCTIONS
+
+def set_auto(greenhouse_id, is_auto):
+	"""
+	Toggles on and off automatic mode for a greenhouse
+	
+	Args:
+		* greenhouse_id (str): the ID of the greenhouse
+		* is_auto (bool): True if auto mode is on, else False
+	
+	Returns:
+	None
+	"""
+	
+	greenhouse = get_greenhouse_from_id(greenhouse_id)
+	path = greenhouse['Auto'].tag_path
+	try:
+		write_tag(path, is_auto)
+		core.utils.logger.info('set_auto()', 'set auto mode to {} for greenhouse: {}'.format(is_auto, greenhouse_id))
+	except:
+		core.utils.logger.exc('set_auto()', traceback.format_exc())
+
+
 def get_presets():
 	"""
 	Retrieves a list of formatted configuration presets.
@@ -276,8 +340,8 @@ def get_presets():
 	    This function retrieves a dictionary of formatted configuration presets. It collects preset data from tags in the system and formats it as a dictionary, where each key represents a unique preset ID. This collection of presets can be used to manage and access configuration presets in the system.
 	""" 
 	return frwk.framework.tags.get_formatted_tags('[default]Presets')
- 	
- 	
+
+
 def get_preset_from_id(preset_id):
  	"""
     Retrieves a configuration preset based on its ID.
@@ -325,32 +389,7 @@ def get_current_stage(stages):
 	
 	return -1
 
-##----------------- TO DO -------------------------------
-def greenhouse_auto_mode(greenhouse, greenhouse_id):
-	"""
-	Activates automatic mode for a greenhouse and manages its actuators based on the current preset.
-	
-	Args:
-	    * greenhouse (dict): A dictionary containing greenhouse configuration data.
-	    * greenhouse_id (int): The ID of the greenhouse.
-	
-	Returns:
-	    None
-	
-	Notes:
-	    This function enables automatic mode for a greenhouse by retrieving and managing its actuators based on the current preset. It first determines the current preset ID for the greenhouse and fetches the corresponding preset. It then retrieves the current stage and manages each actuator's parameters using the `parameter_handler` function. This function is typically used to automate greenhouse operations based on predefined presets.
-	"""
-	current_preset_id = greenhouse.get('PresetId').get_value()
-	current_preset = get_preset_form_id(current_preset_id)
-	stages = current_preset.get('Stages')
-	current_stage = get_current_stage(stages)
 
-	for actuator_name, actuator_stage in current_stage.items():
-		if actuator_name in [ 'StartTime', 'EndTime' ]:
-			continue
-		parameter_handler(greenhouse, greenhouse_id, actuator_name, actuator_stage)
-	
-	
 def parameter_handler(greenhouse, greenhouse_id, actuator_name, actuator_stage):
 	"""
 	Manages actuator parameters based on the current stage of a greenhouse.
@@ -378,24 +417,61 @@ def parameter_handler(greenhouse, greenhouse_id, actuator_name, actuator_stage):
 		setpoints_parameter_handler(greenhouse, greenhouse_id, actuator_name, low_setpoint, high_setpoint)
 
 
-def greenhouses_auto_mode():
+def setpoints_parameter_handler(greenhouse, greenhouse_id, actuator_name, low_setpoint, high_setpoint):
 	"""
-    Activates automatic mode for greenhouses.
-
-    Returns:
-        None
-
-    Notes:
-        This function enables automatic mode for greenhouses by iterating through all available greenhouses in the system. It checks the 'Auto' status for each greenhouse, and if it is set to True, it activates the automatic mode for that specific greenhouse by calling the 'greenhouse_auto_mode' function. Automatic mode typically involves managing and controlling various environmental parameters and actuators within the greenhouse.
-    """
-	greenhouses = get_greenhouses()
-	for greenhouse_id, greenhouse in greenhouses.items():
-		auto_mode = greenhouse.get('Auto').get_value()
-		if auto_mode:
-			greenhouse_auto_mode(greenhouse, greenhouse_id)
+	Handles actuator parameters based on setpoints for a greenhouse.
 	
+	Args:
+	    * greenhouse (dict): A dictionary containing greenhouse configuration data.
+	    * greenhouse_id (int): The ID of the greenhouse.
+	    * actuator_name (str): The name of the actuator.
+	    * low_setpoint (float): The lower setpoint for the actuator.
+	    * high_setpoint (float): The higher setpoint for the actuator.
 	
-##-------------------------------------------------------
+	Returns:
+	    None
+	
+	Notes:
+	    This function manages actuator parameters for a greenhouse based on setpoint values. It compares the current sensor value associated with the actuator to the specified low and high setpoints. If the sensor value is higher than the high setpoint, it turns off the actuator using the `turn_off` function. If the sensor value is lower than the low setpoint, it turns on the actuator using the `turn_on` function. This function is used to maintain environmental conditions within desired setpoint ranges in automatic mode.
+	"""
+	sensor_name = core.greenhouse.classes.SensorForActuator[actuator_name]
+	sensor_value = greenhouse[sensor_name].get_value()
+	
+	if sensor_value > high_setpoint:
+		turn_off(greenhouse_id, actuator_name)
+	elif sensor_value < low_setpoint:
+		turn_on(greenhouse_id, actuator_name)
+
+
+def timed_parameter_handler(greenhouse_id, start_time, end_time, actuator_name):
+	"""
+	Handles timed parameters, turning on or off actuators if needed.
+	
+	Args:
+		* greenhouse_id (int): the ID of the greenhouse involved.
+		* start_date (date): The start date of the actuator's activation period.
+		* end_date (date): The end date of the actuator's activation period.
+		* actuator_name (str): The name of the actuator involved.
+	
+	Returns:
+		None
+	"""
+	now = system.date.now()
+	now_minute = system.date.getMinute(now)
+	now_hour = system.date.getHour24(now)
+	start_date_minute = system.date.getMinute(start_date)
+	start_date_hour = system.date.getHour24(start_date)
+	end_date_minute = system.date.getMinute(end_date)
+	end_date_hour = system.date.getHour24(end_date)
+	
+	if now_hour > start_date_hour and now_hour < end_date_hour:
+		turn_on(greenhouse_id, actuator_name)
+	elif now_hour == start_date_hour or now_hour == end_date_hour:
+		if now_minute >= start_date_minute and now_hour <= end_date_hour and now_minute < end_date_minute:
+				turn_on(greenhouse_id, actuator_name)
+	else:
+		turn_off(greenhouse_id, actuator_name)
+
 
 def get_new_preset_id():
 	"""
@@ -528,58 +604,23 @@ def delete_preset(preset_id):
 	system.tag.deleteTags([presets_path + '/' + preset_id])
 
 
-def setpoints_parameter_handler(greenhouse, greenhouse_id, actuator_name, low_setpoint, high_setpoint):
+def assign_preset_to_greenhouse(preset_id, greenhouse_id):
 	"""
-	Handles actuator parameters based on setpoints for a greenhouse.
+	Assigns a preset to a greenhouse.
 	
 	Args:
-	    * greenhouse (dict): A dictionary containing greenhouse configuration data.
-	    * greenhouse_id (int): The ID of the greenhouse.
-	    * actuator_name (str): The name of the actuator.
-	    * low_setpoint (float): The lower setpoint for the actuator.
-	    * high_setpoint (float): The higher setpoint for the actuator.
+		* preset_id (str): the ID of the preset to assign
+		* greenhouse_id (str): the ID of the greenhouse the preset is assigned to
 	
 	Returns:
-	    None
-	
-	Notes:
-	    This function manages actuator parameters for a greenhouse based on setpoint values. It compares the current sensor value associated with the actuator to the specified low and high setpoints. If the sensor value is higher than the high setpoint, it turns off the actuator using the `turn_off` function. If the sensor value is lower than the low setpoint, it turns on the actuator using the `turn_on` function. This function is used to maintain environmental conditions within desired setpoint ranges in automatic mode.
+	None
 	"""
-	sensor_name = core.greenhouse.classes.SensorForActuator[actuator_name]
-	sensor_value = greenhouse[sensor_name].get_value()
 	
-	if sensor_value > high_setpoint:
-		turn_off(greenhouse_id, actuator_name)
-	elif sensor_value < low_setpoint:
-		turn_on(greenhouse_id, actuator_name)
-
-
-def timed_parameter_handler(greenhouse_id, start_time, end_time, actuator_name):
-	"""
-	Handles temporized parameters, turning on or off actuators if needed.
-	
-	Args:
-		* greenhouse_id (int): the ID of the greenhouse involved.
-		* start_date (date): The start date of the actuator's activation period.
-		* end_date (date): The end date of the actuator's activation period.
-		* actuator_name (str): The name of the actuator involved.
-	
-	Returns:
-		None
-	"""
-	now = system.date.now()
-	now_minute = system.date.getMinute(now)
-	now_hour = system.date.getHour24(now)
-	start_date_minute = system.date.getMinute(start_date)
-	start_date_hour = system.date.getHour24(start_date)
-	end_date_minute = system.date.getMinute(end_date)
-	end_date_hour = system.date.getHour24(end_date)
-	
-	if now_hour > start_date_hour and now_hour < end_date_hour:
-		turn_on(greenhouse_id, actuator_name)
-	elif now_hour == start_date_hour or now_hour == end_date_hour:
-		if now_minute >= start_date_minute and now_hour <= end_date_hour and now_minute < end_date_minute:
-				turn_on(greenhouse_id, actuator_name)
-	else:
-		turn_off(greenhouse_id, actuator_name)
+	greenhouse = get_greenhouse_from_id(greenhouse_id)
+	path = greenhouse['PresetId'].tag_path
+	try:
+		write_tag(path, int(preset_id))
+		core.utils.logger.info('assign_preset_to_greenhouse()', 'assigned preset {} to greenhouse: {}'.format(is_auto, greenhouse_id))
+	except:
+		core.utils.logger.exc('assign_preset_to_greenhouse()', traceback.format_exc())
 
