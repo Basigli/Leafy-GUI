@@ -1,7 +1,7 @@
 {
   "custom": {
     "setpoint": true,
-    "temp": false
+    "temp": true
   },
   "events": {
     "system": {
@@ -24,7 +24,7 @@
       "$ts": 1692309600000
     },
     "highSetpoint": "",
-    "isTemp": true,
+    "isTemp": false,
     "lowSetpoint": "",
     "parameterName": "value",
     "parameterNameUI": "@ui.params.ventilation@",
@@ -158,7 +158,7 @@
           }
         },
         "props": {
-          "formattedValue": "Aug 17, 2023 9:00 PM",
+          "formattedValue": "17 ago 2023 21:00",
           "pickerType": "time"
         },
         "type": "ia.input.date-time-input"
@@ -232,7 +232,7 @@
           }
         },
         "props": {
-          "formattedValue": "Aug 17, 2023 10:00 PM",
+          "formattedValue": "17 ago 2023 22:00",
           "pickerType": "time"
         },
         "type": "ia.input.date-time-input"

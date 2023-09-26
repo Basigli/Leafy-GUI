@@ -45,6 +45,14 @@
           "basis": "44px"
         },
         "propConfig": {
+          "props.params.id": {
+            "binding": {
+              "config": {
+                "path": "view.params.id"
+              },
+              "type": "property"
+            }
+          },
           "props.params.mode": {
             "binding": {
               "config": {
@@ -87,6 +95,42 @@
         },
         "props": {
           "path": "FRWK/Faceplates/OverviewDock/ManualMode"
+        },
+        "type": "ia.display.view"
+      },
+      {
+        "meta": {
+          "name": "AutoMode"
+        },
+        "position": {
+          "basis": "320px"
+        },
+        "propConfig": {
+          "position.display": {
+            "binding": {
+              "config": {
+                "path": "view.custom.manualMode"
+              },
+              "transforms": [
+                {
+                  "code": "\treturn not value",
+                  "type": "script"
+                }
+              ],
+              "type": "property"
+            }
+          },
+          "props.params.id": {
+            "binding": {
+              "config": {
+                "path": "view.params.id"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "path": "FRWK/Faceplates/OverviewDock/AutoMode"
         },
         "type": "ia.display.view"
       }

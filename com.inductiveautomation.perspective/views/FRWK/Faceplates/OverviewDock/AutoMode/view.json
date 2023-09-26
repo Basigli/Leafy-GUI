@@ -1,17 +1,169 @@
 {
-  "custom": {},
-  "params": {},
+  "custom": {
+    "message": {
+      "color": "green",
+      "text": "Preset Caricato Correttamente"
+    },
+    "presetsList": [
+      {
+        "label": "Menta",
+        "value": "16"
+      },
+      {
+        "label": "Basilico",
+        "value": "2"
+      }
+    ],
+    "selectedPreset": "16"
+  },
+  "params": {
+    "id": 1
+  },
+  "propConfig": {
+    "custom.message": {
+      "persistent": true
+    },
+    "custom.presetsList": {
+      "binding": {
+        "config": {
+          "struct": {},
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\treturn [{\u0027label\u0027: preset[\u0027name\u0027], \u0027value\u0027: preset[\u0027presetId\u0027]}for preset in core.greenhouse.controller.get_formatted_presets_list()]",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "custom.selectedPreset": {
+      "binding": {
+        "config": {
+          "struct": {
+            "greenhouseId": "{view.params.id}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\treturn str(core.greenhouse.controller.get_preset_id_from_greenhouse(value.greenhouseId))",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "params.id": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
   "props": {
     "defaultSize": {
+      "height": 157,
       "width": 300
     }
   },
   "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "props": {
+          "text": "@ui.text.selectPreset@"
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tpreset_id \u003d self.view.custom.selectedPreset\n\tgreenhouse_id \u003d self.view.params.id\n\tlocale \u003d self.session.props.locale\n\ttry:\n\t\tcore.greenhouse.controller.set_preset_to_greenhouse(preset_id, greenhouse_id)\n\t\tself.view.custom.message[\u0027text\u0027] \u003d system.util.translate(\u0027@ui.text.presetSuccess@\u0027, locale)\n\t\tself.view.custom.message[\u0027color\u0027] \u003d \u0027green\u0027\n\texcept:\n\t\tself.view.custom.message[\u0027text\u0027] \u003d system.util.translate(\u0027@ui.text.presetError@\u0027, locale)\n\t\tself.view.custom.message[\u0027color\u0027] \u003d \u0027red\u0027"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Dropdown"
+        },
+        "position": {
+          "basis": "36px"
+        },
+        "propConfig": {
+          "props.options": {
+            "binding": {
+              "config": {
+                "path": "view.custom.presetsList"
+              },
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "bidirectional": true,
+                "path": "view.custom.selectedPreset"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "type": "ia.input.dropdown"
+      },
+      {
+        "meta": {
+          "name": "Message"
+        },
+        "position": {
+          "basis": "89px"
+        },
+        "propConfig": {
+          "props.style.color": {
+            "binding": {
+              "config": {
+                "path": "view.custom.message.color"
+              },
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.custom.message.text"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontWeight": "bolder",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
     "meta": {
       "name": "root"
     },
     "props": {
-      "direction": "column"
+      "direction": "column",
+      "style": {
+        "marginLeft": "15px",
+        "marginRight": "15px"
+      }
     },
     "type": "ia.container.flex"
   }

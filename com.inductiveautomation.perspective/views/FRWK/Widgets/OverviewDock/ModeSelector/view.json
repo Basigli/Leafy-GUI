@@ -1,10 +1,47 @@
 {
-  "custom": {},
+  "custom": {
+    "mode": 1
+  },
   "params": {
+    "id": 1,
     "mode": 1
   },
   "propConfig": {
+    "custom.mode": {
+      "binding": {
+        "config": {
+          "struct": {
+            "greenhouseId": "{view.params.id}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\treturn 0 if core.greenhouse.controller.get_auto_from_greenhouse(value.greenhouseId) else 1",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "params.id": {
+      "paramDirection": "input",
+      "persistent": true
+    },
     "params.mode": {
+      "binding": {
+        "config": {
+          "path": "view.custom.mode"
+        },
+        "transforms": [
+          {
+            "code": "\treturn value",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
       "paramDirection": "output",
       "persistent": true
     }
@@ -34,6 +71,17 @@
         "type": "ia.display.label"
       },
       {
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "config": {
+                "script": "\tgreenhouse_id \u003d self.view.params.id\n\tis_auto \u003d (self.props.value \u003d\u003d 0)\n\tcore.greenhouse.controller.set_auto(greenhouse_id, is_auto)"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
         "meta": {
           "name": "ModeSelector"
         },
@@ -42,7 +90,7 @@
             "binding": {
               "config": {
                 "bidirectional": true,
-                "path": "view.params.mode"
+                "path": "view.custom.mode"
               },
               "type": "property"
             }

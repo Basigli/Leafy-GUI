@@ -1,6 +1,6 @@
 {
   "custom": {
-    "UVLight": false,
+    "UVLight": true,
     "irrigationPump": false,
     "ventilation": false
   },
