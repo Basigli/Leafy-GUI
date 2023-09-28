@@ -105,7 +105,7 @@
               "component": {
                 "onActionPerformed": {
                   "config": {
-                    "script": "\tpreset_id \u003d str(self.view.params.presetId)\n\tsystem.perspective.openPopup(\u0027ModifyPresetPopup\u0027, \u0027FRWK/Widgets/Preset/ModifyPreset\u0027, param\u003d{\u0027presetId\u0027: preset_id})\n\t\n\t\n\t"
+                    "script": "\tpreset_id \u003d str(self.view.params.presetId)\n\tsystem.perspective.openPopup(\u0027ModifyPresetPopup\u0027, \u0027FRWK/Widgets/Preset/ModifyPreset\u0027, params\u003d{\u0027presetId\u0027: preset_id})"
                   },
                   "scope": "G",
                   "type": "script"

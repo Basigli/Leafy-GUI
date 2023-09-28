@@ -1,10 +1,10 @@
 {
   "custom": {
-    "mode": 1
+    "mode": 0
   },
   "params": {
     "id": 1,
-    "mode": 1
+    "mode": 0
   },
   "propConfig": {
     "custom.mode": {

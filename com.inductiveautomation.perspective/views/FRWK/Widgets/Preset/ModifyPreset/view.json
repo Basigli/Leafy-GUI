@@ -1,9 +1,7 @@
 {
   "custom": {
-    "tagPath": [
-      "[default]Presets/18/Description"
-    ],
-    "value": "Preset di test"
+    "tagPath": [],
+    "value": ""
   },
   "params": {
     "presetId": 18
@@ -22,6 +20,12 @@
           },
           "tagPath": "{0}"
         },
+        "transforms": [
+          {
+            "code": "\treturn \u0027\u0027 if not value else value",
+            "type": "script"
+          }
+        ],
         "type": "tag"
       },
       "persistent": true
@@ -39,7 +43,7 @@
           "name": "TagBrowseTree"
         },
         "position": {
-          "basis": "520px"
+          "basis": "417px"
         },
         "propConfig": {
           "props.root.path": {
@@ -73,6 +77,61 @@
           }
         },
         "type": "ia.display.tag-browse-tree"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Text"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "bidirectional": true,
+                    "path": "view.custom.value"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "type": "ia.input.text-field"
+          },
+          {
+            "events": {
+              "component": {
+                "onActionPerformed": {
+                  "config": {
+                    "script": "\ttag_path \u003d self.view.custom.tagPath[0]\n\tvalue \u003d self.view.custom.value\n\ttry:\n\t\tsystem.tag.writeBlocking(tag_path, [value])\n\t\tsystem.perspective.sendMessage(\u0027refresh-presets-intances\u0027, {})\n\t\tcore.utils.logger.info(\u0027Preset modify button\u0027, \u0027modified tag: %s with: %s\u0027 % (tag_path, value))\n\texcept:\n\t\tcore.utils.logger.info(\u0027Preset modify button\u0027, \u0027failed to modify: %s with: %s\u0027 % (tag_path, value))"
+                  },
+                  "scope": "G",
+                  "type": "script"
+                }
+              }
+            },
+            "meta": {
+              "name": "ModifyButton"
+            },
+            "position": {
+              "basis": "80px"
+            },
+            "props": {
+              "text": "@ui.text.modify@"
+            },
+            "type": "ia.input.button"
+          }
+        ],
+        "meta": {
+          "name": "TextContainer"
+        },
+        "position": {
+          "basis": "40px",
+          "shrink": 0
+        },
+        "type": "ia.container.flex"
       },
       {
         "meta": {

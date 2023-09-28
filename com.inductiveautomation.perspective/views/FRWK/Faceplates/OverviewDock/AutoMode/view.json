@@ -10,11 +10,15 @@
         "value": "16"
       },
       {
+        "label": "Test",
+        "value": "18"
+      },
+      {
         "label": "Basilico",
-        "value": "2"
+        "value": "19"
       }
     ],
-    "selectedPreset": "16"
+    "selectedPreset": "18"
   },
   "params": {
     "id": 1

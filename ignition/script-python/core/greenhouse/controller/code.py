@@ -283,9 +283,9 @@ def greenhouse_auto_mode(greenhouse, greenhouse_id):
 	current_preset = get_preset_from_id(current_preset_id)
 	stages = current_preset['Stages']
 	current_stage = get_current_stage(stages)
-
+	
 	for actuator_name, actuator_stage in current_stage.items():
-		if actuator_name in [ 'StartTime', 'EndTime' ]:
+		if actuator_name in [ 'StartDate', 'EndDate' ]:
 			continue
 		parameter_handler(greenhouse, greenhouse_id, actuator_name, actuator_stage)
 
@@ -502,10 +502,10 @@ def timed_parameter_handler(greenhouse_id, start_time, end_time, actuator_name):
 	now = system.date.now()
 	now_minute = system.date.getMinute(now)
 	now_hour = system.date.getHour24(now)
-	start_date_minute = system.date.getMinute(start_date)
-	start_date_hour = system.date.getHour24(start_date)
-	end_date_minute = system.date.getMinute(end_date)
-	end_date_hour = system.date.getHour24(end_date)
+	start_date_minute = system.date.getMinute(start_time)
+	start_date_hour = system.date.getHour24(start_time)
+	end_date_minute = system.date.getMinute(end_time)
+	end_date_hour = system.date.getHour24(end_time)
 	
 	if now_hour > start_date_hour and now_hour < end_date_hour:
 		turn_on(greenhouse_id, actuator_name)
