@@ -668,3 +668,23 @@ def set_preset_to_greenhouse(preset_id, greenhouse_id):
 		import traceback
 		core.utils.logger.exc('assign_preset_to_greenhouse()', traceback.format_exc())
 
+
+def store_new_preset_to_db(preset_id):
+	preset = get_preset_from_id(preset_id)
+	preset_name = preset.get('Name').get_value(),
+	description = preset.get('Description').get_value() 
+	frwk.db.database.insert_new_preset(description, preset_name, preset_id)
+	return
+
+
+def store_new_stage_to_db(stage_number, preset_id):
+	preset = get_preset_from_id(preset_id)
+	stage = preset.get('Stages').get(str(stage_number))
+	end_date = stage.get('EndTime').get_value()
+	high_setpoint = stage.get('HighSetpoint').get_value()
+	is_temp = stage.get('IsTemp').get_value()
+	low_setpoint = stage.get('LowSetpoint').get_value()
+	parameter_name = stage.get('ParameterName').get_value()
+	start_date = stage.get('StartDate').get_value()
+	frwk.db.database.insert_new_stage(end_date, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_date)
+	return
