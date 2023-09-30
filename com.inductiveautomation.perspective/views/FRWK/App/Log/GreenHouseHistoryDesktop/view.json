@@ -71,6 +71,7 @@
             },
             "position": {
               "basis": "1165px",
+              "display": false,
               "grow": 1
             },
             "propConfig": {
@@ -103,7 +104,7 @@
           "name": "Header"
         },
         "position": {
-          "basis": "94px"
+          "basis": "50px"
         },
         "type": "ia.container.flex"
       },
@@ -151,7 +152,7 @@
                     "paramName": "ventilation",
                     "render": "step line"
                   },
-                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                  "path": "FRWK/Faceplates/Graph/ParamGraphHistory"
                 },
                 "type": "ia.display.view"
               },
@@ -195,7 +196,7 @@
                     "paramName": "UVLight",
                     "render": "step line"
                   },
-                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                  "path": "FRWK/Faceplates/Graph/ParamGraphHistory"
                 },
                 "type": "ia.display.view"
               },
@@ -239,7 +240,7 @@
                     "paramName": "irrigationPump",
                     "render": "step line"
                   },
-                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                  "path": "FRWK/Faceplates/Graph/ParamGraphHistory"
                 },
                 "type": "ia.display.view"
               },
@@ -282,7 +283,7 @@
                     "lineColor": "#A54C1F",
                     "paramName": "terrainHum"
                   },
-                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                  "path": "FRWK/Faceplates/Graph/ParamGraphHistory"
                 },
                 "type": "ia.display.view"
               }
@@ -340,7 +341,7 @@
                     "lineColor": "#002060",
                     "paramName": "airHum"
                   },
-                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                  "path": "FRWK/Faceplates/Graph/ParamGraphHistory"
                 },
                 "type": "ia.display.view"
               },
@@ -383,7 +384,7 @@
                     "lineColor": "#C93F49",
                     "paramName": "airTemp"
                   },
-                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                  "path": "FRWK/Faceplates/Graph/ParamGraphHistory"
                 },
                 "type": "ia.display.view"
               },
@@ -427,7 +428,7 @@
                     "paramName": "isTankEmpty",
                     "render": "step line"
                   },
-                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                  "path": "FRWK/Faceplates/Graph/ParamGraphHistory"
                 },
                 "type": "ia.display.view"
               },
@@ -470,7 +471,7 @@
                     "lineColor": "#EDAF01",
                     "paramName": "lightQuantity"
                   },
-                  "path": "FRWK/Faceplates/Graph/ParamGraph"
+                  "path": "FRWK/Faceplates/Graph/ParamGraphHistory"
                 },
                 "type": "ia.display.view"
               }

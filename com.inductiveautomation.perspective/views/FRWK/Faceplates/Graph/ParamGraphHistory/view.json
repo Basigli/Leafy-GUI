@@ -7,9 +7,9 @@
       "$": [
         "ts",
         192,
-        1695994727511
+        1696001468341
       ],
-      "$ts": 1698310377000
+      "$ts": 1696063977000
     },
     "greenHouseId": 1,
     "isInput": false,
@@ -20,9 +20,9 @@
       "$": [
         "ts",
         192,
-        1693041263324
+        1696001456949
       ],
-      "$ts": 1693440000000
+      "$ts": 1695859200000
     }
   },
   "propConfig": {
@@ -89,6 +89,38 @@
           "basis": "600px"
         },
         "propConfig": {
+          "props.config.endDate": {
+            "binding": {
+              "config": {
+                "path": "view.params.endDate"
+              },
+              "type": "property"
+            }
+          },
+          "props.config.rangeEndDate": {
+            "binding": {
+              "config": {
+                "path": "view.params.endDate"
+              },
+              "type": "property"
+            }
+          },
+          "props.config.rangeStartDate": {
+            "binding": {
+              "config": {
+                "path": "view.params.startDate"
+              },
+              "type": "property"
+            }
+          },
+          "props.config.startDate": {
+            "binding": {
+              "config": {
+                "path": "view.params.startDate"
+              },
+              "type": "property"
+            }
+          },
           "props.pens[0].data.source": {
             "binding": {
               "config": {
@@ -146,44 +178,39 @@
               },
               "type": "property"
             }
+          },
+          "props.title.font.color": {
+            "binding": {
+              "config": {
+                "path": "view.params.lineColor"
+              },
+              "type": "property"
+            }
+          },
+          "props.title.text": {
+            "binding": {
+              "config": {
+                "path": "view.custom.tagName"
+              },
+              "type": "property"
+            }
           }
         },
         "props": {
           "config": {
-            "rangeEndDate": {
-              "$": [
-                "ts",
-                0,
-                1696001173378
-              ],
-              "$ts": 1696001161057
-            },
-            "rangeSelectorPen": "histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/1/ventilation",
-            "rangeStartDate": {
-              "$": [
-                "ts",
-                0,
-                1696001173378
-              ],
-              "$ts": 1695997573057
-            },
+            "rangeSelectorPen": "histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/1/terrainhumidity",
             "tagBrowserStartPath": "[default]GreenHouses/",
             "unitOfTime": 1,
             "visibility": {
               "buttons": {
-                "showAnnotationButton": false,
-                "showFullscreenButton": false,
-                "showMoreButton": false,
-                "showRangeBrushButton": false,
-                "showSettingsButton": false,
-                "showTagBrowserButton": false,
-                "showXTraceButton": false
+                "showTagBrowserButton": false
               },
               "showPenControlDisplay": false
             }
           },
           "interaction": {
             "chartZoomLevel": 1,
+            "mode": "annotation",
             "rangeZoomLevel": 1
           },
           "pens": [
@@ -254,6 +281,10 @@
             "grid": {
               "visible": true
             }
+          },
+          "title": {
+            "font": {},
+            "visible": true
           }
         },
         "type": "ia.chart.powerchart"

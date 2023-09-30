@@ -17,3 +17,14 @@ SensorForActuator = {
 	Actuators.UV_LIGHT: Sensors.LIGHT_QUANTITY,
 	Actuators.VENTILATION: Sensors.AIR_TEMP,
 }
+
+DBToTagNames = {
+	'airHum': Sensors.AIR_HUM,
+	'airTemp': Sensors.AIR_TEMP,
+	'irrigationPump': Actuators.IRRIGATION,
+	'isTankEmpty': Sensors.IS_TANK_EMPTY,
+	'lightQuantity': Sensors.LIGHT_QUANTITY,
+	'terrainHum': Sensors.TERRAIN_HUM,
+	'UVLight': Actuators.UV_LIGHT,
+	'ventilation': Actuators.VENTILATION
+}
