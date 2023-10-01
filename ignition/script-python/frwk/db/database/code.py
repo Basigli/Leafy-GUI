@@ -125,8 +125,64 @@ def get_actuators_data(greenhouse_id, start_date, end_date):
 	
 
 def insert_new_preset(description, preset_name, preset_id):
+	"""
+	Inserts a new preset record into the database with specified parameters.
+	
+	Args:
+	    * description (str): A description of the preset.
+	    * preset_name (str): The name of the preset.
+	    * preset_id (int): The unique ID for the preset.
+	
+	Returns:
+	    bool: True if the insertion was successful, False otherwise.
+	
+	Notes:
+	    This function inserts a new preset record into the database with the provided parameters. 
+	"""
+	query = """
+		INSERT INTO presets (description, name, presetId) 
+		VALUES (?,?,?)
+	"""
+	args = [description, preset_name, preset_id]
+	try:
+		system.db.runPrepUpdate(query, args)
+		return True
+	except:
+		import traceback
+		core.utils.logger.exc('insert_new_preset', traceback.format_exc()) 
+		return False
 	return 
 	
 	
-def insert_new_stage(end_date, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_date):
-	return 
+def insert_new_stage(end_time, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_time):
+	"""
+	Inserts a new stage record into the database with specified parameters.
+	
+	Args:
+	    * end_time (date): The end time of the stage.
+	    * high_setpoint (int): The high setpoint for the stage.
+	    * is_temp (bool): A flag indicating whether the stage is monitored via timing (True) or setpoint (False).
+	    * low_setpoint (int): The low setpoint for the stage.
+	    * parameter_name (str): The name of the parameter associated with the stage.
+	    * preset_id (int): The ID of the preset to which the stage belongs.
+	    * stage_number (int): The stage number within the preset.
+	    * start_time (date): The start time of the stage.
+	
+	Returns:
+	    bool: True if the insertion was successful, False otherwise.
+	
+	Notes:
+	    This function inserts a new stage record into the database with the provided parameters. 
+	"""
+	query = """
+		INSERT INTO stages (endTime, highSetpoint, isTemp, lowSetpoint, parameterName, presetId, stageNumber, startTime) 
+		VALUES (?,?,?,?,?,?,?,?)
+	"""
+	args = [end_time, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_time]
+	try:
+		system.db.runPrepUpdate(query, args)
+		return True
+	except:
+		import traceback
+		core.utils.logger.exc('insert_new_stage', traceback.format_exc()) 
+		return False

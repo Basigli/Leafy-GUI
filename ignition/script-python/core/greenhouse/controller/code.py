@@ -670,6 +670,16 @@ def set_preset_to_greenhouse(preset_id, greenhouse_id):
 
 
 def store_new_preset_to_db(preset_id):
+	"""
+	Store a preset into the database.
+	
+	Args:
+		* preset_id: the ID of the preset to store.
+	
+	Returns:
+		None
+	"""
+	
 	preset = get_preset_from_id(preset_id)
 	preset_name = preset.get('Name').get_value(),
 	description = preset.get('Description').get_value() 
@@ -678,13 +688,26 @@ def store_new_preset_to_db(preset_id):
 
 
 def store_new_stage_to_db(stage_number, preset_id):
+	"""
+	Store a preset into the database.
+	
+	Args:
+		* stage_number: the number of the stage to store.
+		* preset_id: the ID of stage's preset.
+	
+	Returns:
+		None
+	"""
+	
 	preset = get_preset_from_id(preset_id)
 	stage = preset.get('Stages').get(str(stage_number))
-	end_date = stage.get('EndTime').get_value()
-	high_setpoint = stage.get('HighSetpoint').get_value()
-	is_temp = stage.get('IsTemp').get_value()
-	low_setpoint = stage.get('LowSetpoint').get_value()
-	parameter_name = stage.get('ParameterName').get_value()
-	start_date = stage.get('StartDate').get_value()
-	frwk.db.database.insert_new_stage(end_date, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_date)
+	for parameter_name in stage:
+		if parameter_name in [ 'StartDate', 'EndDate' ]:
+			continue
+		end_time = stage.get(parameter_name).get('EndTime').get_value()
+		high_setpoint = stage.get(parameter_name).get('HighSetpoint').get_value()
+		is_temp = stage.get(parameter_name).get('IsTemp').get_value()
+		low_setpoint = stage.get(parameter_name).get('LowSetpoint').get_value()
+		start_time = stage.get(parameter_name).get('StartTime').get_value()
+		frwk.db.database.insert_new_stage(end_time, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_time)
 	return
