@@ -123,4 +123,10 @@ def get_actuators_data(greenhouse_id, start_date, end_date):
 		core.utils.logger.exc('log_input_sensors', traceback.format_exc())
 		return 
 	
+
+def insert_new_preset(description, preset_name, preset_id):
+	return 
 	
+	
+def insert_new_stage(end_date, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_date):
+	return 

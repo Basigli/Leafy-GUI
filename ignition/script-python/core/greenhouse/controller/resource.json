@@ -8,10 +8,10 @@
   ],
   "attributes": {
     "lastModification": {
-      "actor": "cassiani",
-      "timestamp": "2023-09-30T12:01:01Z"
+      "actor": "external",
+      "timestamp": "2023-10-01T09:54:48Z"
     },
     "hintScope": 2,
-    "lastModificationSignature": "88d94a9150b21e56fe1ab0026f6d28836cd739eb410144f93fa32b80e7e33f0e"
+    "lastModificationSignature": "2f1a2cef7c844913fc742a6981990bfe7552534db216502be192bb29d427effe"
   }
 }

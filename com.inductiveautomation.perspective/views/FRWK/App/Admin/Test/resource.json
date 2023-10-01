@@ -4,13 +4,14 @@
   "restricted": false,
   "overridable": true,
   "files": [
-    "data.bin"
+    "view.json",
+    "thumbnail.png"
   ],
   "attributes": {
     "lastModification": {
       "actor": "basigli",
-      "timestamp": "2023-10-01T13:56:16Z"
+      "timestamp": "2023-10-01T13:56:18Z"
     },
-    "lastModificationSignature": "f185db7573205d9cc13de8320822c846f7ec6f3e6bfe44d9374d019e4deca6d9"
+    "lastModificationSignature": "d6bb002fdf79e238796eedd50202a389395c5271b4307ab4271586416deaad0c"
   }
 }

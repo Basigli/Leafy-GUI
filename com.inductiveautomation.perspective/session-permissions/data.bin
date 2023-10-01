@@ -1,4 +1,9 @@
 {
   "type": "AllOf",
-  "securityLevels": []
+  "securityLevels": [
+    {
+      "name": "Authenticated",
+      "children": []
+    }
+  ]
 }
