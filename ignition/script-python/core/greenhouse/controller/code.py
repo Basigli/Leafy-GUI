@@ -671,29 +671,31 @@ def set_preset_to_greenhouse(preset_id, greenhouse_id):
 
 def store_new_preset_to_db(preset_id):
 	"""
-	Store a preset into the database.
+	Stores a preset and all its stages into the database.
 	
 	Args:
-		* preset_id: the ID of the preset to store.
+		* preset_id (str): the ID of the preset to store.
 	
 	Returns:
 		None
 	"""
 	
 	preset = get_preset_from_id(preset_id)
-	preset_name = preset.get('Name').get_value(),
+	preset_name = preset.get('Name').get_value()
 	description = preset.get('Description').get_value() 
 	frwk.db.database.insert_new_preset(description, preset_name, preset_id)
+	for stage_number in preset.get('Stages'):
+		store_new_stage_to_db(stage_number, preset_id)
 	return
 
 
 def store_new_stage_to_db(stage_number, preset_id):
 	"""
-	Store a preset into the database.
+	Stores a stage into the database.
 	
 	Args:
-		* stage_number: the number of the stage to store.
-		* preset_id: the ID of stage's preset.
+		* stage_number (str): the number of the stage to store.
+		* preset_id (str): the ID of the stage's preset.
 	
 	Returns:
 		None
@@ -710,4 +712,4 @@ def store_new_stage_to_db(stage_number, preset_id):
 		low_setpoint = stage.get(parameter_name).get('LowSetpoint').get_value()
 		start_time = stage.get(parameter_name).get('StartTime').get_value()
 		frwk.db.database.insert_new_stage(end_time, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_time)
-	return
+	return

@@ -131,7 +131,7 @@ def insert_new_preset(description, preset_name, preset_id):
 	Args:
 	    * description (str): A description of the preset.
 	    * preset_name (str): The name of the preset.
-	    * preset_id (int): The unique ID for the preset.
+	    * preset_id (str): The unique ID for the preset.
 	
 	Returns:
 	    bool: True if the insertion was successful, False otherwise.
@@ -150,8 +150,7 @@ def insert_new_preset(description, preset_name, preset_id):
 	except:
 		import traceback
 		core.utils.logger.exc('insert_new_preset', traceback.format_exc()) 
-		return False
-	return 
+		return False 
 	
 	
 def insert_new_stage(end_time, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_time):
