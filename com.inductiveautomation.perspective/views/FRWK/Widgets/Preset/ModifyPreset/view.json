@@ -22,7 +22,7 @@
         },
         "transforms": [
           {
-            "code": "\treturn \u0027\u0027 if not value else value",
+            "code": "\treturn \u0027\u0027 if value is None else value",
             "type": "script"
           }
         ],
@@ -173,7 +173,7 @@
           }
         },
         "props": {
-          "formattedValue": null
+          "formattedValue": "17 ago 2023 22:00"
         },
         "type": "ia.input.date-time-picker"
       }

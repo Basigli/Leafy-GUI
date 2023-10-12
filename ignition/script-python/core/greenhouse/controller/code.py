@@ -35,8 +35,8 @@ def log_greenhouses_input_sensors():
 		is_tank_empty = greenhouse.get('IsTankEmpty').get_value()
 		
 		frwk.db.database.log_input_sensors(greenhouse_id, air_hum, air_temp, light_quantity, terrain_hum, is_tank_empty)
-		
-		
+
+
 def log_greenhouses_output_actuators():
 	"""
 	Saves output actuator data for all greenhouses into the database.
@@ -48,7 +48,8 @@ def log_greenhouses_output_actuators():
 	    None
 	
 	Notes:
-	    This function retrieves output actuator data for all greenhouses, including irrigation pump status, UV light status, and ventilation status. It then logs this data into the database for each greenhouse. There are no arguments, and the function doesn't return anything.
+	    This function retrieves output actuator data for all greenhouses, including irrigation pump status, UV light status, and ventilation status. 
+	    It then logs this data into the database for each greenhouse. There are no arguments, and the function doesn't return anything.
 	"""
 	greenhouses = get_greenhouses()
 	
@@ -74,7 +75,9 @@ def get_formatted_sensor_data(greenhouse_id, sensor_name, start_date, end_date):
 	    list: A list of dictionaries containing sensor data for the specified sensor within the specified date range.
 	
 	Notes:
-	    This function retrieves sensor data for a specific sensor in a greenhouse from the database. It takes the greenhouse ID, sensor name, and date range as arguments and returns the data in a formatted list of dictionaries. Each dictionary includes the sensor data and its timestamp.
+	    This function retrieves sensor data for a specific sensor in a greenhouse from the database. 
+	    It takes the greenhouse ID, sensor name, and date range as arguments and returns the data in a formatted list of dictionaries. 
+	    Each dictionary includes the sensor data and its timestamp.
 	"""
 	data = []
 	raw_data = frwk.db.database.get_sensors_data(greenhouse_id, start_date, end_date)
@@ -102,7 +105,9 @@ def get_formatted_actuator_data(greenhouse_id, actuator_name, start_date, end_da
         list: A list of dictionaries containing actuator data for the specified actuator within the specified date range.
 
     Notes:
-        This function retrieves actuator data for a specific actuator in a greenhouse from the database. It takes the greenhouse ID, actuator name, and date range as arguments and returns the data in a formatted list of dictionaries. Each dictionary includes the actuator data and its timestamp.
+        This function retrieves actuator data for a specific actuator in a greenhouse from the database. 
+        It takes the greenhouse ID, actuator name, and date range as arguments and returns the data in a formatted list of dictionaries. 
+        Each dictionary includes the actuator data and its timestamp.
     """
 	data = []
 	raw_data = frwk.db.database.get_actuators_data(greenhouse_id, start_date, end_date)
@@ -126,7 +131,9 @@ def get_greenhouse_from_id(greenhouse_id):
 	    dict: A dictionary containing information about the specified greenhouse, or an empty dictionary if the greenhouse is not found.
 	
 	Notes:
-	    This function retrieves information about a specific greenhouse based on its ID. It takes the greenhouse ID as an argument and returns a dictionary containing greenhouse information, including tags and attributes. If the specified greenhouse ID is not found, an empty dictionary is returned.
+	    This function retrieves information about a specific greenhouse based on its ID. 
+	    It takes the greenhouse ID as an argument and returns a dictionary containing greenhouse information, including tags and attributes. 
+	    If the specified greenhouse ID is not found, an empty dictionary is returned.
 	"""
 	greenhouses = get_greenhouses()
 	try:
@@ -149,7 +156,8 @@ def write_tag(tag_path, value):
 	    None
 	
 	Notes:
-	    This function is used to write a value to a specific tag in the system. It takes the tag's path as a string and the value to be written. The function performs a blocking write operation to update the tag's value. It does not return any value.
+	    This function is used to write a value to a specific tag in the system. It takes the tag's path as a string and the value to be written. 
+	    The function performs a blocking write operation to update the tag's value. It does not return any value.
 	"""
 	system.tag.writeBlocking(tag_path, [value])
 
@@ -166,7 +174,9 @@ def turn_off(greenhouse_id, actuator_name):
 	    bool: True if the actuator is successfully turned off, False otherwise.
 	
 	Notes:
-	    This function turns off a specified actuator for a specific greenhouse. It retrieves the actuator's tag path based on the greenhouse ID and actuator name, writes a 'False' value to the tag to turn off the actuator, and logs the action. If successful, it returns True; otherwise, it returns False.
+	    This function turns off a specified actuator for a specific greenhouse. 
+	    It retrieves the actuator's tag path based on the greenhouse ID and actuator name, writes a 'False' value to the tag to turn off the actuator, and logs the action. 
+	    If successful, it returns True; otherwise, it returns False.
 	    """
 	greenhouse = get_greenhouse_from_id(str(greenhouse_id))
 	
@@ -198,7 +208,9 @@ def turn_on(greenhouse_id, actuator_name):
 	    bool: True if the actuator is successfully turned on, False otherwise.
 	
 	Notes:
-	    This function turns on a specified actuator for a specific greenhouse. It retrieves the actuator's tag path based on the greenhouse ID and actuator name, writes a 'True' value to the tag to turn on the actuator, and logs the action. If successful, it returns True; otherwise, it returns False.
+	    This function turns on a specified actuator for a specific greenhouse. 
+	    It retrieves the actuator's tag path based on the greenhouse ID and actuator name, writes a 'True' value to the tag to turn on the actuator, and logs the action. 
+	    If successful, it returns True; otherwise, it returns False.
 	"""
 	greenhouse = get_greenhouse_from_id(str(greenhouse_id))
 	
@@ -226,7 +238,9 @@ def get_all_formatted_greenhouse():
         list: A list of dictionaries containing information about all greenhouses, including labels (names) and values (IDs).
 
     Notes:
-        This function retrieves information about all greenhouses and formats it into a list of dictionaries. Each dictionary contains a 'label' representing the greenhouse name and a 'value' representing the greenhouse ID. It provides a convenient way to access and display information about all greenhouses within the system.
+        This function retrieves information about all greenhouses and formats it into a list of dictionaries. 
+        Each dictionary contains a 'label' representing the greenhouse name and a 'value' representing the greenhouse ID. 
+        It provides a convenient way to access and display information about all greenhouses within the system.
     """
 	greenhouses = get_greenhouses()
 	return [{'label': value['Name'].get_value(), 'value': value['Id'].get_value()} for key, value in greenhouses.items()]
@@ -245,7 +259,10 @@ def create_or_override_tag(tag_path, name, value):
 	    None
 	
 	Notes:
-	    This function creates a new tag or overrides an existing tag at the specified path. It takes the tag's path, name, and value as arguments and determines the tag's data type based on the provided value. It then configures the tag with the specified attributes, including the data type, name, and value. If a tag already exists at the specified path, it will be overridden with the new configuration.
+	    This function creates a new tag or overrides an existing tag at the specified path. 
+	    It takes the tag's path, name, and value as arguments and determines the tag's data type based on the provided value. 
+	    It then configures the tag with the specified attributes, including the data type, name, and value. 
+	    If a tag already exists at the specified path, it will be overridden with the new configuration.
 	"""
 	tag_type=frwk.configurations.base.get_type(value)
 	if tag_type == 'Document':
@@ -277,7 +294,10 @@ def greenhouse_auto_mode(greenhouse, greenhouse_id):
 	    None
 	
 	Notes:
-	    This function enables automatic mode for a greenhouse by retrieving and managing its actuators based on the current preset. It first determines the current preset ID for the greenhouse and fetches the corresponding preset. It then retrieves the current stage and manages each actuator's parameters using the `parameter_handler` function. This function is typically used to automate greenhouse operations based on predefined presets.
+	    This function enables automatic mode for a greenhouse by retrieving and managing its actuators based on the current preset.
+	    It first determines the current preset ID for the greenhouse and fetches the corresponding preset. 
+	    It then retrieves the current stage and manages each actuator's parameters using the `parameter_handler` function. 
+	    This function is typically used to automate greenhouse operations based on predefined presets.
 	"""
 	current_preset_id = greenhouse['PresetId'].get_value()
 	current_preset = get_preset_from_id(current_preset_id)
@@ -301,7 +321,8 @@ def get_auto_from_greenhouse(greenhouse_id):
 	    bool or int: The 'Auto' status of the greenhouse (True for auto mode, False for manual mode), or -1 if an error occurs.
 	
 	Notes:
-	    This function retrieves the 'Auto' status of a greenhouse by reading the corresponding tag based on its unique ID. It returns a boolean value indicating whether the greenhouse is in auto mode (True) or manual mode (False). If an error occurs while reading the tag, it returns -1.
+	    This function retrieves the 'Auto' status of a greenhouse by reading the corresponding tag based on its unique ID. 
+	    It returns a boolean value indicating whether the greenhouse is in auto mode (True) or manual mode (False). If an error occurs while reading the tag, it returns -1.
 	"""
 	base_path = '[default]GreenHouses/'
 	tag_path = base_path + str(greenhouse_id) + '/Auto'
@@ -322,7 +343,8 @@ def get_preset_id_from_greenhouse(greenhouse_id):
 	    int or -1: The preset ID associated with the greenhouse, or -1 if an error occurs.
 	
 	Notes:
-	    This function retrieves the preset ID of a greenhouse by reading the corresponding tag based on its unique ID. It returns an integer representing the preset ID associated with the greenhouse. If an error occurs while reading the tag or the preset ID is not found, it returns -1.
+	    This function retrieves the preset ID of a greenhouse by reading the corresponding tag based on its unique ID. 
+	    It returns an integer representing the preset ID associated with the greenhouse. If an error occurs while reading the tag or the preset ID is not found, it returns -1.
 	"""
 	base_path = '[default]GreenHouses/'
 	tag_path = base_path + str(greenhouse_id) + '/PresetId'
@@ -340,7 +362,9 @@ def greenhouses_auto_mode():
         None
 
     Notes:
-        This function enables automatic mode for greenhouses by iterating through all available greenhouses in the system. It checks the 'Auto' status for each greenhouse, and if it is set to True, it activates the automatic mode for that specific greenhouse by calling the 'greenhouse_auto_mode' function. Automatic mode typically involves managing and controlling various environmental parameters and actuators within the greenhouse.
+        This function enables automatic mode for greenhouses by iterating through all available greenhouses in the system.
+        It checks the 'Auto' status for each greenhouse, and if it is set to True, it activates the automatic mode for that specific greenhouse by calling the 'greenhouse_auto_mode' function. 
+        Automatic mode typically involves managing and controlling various environmental parameters and actuators within the greenhouse.
     """
 	greenhouses = get_greenhouses()
 	for greenhouse_id, greenhouse in greenhouses.items():
@@ -359,7 +383,7 @@ def set_auto(greenhouse_id, is_auto):
 		* is_auto (bool): True if auto mode is on, else False
 	
 	Returns:
-	None
+		None
 	"""
 	
 	greenhouse = get_greenhouse_from_id(greenhouse_id)
@@ -379,7 +403,9 @@ def get_presets():
 	    dict: A dictionary containing configuration presets with their unique IDs as keys.
 	
 	Notes:
-	    This function retrieves a dictionary of formatted configuration presets. It collects preset data from tags in the system and formats it as a dictionary, where each key represents a unique preset ID. This collection of presets can be used to manage and access configuration presets in the system.
+	    This function retrieves a dictionary of formatted configuration presets. 
+	    It collects preset data from tags in the system and formats it as a dictionary, where each key represents a unique preset ID. 
+	    This collection of presets can be used to manage and access configuration presets in the system.
 	""" 
 	return frwk.framework.tags.get_formatted_tags('[default]Presets')
 
@@ -395,7 +421,9 @@ def get_preset_from_id(preset_id):
         dict: A dictionary containing information about the specified configuration preset, or an empty dictionary if the preset is not found.
 
     Notes:
-        This function retrieves a configuration preset from the system based on its unique ID. It takes the preset ID as an argument and returns a dictionary containing information about the specified preset. If the preset ID is not found, an empty dictionary is returned.
+        This function retrieves a configuration preset from the system based on its unique ID. 
+        It takes the preset ID as an argument and returns a dictionary containing information about the specified preset. 
+        If the preset ID is not found, an empty dictionary is returned.
     """
  	presets = get_presets()
  	return presets[str(preset_id)]
@@ -412,7 +440,8 @@ def get_current_stage(stages):
         int or dict: The current stage number or a dictionary containing information about the current stage. Returns -1 if no current stage is found.
 
     Notes:
-        This function determines the current stage from a dictionary of stages by comparing the current date and time with the start and end dates of each stage. It returns the current stage number or a dictionary with stage details if a current stage is found. If no current stage is found or an error occurs, it returns -1.
+        This function determines the current stage from a dictionary of stages by comparing the current date and time with the start and end dates of each stage. 
+        It returns the current stage number or a dictionary with stage details if a current stage is found. If no current stage is found or an error occurs, it returns -1.
     """
 
 	now = system.date.now()
@@ -446,7 +475,9 @@ def parameter_handler(greenhouse, greenhouse_id, actuator_name, actuator_stage):
 	    None
 	
 	Notes:
-	    This function manages actuator parameters for a greenhouse based on the current stage of operation. It handles both temporized (timed) and setpoint-based actuators. If the actuator is temporized, it calculates a timed parameter change using `timed_parameter_handler`. If the actuator is setpoint-based, it sets the low and high setpoints using `setpoints_parameter_handler`. This function is a part of the automatic mode control for greenhouses.
+	    This function manages actuator parameters for a greenhouse based on the current stage of operation. It handles both temporized (timed) and setpoint-based actuators. 
+	    If the actuator is temporized, it calculates a timed parameter change using `timed_parameter_handler`. 
+	    If the actuator is setpoint-based, it sets the low and high setpoints using `setpoints_parameter_handler`. This function is a part of the automatic mode control for greenhouses.
 	"""
 	is_temp = actuator_stage.get('IsTemp').get_value()
 
@@ -475,7 +506,11 @@ def setpoints_parameter_handler(greenhouse, greenhouse_id, actuator_name, low_se
 	    None
 	
 	Notes:
-	    This function manages actuator parameters for a greenhouse based on setpoint values. It compares the current sensor value associated with the actuator to the specified low and high setpoints. If the sensor value is higher than the high setpoint, it turns off the actuator using the `turn_off` function. If the sensor value is lower than the low setpoint, it turns on the actuator using the `turn_on` function. This function is used to maintain environmental conditions within desired setpoint ranges in automatic mode.
+	    This function manages actuator parameters for a greenhouse based on setpoint values. 
+	    It compares the current sensor value associated with the actuator to the specified low and high setpoints. 
+	    If the sensor value is higher than the high setpoint, it turns off the actuator using the `turn_off` function. 
+	    If the sensor value is lower than the low setpoint, it turns on the actuator using the `turn_on` function. 
+	    This function is used to maintain environmental conditions within desired setpoint ranges in automatic mode.
 	"""
 	sensor_name = core.greenhouse.classes.SensorForActuator[actuator_name]
 	sensor_value = greenhouse[sensor_name].get_value()
@@ -524,7 +559,9 @@ def get_new_preset_id():
     	* str: A string representing the new preset ID.
 
     Notes:
-        This function retrieves the current preset ID for configuration from a specified path. It increments the current ID by 1 and writes the updated ID back to the same path. The new preset ID is returned as a string. This function is typically used to generate unique IDs for configuration presets.
+        This function retrieves the current preset ID for configuration from a specified path. 
+        It increments the current ID by 1 and writes the updated ID back to the same path.
+        The new preset ID is returned as a string. This function is typically used to generate unique IDs for configuration presets.
     """
 	preset_id_path = '[default]Config/CurrentPresetId'
 	current_preset_id = system.tag.readBlocking(preset_id_path)[0].value
@@ -544,7 +581,9 @@ def save_preset_to_tag(preset):
 	    None
 	
 	Notes:
-	    This function takes a dictionary representing a configuration preset and saves it to tags in the system. It creates or overrides tags with preset data, including description, name, number of stages, stage details, and specific settings for ventilation, UV light, and irrigation pump for each stage. The function is typically used to store and manage configuration presets in the system.
+	    This function takes a dictionary representing a configuration preset and saves it to tags in the system. 
+	    It creates or overrides tags with preset data, including description, name, number of stages, stage details, and specific settings for ventilation, UV light, and irrigation pump for each stage. 
+	    The function is typically used to store and manage configuration presets in the system.
 	"""
 	preset_id = get_new_preset_id()
 	base_path = '[default]Presets/' + preset_id
@@ -614,7 +653,10 @@ def get_formatted_presets_list():
 	    list: A list of dictionaries containing information about configuration presets, including preset ID, name, and description.
 	
 	Notes:
-	    This function is intended for GUI use and retrieves a list of formatted configuration presets. It collects preset data from tags in the system and formats it into a list of dictionaries. Each dictionary contains information about a configuration preset, including its preset ID, name, and description. This list can be used to display and select presets within a graphical user interface.
+	    This function is intended for GUI use and retrieves a list of formatted configuration presets.
+	    It collects preset data from tags in the system and formats it into a list of dictionaries. 
+	    Each dictionary contains information about a configuration preset, including its preset ID, name, and description. 
+	    This list can be used to display and select presets within a graphical user interface.
 	"""
 	presets = frwk.framework.tags.get_formatted_tags('[default]Presets')
 	
@@ -641,7 +683,9 @@ def delete_preset(preset_id):
 	    None
 	
 	Notes:
-	    This function deletes a configuration preset from the system based on its unique ID. It takes the preset ID as an argument and removes the corresponding tag associated with that preset from the system. After calling this function, the specified configuration preset will no longer be available in the system.
+	    This function deletes a configuration preset from the system based on its unique ID. 
+	    It takes the preset ID as an argument and removes the corresponding tag associated with that preset from the system. 
+	    After calling this function, the specified configuration preset will no longer be available in the system.
 	"""
 	presets_path = '[default]Presets'
 	system.tag.deleteTags([presets_path + '/' + preset_id])
@@ -656,7 +700,7 @@ def set_preset_to_greenhouse(preset_id, greenhouse_id):
 		* greenhouse_id (str): the ID of the greenhouse the preset is assigned to
 	
 	Returns:
-	None
+		None
 	"""
 	
 	greenhouse = get_greenhouse_from_id(greenhouse_id)
@@ -686,7 +730,6 @@ def store_new_preset_to_db(preset_id):
 	frwk.db.database.insert_new_preset(description, preset_name, preset_id)
 	for stage_number in preset.get('Stages'):
 		store_new_stage_to_db(stage_number, preset_id)
-	return
 
 
 def store_new_stage_to_db(stage_number, preset_id):
@@ -712,4 +755,3 @@ def store_new_stage_to_db(stage_number, preset_id):
 		low_setpoint = stage.get(parameter_name).get('LowSetpoint').get_value()
 		start_time = stage.get(parameter_name).get('StartTime').get_value()
 		frwk.db.database.insert_new_stage(end_time, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_time)
-	return
