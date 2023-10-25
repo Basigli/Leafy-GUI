@@ -80,7 +80,7 @@
         ]
       },
       "title": "",
-      "viewPath": "FRWK/App/Log/GreenHouseHistory"
+      "viewPath": "FRWK/App/History/GreenHouseHistory"
     },
     "/overview": {
       "docks": {
