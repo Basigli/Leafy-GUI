@@ -2,11 +2,11 @@
   "custom": {
     "greenhouses": [
       {
-        "label": "Serra 1",
+        "label": "Stable",
         "value": 1
       },
       {
-        "label": "Serra 2",
+        "label": "Main Testing",
         "value": 2
       }
     ]

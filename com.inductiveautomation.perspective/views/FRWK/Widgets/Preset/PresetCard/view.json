@@ -31,6 +31,36 @@
         "children": [
           {
             "meta": {
+              "name": "Icon"
+            },
+            "position": {
+              "basis": "50px",
+              "shrink": 0
+            },
+            "props": {
+              "path": "material/filter"
+            },
+            "type": "ia.display.icon"
+          }
+        ],
+        "meta": {
+          "name": "Icon"
+        },
+        "position": {
+          "basis": "100px",
+          "shrink": 0
+        },
+        "props": {
+          "alignItems": "center",
+          "direction": "column",
+          "justify": "center"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "children": [
+          {
+            "meta": {
               "name": "PresetName"
             },
             "position": {
@@ -81,7 +111,7 @@
             },
             "props": {
               "style": {
-                "marginLeft": "20px"
+                "marginLeft": "0px"
               }
             },
             "type": "ia.display.label"
@@ -121,10 +151,15 @@
             "props": {
               "image": {
                 "icon": {
+                  "color": "#62584E",
                   "path": "material/edit"
                 }
               },
               "primary": false,
+              "style": {
+                "backgroundColor": "#CDB59F",
+                "borderStyle": "none"
+              },
               "text": ""
             },
             "type": "ia.input.button"
@@ -151,9 +186,14 @@
               "confirm": {
                 "enabled": true
               },
+              "disabledStyle": {
+                "backgroundColor": "#CDB59F",
+                "borderStyle": "none"
+              },
               "primary": false,
               "readyState": {
                 "icon": {
+                  "color": "#CF555E",
                   "path": "material/delete",
                   "style": {
                     "height": "24px",
@@ -161,6 +201,10 @@
                   }
                 },
                 "text": ""
+              },
+              "style": {
+                "backgroundColor": "#CDB59F",
+                "borderStyle": "none"
               },
               "writingState": {
                 "icon": {
@@ -180,10 +224,13 @@
           "name": "Actions"
         },
         "position": {
-          "basis": "100px"
+          "basis": "100px",
+          "shrink": 0
         },
         "props": {
-          "direction": "column"
+          "alignItems": "center",
+          "direction": "column",
+          "justify": "center"
         },
         "type": "ia.container.flex"
       }
@@ -192,8 +239,17 @@
       "name": "root"
     },
     "props": {
+      "justify": "center",
       "style": {
-        "classes": "Colors/Container/Borders"
+        "backgroundColor": "#CDB59F",
+        "borderBottomLeftRadius": "60px",
+        "borderBottomRightRadius": "60px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "60px",
+        "borderTopRightRadius": "60px",
+        "boxShadow": "8px 7px 6px 2px rgba(123,122,121,0.64)",
+        "color": "#62584E",
+        "cursor": "pointer"
       }
     },
     "type": "ia.container.flex"

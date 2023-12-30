@@ -55,6 +55,7 @@
     "device": {},
     "geolocation": {},
     "locale": "it-IT",
+    "theme": "light-animations",
     "timeZoneId": "Etc/UTC"
   }
 }

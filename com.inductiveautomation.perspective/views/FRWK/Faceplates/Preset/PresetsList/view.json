@@ -2,14 +2,19 @@
   "custom": {
     "intances": [
       {
-        "description": "Preset per piantina basilico",
-        "name": "Basilico",
-        "presetId": "1"
+        "description": "Preset di test per la menta",
+        "name": "Menta",
+        "presetId": "16"
       },
       {
-        "description": "Test di preset",
-        "name": "Menta",
-        "presetId": "2"
+        "description": "Preset di test - NON CANCELLARE!  - ",
+        "name": "Test",
+        "presetId": "18"
+      },
+      {
+        "description": "Questo e\u0027 un preset per la crescita di una pianta di basilico",
+        "name": "Basilico",
+        "presetId": "19"
       }
     ]
   },
@@ -56,6 +61,7 @@
         },
         "props": {
           "style": {
+            "color": "#62584E",
             "fontSize": "30px",
             "fontWeight": "bold",
             "marginBottom": "20px",
@@ -84,12 +90,15 @@
           }
         },
         "props": {
+          "alignContent": "flex-start",
+          "alignItems": "center",
           "elementPosition": {
             "grow": 0,
             "shrink": 0
           },
           "elementStyle": {
-            "maxHeight": "120px",
+            "margin": "10px 10px",
+            "minHeight": "120px",
             "minWidth": "350px"
           },
           "justify": "center",

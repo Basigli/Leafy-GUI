@@ -18,7 +18,7 @@ def terrain_humidity_sim(greenhouse_id):
 	tag_path = greenhouse_path + '/TerrainHumidity'
 
 	normal_rate = - (NORMAL_RATE + random.random())
-	irrigation_rate = 5
+	irrigation_rate = 1
 	
 	try:
 		value = system.tag.readBlocking(tag_path)[0].value

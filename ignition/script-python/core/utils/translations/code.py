@@ -27,7 +27,8 @@ it = {
 	'@ui.text.description@':'Descrizione',
 	'@ui.params.UVLight@':'Illuminazione UV',
 	'@ui.params.ventilation@':'VEntilazione',
-	'@ui.text.selectPreset@':'Seleziona Preset'
+	'@ui.text.selectPreset@':'Seleziona Preset',
+	'@ui.error.presetName@':'Esiste già un preset con questo nome'
 }
 
 en = {
@@ -59,7 +60,8 @@ en = {
 	'@ui.text.description@':'Description',
 	'@ui.params.UVLight@':'UV Light',
 	'@ui.params.ventilation@':'Ventilation',
-	'@ui.text.selectPreset@':'Select Preset'
+	'@ui.text.selectPreset@':'Select Preset',
+	'@ui.error.presetName@':'A preset with this name is already in use'
 }
 
 languages = {

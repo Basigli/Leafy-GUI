@@ -103,20 +103,6 @@
                       },
                       "scope": "C",
                       "type": "nav"
-                    },
-                    "onMouseOut": {
-                      "config": {
-                        "script": "\tself.parent.props.style.classes \u003d \u0027Colors/Text/Light/TitlesTextDarken\u0027"
-                      },
-                      "scope": "G",
-                      "type": "script"
-                    },
-                    "onMouseOver": {
-                      "config": {
-                        "script": "\tself.parent.props.style.classes \u003d \u0027Colors/Text/Light/TitlesText\u0027"
-                      },
-                      "scope": "G",
-                      "type": "script"
                     }
                   }
                 },
@@ -146,7 +132,7 @@
               "direction": "column",
               "justify": "center",
               "style": {
-                "classes": "Colors/Text/Light/TitlesTextDarken",
+                "classes": "Colors/Animations/OnHoverGreen Colors/Text/Light/TitlesTextDarken",
                 "cursor": "pointer"
               }
             },
@@ -163,20 +149,6 @@
                       },
                       "scope": "C",
                       "type": "nav"
-                    },
-                    "onMouseOut": {
-                      "config": {
-                        "script": "\tself.parent.props.style.classes \u003d \u0027Colors/Text/Light/TitlesTextDarken\u0027"
-                      },
-                      "scope": "G",
-                      "type": "script"
-                    },
-                    "onMouseOver": {
-                      "config": {
-                        "script": "\tself.parent.props.style.classes \u003d \u0027Colors/Text/Light/TitlesText\u0027"
-                      },
-                      "scope": "G",
-                      "type": "script"
                     }
                   }
                 },
@@ -206,7 +178,53 @@
               "direction": "column",
               "justify": "center",
               "style": {
-                "classes": "Colors/Text/Light/TitlesTextDarken",
+                "classes": "Colors/Animations/OnHoverGreen Colors/Text/Light/TitlesTextDarken",
+                "cursor": "pointer"
+              }
+            },
+            "type": "ia.container.flex"
+          },
+          {
+            "children": [
+              {
+                "events": {
+                  "dom": {
+                    "onClick": {
+                      "config": {
+                        "page": "/statistics"
+                      },
+                      "scope": "C",
+                      "type": "nav"
+                    }
+                  }
+                },
+                "meta": {
+                  "name": "Label"
+                },
+                "position": {
+                  "basis": "30px"
+                },
+                "props": {
+                  "style": {
+                    "fontSize": "20px"
+                  },
+                  "text": "@ui.text.statistics@"
+                },
+                "type": "ia.display.label"
+              }
+            ],
+            "meta": {
+              "name": "StatisticsContainer"
+            },
+            "position": {
+              "basis": "200px"
+            },
+            "props": {
+              "alignItems": "center",
+              "direction": "column",
+              "justify": "center",
+              "style": {
+                "classes": "Colors/Animations/OnHoverGreen Colors/Text/Light/TitlesTextDarken",
                 "cursor": "pointer"
               }
             },
@@ -217,7 +235,8 @@
           "name": "NavContainer"
         },
         "position": {
-          "basis": "329px"
+          "basis": "375px",
+          "shrink": 0
         },
         "type": "ia.container.flex"
       },
@@ -264,6 +283,7 @@
             "props": {
               "path": "FRWK/Widgets/Profile/ProfileInfo",
               "style": {
+                "classes": "Colors/Animations/OnHoverGreen",
                 "marginRight": "20px"
               }
             },
@@ -274,7 +294,8 @@
           "name": "ProfileContainer"
         },
         "position": {
-          "basis": "936px"
+          "basis": "936px",
+          "grow": 1
         },
         "props": {
           "alignItems": "flex-end",

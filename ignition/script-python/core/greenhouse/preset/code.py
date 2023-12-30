@@ -293,3 +293,11 @@ def assign_preset_to_greenhouse(preset_id, greenhouse_id):
 	except:
 		core.utils.logger.exc('assign_preset_to_greenhouse()', traceback.format_exc())
 
+def get_presets_as_list():
+	"""
+	Args:
+		None
+	Returns:
+		A list of all saved preset's names.
+	"""
+	return [preset['name'] for preset in core.greenhouse.controller.get_formatted_presets_list()]

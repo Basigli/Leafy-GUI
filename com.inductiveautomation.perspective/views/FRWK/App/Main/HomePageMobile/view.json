@@ -1,13 +1,104 @@
 {
-  "custom": {},
+  "custom": {
+    "instances": [
+      {
+        "id": "1"
+      },
+      {
+        "id": "2"
+      }
+    ]
+  },
   "params": {},
-  "props": {},
+  "propConfig": {
+    "custom.instances": {
+      "binding": {
+        "config": {
+          "struct": {},
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\treturn [ {\u0027id\u0027: gh} for gh in core.greenhouse.controller.get_greenhouses()]",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 733,
+      "width": 405
+    }
+  },
   "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "FlexRepeater"
+            },
+            "position": {
+              "grow": 1
+            },
+            "propConfig": {
+              "props.instances": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.instances"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "alignItems": "flex-start",
+              "elementPosition": {
+                "basis": "auto"
+              },
+              "elementStyle": {
+                "marginBottom": "20px",
+                "marginLeft": "20px",
+                "marginRight": "20px",
+                "marginTop": "20px"
+              },
+              "justify": "center",
+              "path": "FRWK/Faceplates/Cards/GreenHouseCard",
+              "wrap": "wrap"
+            },
+            "type": "ia.display.flex-repeater"
+          }
+        ],
+        "meta": {
+          "name": "Content"
+        },
+        "position": {
+          "grow": 1
+        },
+        "props": {
+          "direction": "column",
+          "style": {
+            "marginBottom": "15px",
+            "marginLeft": "15px",
+            "marginRight": "15px",
+            "marginTop": "15px"
+          }
+        },
+        "type": "ia.container.flex"
+      }
+    ],
     "meta": {
       "name": "root"
     },
     "props": {
-      "direction": "column"
+      "direction": "column",
+      "style": {
+        "classes": "Colors/BackgroundColorLight"
+      }
     },
     "type": "ia.container.flex"
   }

@@ -218,6 +218,9 @@ def turn_on(greenhouse_id, actuator_name):
 	
 	if greenhouse[actuator_name].get_value():
 		return True
+
+	if actuator_name == core.greenhouse.classes.Actuators.IRRIGATION and greenhouse[core.greenhouse.classes.Sensors.IS_TANK_EMPTY].get_value():
+		return False
 	
 	try:
 		write_tag(actuator_tag_path, True)
@@ -578,13 +581,15 @@ def save_preset_to_tag(preset):
 	    * preset (dict): A dictionary containing configuration preset data.
 	
 	Returns:
-	    None
+	    * int: The preset id
 	
 	Notes:
 	    This function takes a dictionary representing a configuration preset and saves it to tags in the system. 
 	    It creates or overrides tags with preset data, including description, name, number of stages, stage details, and specific settings for ventilation, UV light, and irrigation pump for each stage. 
 	    The function is typically used to store and manage configuration presets in the system.
 	"""
+	if preset['Name'] in core.greenhouse.preset.get_presets_as_list():
+		return -1
 	preset_id = get_new_preset_id()
 	base_path = '[default]Presets/' + preset_id
 	create_or_override_tag(base_path, 'Description', str(preset['Description']))
@@ -643,6 +648,8 @@ def save_preset_to_tag(preset):
 		except:
 			create_or_override_tag(irrigation_path, 'LowSetpoint', 0)
 		create_or_override_tag(irrigation_path, 'StartTime', irrigation['StartTime'])
+	
+	return str(preset_id)
 
 
 def get_formatted_presets_list():
@@ -755,3 +762,19 @@ def store_new_stage_to_db(stage_number, preset_id):
 		low_setpoint = stage.get(parameter_name).get('LowSetpoint').get_value()
 		start_time = stage.get(parameter_name).get('StartTime').get_value()
 		frwk.db.database.insert_new_stage(end_time, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_time)
+
+
+def read_param_from_tag(greenhouse_id, parameter_name):
+	"""
+	Reads the value of a parameter from the tag
+	
+	Args:
+		* greenhouse_id (str): the id of the greenhouse
+		* parameter_name (str): the parameter to read
+	
+	Returns:
+		str / int / bool : the current value of said parameter
+	"""
+	greenhouse = get_greenhouse_from_id(str(greenhouse_id))
+	return greenhouse[parameter_name].get_value() 
+	

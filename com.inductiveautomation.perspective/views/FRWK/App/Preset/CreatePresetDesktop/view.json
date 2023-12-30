@@ -1,7 +1,7 @@
 {
   "custom": {
     "description": "",
-    "name": "",
+    "name": "preset",
     "refreshTrigger": true,
     "stages": {
       "1": {
@@ -9,7 +9,7 @@
           "$": [
             "ts",
             0,
-            1695886975509
+            1700669056635
           ],
           "$ts": 1692230400000
         },
@@ -18,7 +18,7 @@
             "$": [
               "ts",
               0,
-              1695886975509
+              1700669056635
             ],
             "$ts": 1692309600000
           },
@@ -29,7 +29,7 @@
             "$": [
               "ts",
               0,
-              1695886975509
+              1700669056635
             ],
             "$ts": 1692306000000
           }
@@ -38,7 +38,7 @@
           "$": [
             "ts",
             0,
-            1695886975509
+            1700669056635
           ],
           "$ts": 1691625600000
         },
@@ -47,7 +47,7 @@
             "$": [
               "ts",
               0,
-              1695886975509
+              1700669056635
             ],
             "$ts": 1692309600000
           },
@@ -58,7 +58,7 @@
             "$": [
               "ts",
               0,
-              1695886975509
+              1700669056635
             ],
             "$ts": 1693137600682
           }
@@ -68,7 +68,7 @@
             "$": [
               "ts",
               0,
-              1695886975509
+              1700669056635
             ],
             "$ts": 1692309600000
           },
@@ -79,7 +79,7 @@
             "$": [
               "ts",
               0,
-              1695886975509
+              1700669056635
             ],
             "$ts": 1692302400000
           }
@@ -170,7 +170,7 @@
                       "component": {
                         "onActionPerformed": {
                           "config": {
-                            "script": "\tname \u003d self.view.custom.name\n\tdescription \u003d self.view.custom.description\n\tstages \u003d self.view.custom.stages\n\tstages_number \u003d self.view.custom.stagesNumber\n\t\n\tif name not in [None, \u0027\u0027]:\n\t\tpreset \u003d {\n\t\t\t\u0027Stages\u0027: stages,\n\t\t\t\u0027Name\u0027: name,\n\t\t\t\u0027StagesNumber\u0027: stages_number,\n\t\t\t\u0027Description\u0027: description\n\t\t}\t\n\t\tcore.greenhouse.controller.save_preset_to_tag(preset)\n\t\tself.view.custom.refreshTrigger \u003d not self.view.custom.refreshTrigger\n\t\tsystem.perspective.openPopup(\u0027confirm-popup\u0027, \u0027FRWK/Popup/SuccessPopup\u0027, draggable\u003dFalse, overlayDismiss\u003dTrue, modal\u003dTrue)\n\t\t\n"
+                            "script": "\tname \u003d self.view.custom.name\n\tdescription \u003d self.view.custom.description\n\tstages \u003d self.view.custom.stages\n\tstages_number \u003d self.view.custom.stagesNumber\n\tlocale \u003d self.session.props.locale\n\tif name not in [None, \u0027\u0027]:\n\t\tpreset \u003d {\n\t\t\t\u0027Stages\u0027: stages,\n\t\t\t\u0027Name\u0027: name,\n\t\t\t\u0027StagesNumber\u0027: stages_number,\n\t\t\t\u0027Description\u0027: description\n\t\t}\t\n\t\tpreset_id \u003d core.greenhouse.controller.save_preset_to_tag(preset)\n\t\tif preset_id \u003d\u003d -1:\n\t\t\tcore.utils.gui.messages.message_error(system.util.translate(\u0027@ui.error.presetName@\u0027, locale))\n\t\tcore.greenhouse.controller.store_new_preset_to_db(preset_id)\n\t\tself.view.custom.refreshTrigger \u003d not self.view.custom.refreshTrigger\n\t\t#system.perspective.openPopup(\u0027confirm-popup\u0027, \u0027FRWK/Popup/SuccessPopup\u0027, draggable\u003dFalse, overlayDismiss\u003dTrue, modal\u003dTrue)\n\t\tcore.utils.gui.messages.message_success(system.util.translate(\u0027@ui.text.pupup.success@\u0027, locale))"
                           },
                           "scope": "G",
                           "type": "script"

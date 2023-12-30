@@ -1,0 +1,109 @@
+{
+  "custom": {
+    "greenhouses": [
+      {
+        "greenhouseId": 1,
+        "greenhouseName": "Stable",
+        "selected": true
+      },
+      {
+        "greenhouseId": 2,
+        "greenhouseName": "Main Testing",
+        "selected": false
+      }
+    ]
+  },
+  "params": {
+    "selectedId": 2
+  },
+  "propConfig": {
+    "custom.greenhouses": {
+      "binding": {
+        "config": {
+          "struct": {},
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\tres \u003d []\n\tfor i, gh in enumerate(core.greenhouse.controller.get_all_formatted_greenhouse()):\n\t\tres.append({\u0027selected\u0027: i \u003d\u003d 0, \u0027greenhouseId\u0027: gh[\u0027value\u0027], \u0027greenhouseName\u0027: gh[\u0027label\u0027]})\n\treturn res",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "params.selectedId": {
+      "paramDirection": "output",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 90,
+      "width": 708
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "ViewSelectors"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.instances": {
+            "binding": {
+              "config": {
+                "path": "view.custom.greenhouses"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "elementPosition": {
+            "basis": "auto",
+            "grow": 0,
+            "shrink": 0
+          },
+          "elementStyle": {
+            "marginBottom": "1px",
+            "marginTop": "1px"
+          },
+          "path": "FRWK/Widgets/Selection/GreenhouseSelection",
+          "style": {
+            "marginLeft": "10px",
+            "marginRight": "10px"
+          },
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false,
+          "wrap": "wrap"
+        },
+        "scripts": {
+          "customMethods": [],
+          "extensionFunctions": null,
+          "messageHandlers": [
+            {
+              "messageType": "greenhouse-selected",
+              "pageScope": true,
+              "script": "\tfor instance in self.view.custom.greenhouses:\n\t\tif instance[\u0027greenhouseId\u0027] \u003d\u003d payload[\u0027greenhouseId\u0027]:\n\t\t\tinstance.selected \u003d True\n\t\t\tself.view.params.selectedId \u003d instance[\u0027greenhouseId\u0027]\n\t\telif instance[\u0027greenhouseId\u0027] !\u003d payload[\u0027greenhouseId\u0027]:\n\t\t\tinstance.selected \u003d False\n\t\t\t#system.perspective.print(\u0027resetto: \u0027 + str(instance[\u0027viewId\u0027]))",
+              "sessionScope": false,
+              "viewScope": false
+            }
+          ]
+        },
+        "type": "ia.display.flex-repeater"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

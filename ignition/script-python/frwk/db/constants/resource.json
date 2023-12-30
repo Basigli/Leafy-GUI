@@ -1,0 +1,17 @@
+{
+  "scope": "A",
+  "version": 1,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "code.py"
+  ],
+  "attributes": {
+    "lastModification": {
+      "actor": "basigli",
+      "timestamp": "2023-12-12T20:25:32Z"
+    },
+    "hintScope": 2,
+    "lastModificationSignature": "f6bcd8e8ee8ce4827102ce7d5506fee01a841484808eac43ab1f2b836bc5f249"
+  }
+}

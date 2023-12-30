@@ -12,7 +12,7 @@
           "size": "large"
         },
         "props": {
-          "path": "FRWK/App/Log/GreenHouseHistoryDesktop"
+          "path": "FRWK/App/History/GreenHouseHistoryDesktop"
         },
         "type": "ia.display.view"
       },
@@ -21,7 +21,7 @@
           "name": "GreenHouseHistoryMobile"
         },
         "props": {
-          "path": "FRWK/App/Log/GreenHouseHistoryMobile"
+          "path": "FRWK/App/History/GreenHouseHistoryMobile"
         },
         "type": "ia.display.view"
       }

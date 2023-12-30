@@ -27,7 +27,8 @@
           "name": "Icon"
         },
         "position": {
-          "basis": "56px"
+          "basis": "56px",
+          "shrink": 0
         },
         "propConfig": {
           "props.source": {

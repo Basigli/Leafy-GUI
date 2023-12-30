@@ -1,0 +1,31 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {},
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "GreenHouseSelector"
+        },
+        "position": {
+          "basis": "76px"
+        },
+        "props": {
+          "params": {
+            "selectedId": 1
+          },
+          "path": "FRWK/Widgets/Selection/GreenhouseMultipleSelection"
+        },
+        "type": "ia.display.view"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

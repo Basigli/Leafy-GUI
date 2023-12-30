@@ -61,7 +61,7 @@
               }
             },
             "props": {
-              "path": "FRWK/Widgets/Search/GreenHouseSelector"
+              "path": "FRWK/Widgets/Selection/GreenhouseMultipleSelection"
             },
             "type": "ia.display.view"
           },

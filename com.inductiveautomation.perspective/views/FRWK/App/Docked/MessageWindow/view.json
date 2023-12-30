@@ -1,0 +1,205 @@
+{
+  "custom": {
+    "backgroundColor": {
+      "E": "#FFCCCC",
+      "I": "#FFE8CC",
+      "S": "#CCFFCC"
+    },
+    "icon": {
+      "E": "material/report_problem",
+      "I": "material/info",
+      "S": "material/done_outline"
+    },
+    "textColor": {
+      "E": "#800000",
+      "I": "#804600",
+      "S": "#008000"
+    }
+  },
+  "params": {
+    "messageText": "Messaggio di prova",
+    "messageType": "I"
+  },
+  "propConfig": {
+    "custom.backgroundColor": {
+      "persistent": true
+    },
+    "custom.icon": {
+      "persistent": true
+    },
+    "custom.textColor": {
+      "persistent": true
+    },
+    "params.messageText": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.messageType": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 209,
+      "width": 696
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Icon"
+        },
+        "position": {
+          "basis": "60px"
+        },
+        "propConfig": {
+          "props.path": {
+            "binding": {
+              "config": {
+                "struct": {
+                  "icons": "{view.custom.icon}",
+                  "type": "{view.params.messageType}"
+                },
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\treturn value.icons[value.type]",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "marginLeft": "10px"
+          }
+        },
+        "type": "ia.display.icon"
+      },
+      {
+        "children": [
+          {
+            "meta": {
+              "name": "Label"
+            },
+            "position": {
+              "basis": "135px"
+            },
+            "propConfig": {
+              "props.text": {
+                "binding": {
+                  "config": {
+                    "path": "view.params.messageText"
+                  },
+                  "type": "property"
+                }
+              }
+            },
+            "props": {
+              "style": {
+                "fontSize": "30px",
+                "fontWeight": "bold",
+                "textAlign": "center"
+              }
+            },
+            "type": "ia.display.label"
+          }
+        ],
+        "meta": {
+          "name": "TextContainer"
+        },
+        "position": {
+          "basis": "582px",
+          "grow": 1
+        },
+        "props": {
+          "direction": "column"
+        },
+        "type": "ia.container.flex"
+      },
+      {
+        "events": {
+          "dom": {
+            "onClick": {
+              "config": {
+                "script": "\tdock_id \u003d core.utils.gui.messages.WINDOW_ID\n\tsystem.perspective.closeDock(dock_id)\n\tsystem.perspective.openDock(\u0027MainHeader\u0027, params\u003d{})"
+              },
+              "scope": "G",
+              "type": "script"
+            }
+          }
+        },
+        "meta": {
+          "name": "Close"
+        },
+        "position": {
+          "basis": "30px"
+        },
+        "props": {
+          "path": "material/clear",
+          "style": {
+            "cursor": "pointer"
+          }
+        },
+        "type": "ia.display.icon"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.backgroundColor": {
+        "binding": {
+          "config": {
+            "struct": {
+              "colors": "{view.custom.backgroundColor}",
+              "type": "{view.params.messageType}"
+            },
+            "waitOnAll": true
+          },
+          "transforms": [
+            {
+              "code": "\treturn value.colors[value.type]",
+              "type": "script"
+            }
+          ],
+          "type": "expr-struct"
+        }
+      },
+      "props.style.color": {
+        "binding": {
+          "config": {
+            "struct": {
+              "colors": "{view.custom.textColor}",
+              "type": "{view.params.messageType}"
+            },
+            "waitOnAll": true
+          },
+          "transforms": [
+            {
+              "code": "\treturn value.colors[value.type]",
+              "type": "script"
+            }
+          ],
+          "type": "expr-struct"
+        }
+      }
+    },
+    "props": {
+      "style": {
+        "borderBottomLeftRadius": "30px",
+        "borderBottomRightRadius": "30px",
+        "borderStyle": "solid",
+        "borderTopLeftRadius": "30px",
+        "borderTopRightRadius": "30px",
+        "classes": "animated bounce"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

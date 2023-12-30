@@ -83,3 +83,20 @@ def info(function_name, description=''):
 	except:
 		print('error in query: ' + traceback.format_exc())
 		return False
+
+
+def get_logger_table():
+	query = """
+		SELECT * 
+		FROM LOGGER
+		ORDER BY id desc
+		LIMIT 1000
+	"""
+	try:
+		return system.db.runPrepQuery(query)
+	except:
+		import traceback
+		core.utils.logger.exc('select_from_logger', traceback.format_exc()) 
+
+
+

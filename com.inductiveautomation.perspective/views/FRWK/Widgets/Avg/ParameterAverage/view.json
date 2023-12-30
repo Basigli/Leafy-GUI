@@ -1,0 +1,160 @@
+{
+  "custom": {
+    "average": 63.959871451059975,
+    "unit": "%"
+  },
+  "params": {
+    "color": "value",
+    "greenhouseId": 1,
+    "parameterName": "AirHumidity"
+  },
+  "propConfig": {
+    "custom.average": {
+      "binding": {
+        "config": {
+          "struct": {
+            "greenhouseId": "{view.params.greenhouseId}",
+            "parameterName": "{view.params.parameterName}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\treturn core.greenhouse.statistics.day_avg(value.parameterName, value.greenhouseId, 2023, 8, 22)",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
+    "custom.unit": {
+      "persistent": true
+    },
+    "params.color": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.greenhouseId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.parameterName": {
+      "paramDirection": "input",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 204,
+      "width": 200
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "ParameterName"
+        },
+        "position": {
+          "shrink": 0
+        },
+        "propConfig": {
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.parameterName"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "color": "#555555",
+            "fontWeight": "bolder",
+            "textAlign": "center"
+          }
+        },
+        "type": "ia.display.label"
+      },
+      {
+        "meta": {
+          "name": "SimpleGauge"
+        },
+        "position": {
+          "grow": 1
+        },
+        "propConfig": {
+          "props.arc.color": {
+            "binding": {
+              "config": {
+                "struct": {},
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\treturn core.utils.colors.MoodboardColors.mood_1",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.arcBackground.color": {
+            "binding": {
+              "config": {
+                "struct": {},
+                "waitOnAll": true
+              },
+              "transforms": [
+                {
+                  "code": "\treturn core.utils.colors.MoodboardColors.mood_2",
+                  "type": "script"
+                }
+              ],
+              "type": "expr-struct"
+            }
+          },
+          "props.label.units": {
+            "binding": {
+              "config": {
+                "path": "view.custom.unit"
+              },
+              "type": "property"
+            }
+          },
+          "props.value": {
+            "binding": {
+              "config": {
+                "path": "view.custom.average"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "animate": true,
+          "arc": {},
+          "arcBackground": {},
+          "label": {
+            "maxDecimal": 1,
+            "offsetY": 20
+          },
+          "startAngle": 0,
+          "style": {
+            "classes": []
+          }
+        },
+        "type": "ia.chart.simple-gauge"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

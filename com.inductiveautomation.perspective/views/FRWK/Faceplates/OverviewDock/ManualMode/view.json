@@ -2,7 +2,7 @@
   "custom": {
     "UVLight": true,
     "irrigationPump": false,
-    "ventilation": false
+    "ventilation": true
   },
   "params": {
     "id": 1
@@ -85,7 +85,7 @@
               },
               "transforms": [
                 {
-                  "code": "\tinstances \u003d []\n\t\n\tinstances.append({\n\t\t\u0027parameterNameUI\u0027: \u0027@ui.params.UVLight@\u0027,\n\t\t\u0027id\u0027: value.id,\n\t\t\u0027parameterName\u0027: core.greenhouse.classes.Actuators.UV_LIGHT,\n\t\t\u0027value\u0027: value.UVLight\n\t})\n\t\n\tinstances.append({\n\t\t\u0027parameterNameUI\u0027: \u0027@ui.params.irrigationPump@\u0027,\n\t\t\u0027id\u0027: value.id,\n\t\t\u0027parameterName\u0027: core.greenhouse.classes.Actuators.IRRIGATION,\n\t\t\u0027value\u0027: value.irrigationPump\n\t})\n\t\n\tinstances.append({\n\t\t\u0027parameterNameUI\u0027: \u0027@ui.params.ventilation@\u0027,\n\t\t\u0027id\u0027: value.id,\n\t\t\u0027parameterName\u0027: core.greenhouse.classes.Actuators.VENTILATION,\n\t\t\u0027value\u0027: value.ventilation\n\t})\n\t\n\treturn instances",
+                  "code": "\tinstances \u003d []\n\t\n\tinstances.append({\n\t\t\u0027parameterNameUI\u0027: \u0027@ui.params.UVLight@\u0027,\n\t\t\u0027id\u0027: value.id,\n\t\t\u0027parameterName\u0027: core.greenhouse.classes.Actuators.UV_LIGHT,\n\t\t\u0027value\u0027: value.UVLight\n\t})\n\t\n\tinstances.append({\n\t\t\u0027parameterNameUI\u0027: \u0027@ui.params.irrigationPump@\u0027,\n\t\t\u0027id\u0027: value.id,\n\t\t\u0027parameterName\u0027: core.greenhouse.classes.Actuators.IRRIGATION,\n\t\t\u0027value\u0027: value.irrigationPump,\n\t\t\u0027enabled\u0027: not core.greenhouse.controller.read_param_from_tag(value.id, core.greenhouse.classes.Sensors.IS_TANK_EMPTY)\n\t})\n\t\n\tinstances.append({\n\t\t\u0027parameterNameUI\u0027: \u0027@ui.params.ventilation@\u0027,\n\t\t\u0027id\u0027: value.id,\n\t\t\u0027parameterName\u0027: core.greenhouse.classes.Actuators.VENTILATION,\n\t\t\u0027value\u0027: value.ventilation\n\t})\n\t\n\treturn instances",
                   "type": "script"
                 }
               ],

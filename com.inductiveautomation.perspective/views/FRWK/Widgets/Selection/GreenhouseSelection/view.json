@@ -1,0 +1,139 @@
+{
+  "custom": {
+    "background": "#E0E0E0",
+    "textStyle": "normal"
+  },
+  "params": {
+    "greenhouseId": 0,
+    "greenhouseName": "Testing",
+    "selected": false
+  },
+  "propConfig": {
+    "custom.background": {
+      "binding": {
+        "config": {
+          "path": "view.params.selected"
+        },
+        "transforms": [
+          {
+            "code": "\tif value:\n\t\treturn \u0027#AAAAAA\u0027\n\telse:\n\t\treturn \u0027#E0E0E0\u0027",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "custom.textStyle": {
+      "binding": {
+        "config": {
+          "path": "view.params.selected"
+        },
+        "transforms": [
+          {
+            "code": "\tif value:\n\t\treturn \u0027bolder\u0027\n\telse:\n\t\treturn \u0027normal\u0027",
+            "type": "script"
+          }
+        ],
+        "type": "property"
+      },
+      "persistent": true
+    },
+    "params.greenhouseId": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.greenhouseName": {
+      "paramDirection": "input",
+      "persistent": true
+    },
+    "params.selected": {
+      "paramDirection": "inout",
+      "persistent": true
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "height": 24,
+      "width": 198
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Label"
+        },
+        "position": {
+          "basis": "32px",
+          "grow": 1
+        },
+        "propConfig": {
+          "props.style.fontWeight": {
+            "binding": {
+              "config": {
+                "path": "view.custom.textStyle"
+              },
+              "type": "property"
+            }
+          },
+          "props.text": {
+            "binding": {
+              "config": {
+                "path": "view.params.greenhouseName"
+              },
+              "type": "property"
+            }
+          }
+        },
+        "props": {
+          "style": {
+            "fontSize": "12px",
+            "paddingLeft": "5px",
+            "paddingRight": "5px"
+          }
+        },
+        "type": "ia.display.label"
+      }
+    ],
+    "events": {
+      "dom": {
+        "onClick": {
+          "config": {
+            "script": "\tself.view.params.selected \u003d True\n\tsystem.perspective.sendMessage(\u0027greenhouse-selected\u0027, {\u0027greenhouseId\u0027: self.view.params.greenhouseId})"
+          },
+          "scope": "G",
+          "type": "script"
+        }
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "propConfig": {
+      "props.style.backgroundColor": {
+        "binding": {
+          "config": {
+            "path": "view.custom.background"
+          },
+          "type": "property"
+        }
+      }
+    },
+    "props": {
+      "direction": "column",
+      "style": {
+        "borderBottomLeftRadius": "10px",
+        "borderBottomRightRadius": "10px",
+        "borderColor": "#B5B5B5",
+        "borderStyle": "solid",
+        "borderTopLeftRadius": "10px",
+        "borderTopRightRadius": "10px",
+        "borderWidth": "2px",
+        "cursor": "pointer",
+        "textAlign": "center"
+      }
+    },
+    "type": "ia.container.flex"
+  }
+}

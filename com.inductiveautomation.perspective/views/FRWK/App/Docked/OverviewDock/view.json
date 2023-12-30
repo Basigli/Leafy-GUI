@@ -1,7 +1,7 @@
 {
   "custom": {
-    "manualMode": false,
-    "mode": 0
+    "manualMode": true,
+    "mode": 1
   },
   "params": {
     "id": 1

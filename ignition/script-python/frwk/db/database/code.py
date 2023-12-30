@@ -121,7 +121,7 @@ def get_actuators_data(greenhouse_id, start_date, end_date):
 	except:
 		import traceback
 		core.utils.logger.exc('log_input_sensors', traceback.format_exc())
-		return 
+		return
 	
 
 def insert_new_preset(description, preset_name, preset_id):

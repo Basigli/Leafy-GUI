@@ -1,13 +1,13 @@
 {
   "custom": {
     "UVLight": true,
-    "airHumidity": "43",
-    "airTemperature": "21",
+    "airHumidity": "41",
+    "airTemperature": "20",
     "irrigationPump": false,
     "isTankEmpty": false,
-    "lightQuantity": "44",
+    "lightQuantity": "41",
     "name": "Serra 1",
-    "terrainHumidity": "71",
+    "terrainHumidity": "0",
     "ventilation": true
   },
   "params": {
@@ -405,6 +405,20 @@
                   "type": "property"
                 }
               },
+              "props.instances[1].instanceStyle.classes": {
+                "binding": {
+                  "config": {
+                    "path": "view.custom.isTankEmpty"
+                  },
+                  "transforms": [
+                    {
+                      "code": "\treturn \u0027Colors/Animations/AlarmBlink\u0027 if value else \u0027\u0027",
+                      "type": "script"
+                    }
+                  ],
+                  "type": "property"
+                }
+              },
               "props.instances[1].paramsValue": {
                 "binding": {
                   "config": {
@@ -451,9 +465,7 @@
                   "icon": "Icons/tanica_1.svg",
                   "input": false,
                   "instancePosition": {},
-                  "instanceStyle": {
-                    "classes": ""
-                  },
+                  "instanceStyle": {},
                   "onHoverClass": "Colors/Animations/OnHoverTank",
                   "paramActualName": "isTankEmpty",
                   "paramsName": "@ui.params.tank@",

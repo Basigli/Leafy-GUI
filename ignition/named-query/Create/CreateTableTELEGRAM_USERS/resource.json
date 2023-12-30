@@ -1,0 +1,33 @@
+{
+  "scope": "DG",
+  "version": 2,
+  "restricted": false,
+  "overridable": true,
+  "files": [
+    "query.sql"
+  ],
+  "attributes": {
+    "useMaxReturnSize": false,
+    "autoBatchEnabled": false,
+    "fallbackValue": "",
+    "maxReturnSize": 100,
+    "cacheUnit": "SEC",
+    "type": "UpdateQuery",
+    "enabled": true,
+    "cacheAmount": 1,
+    "cacheEnabled": false,
+    "database": "LeafyData",
+    "fallbackEnabled": false,
+    "lastModificationSignature": "d3662d308d1f602b36206e535bcd3e2c2c8a1cd66d6c7106bd7cfc8d552e6c3a",
+    "permissions": [
+      {
+        "zone": "",
+        "role": ""
+      }
+    ],
+    "lastModification": {
+      "actor": "basigli",
+      "timestamp": "2023-12-09T21:07:08Z"
+    }
+  }
+}

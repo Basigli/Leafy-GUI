@@ -91,7 +91,7 @@
           "component": {
             "onActionPerformed": {
               "config": {
-                "script": "\tpreset_id \u003d self.view.custom.selectedPreset\n\tgreenhouse_id \u003d self.view.params.id\n\tlocale \u003d self.session.props.locale\n\ttry:\n\t\tcore.greenhouse.controller.set_preset_to_greenhouse(preset_id, greenhouse_id)\n\t\tself.view.custom.message[\u0027text\u0027] \u003d system.util.translate(\u0027@ui.text.presetSuccess@\u0027, locale)\n\t\tself.view.custom.message[\u0027color\u0027] \u003d \u0027green\u0027\n\texcept:\n\t\tself.view.custom.message[\u0027text\u0027] \u003d system.util.translate(\u0027@ui.text.presetError@\u0027, locale)\n\t\tself.view.custom.message[\u0027color\u0027] \u003d \u0027red\u0027"
+                "script": "\tpreset_id \u003d self.view.custom.selectedPreset\n\tgreenhouse_id \u003d self.view.params.id\n\tlocale \u003d self.session.props.locale\n\ttry:\n\t\tcore.greenhouse.controller.set_preset_to_greenhouse(preset_id, greenhouse_id)\n\t\tcore.utils.gui.messages.message_success(system.util.translate(\u0027@ui.text.presetSuccess@\u0027, locale))\n\texcept:\n\t\tcore.utils.gui.messages.message_error(system.util.translate(\u0027@ui.text.presetError@\u0027, locale))"
               },
               "scope": "G",
               "type": "script"
@@ -130,7 +130,8 @@
           "name": "Message"
         },
         "position": {
-          "basis": "89px"
+          "basis": "89px",
+          "display": false
         },
         "propConfig": {
           "props.style.color": {
