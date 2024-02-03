@@ -18,7 +18,7 @@
     "cacheEnabled": false,
     "database": "LeafyData",
     "fallbackEnabled": false,
-    "lastModificationSignature": "627ae5d1b63ab8876a743feb514e56f8064b81fbbb1e7c94af50b8af810e914e",
+    "lastModificationSignature": "af1fc6de70d88b4ec7cc1d18cbc338b91100f3a56486d8f26d0ec995a617e75f",
     "permissions": [
       {
         "zone": "",
@@ -26,8 +26,8 @@
       }
     ],
     "lastModification": {
-      "actor": "basigli",
-      "timestamp": "2023-08-01T16:10:05Z"
+      "actor": "external",
+      "timestamp": "2024-02-03T17:14:37Z"
     },
     "parameters": [
       {
