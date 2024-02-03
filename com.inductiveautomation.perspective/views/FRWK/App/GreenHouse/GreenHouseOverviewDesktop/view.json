@@ -1,13 +1,13 @@
 {
   "custom": {
     "UVLight": true,
-    "airHumidity": "41",
-    "airTemperature": "20",
-    "irrigationPump": false,
+    "airHumidity": "61",
+    "airTemperature": "26",
+    "irrigationPump": true,
     "isTankEmpty": false,
-    "lightQuantity": "41",
-    "name": "Serra 1",
-    "terrainHumidity": "0",
+    "lightQuantity": "65",
+    "name": "Stable",
+    "terrainHumidity": "80",
     "ventilation": true
   },
   "params": {
@@ -334,7 +334,7 @@
               "instances": [
                 {
                   "backgroundColor": "#E4EBE6",
-                  "icon": "Icons/Ventilazione.svg",
+                  "icon": "leafy/air",
                   "input": false,
                   "instancePosition": {},
                   "instanceStyle": {
@@ -347,7 +347,7 @@
                 },
                 {
                   "backgroundColor": "#C1A7D2",
-                  "icon": "Icons/Luce_uv.svg",
+                  "icon": "leafy/lamp",
                   "input": false,
                   "instancePosition": {},
                   "instanceStyle": {
@@ -449,7 +449,7 @@
               "instances": [
                 {
                   "backgroundColor": "#C7DADB",
-                  "icon": "Icons/pompa_dacqua.svg",
+                  "icon": "leafy/water_pump",
                   "input": false,
                   "instancePosition": {},
                   "instanceStyle": {
@@ -462,7 +462,7 @@
                 },
                 {
                   "backgroundColor": "#C6C4C2",
-                  "icon": "Icons/tanica_1.svg",
+                  "icon": "leafy/water_tank",
                   "input": false,
                   "instancePosition": {},
                   "instanceStyle": {},
@@ -546,7 +546,7 @@
               "instances": [
                 {
                   "backgroundColor": "#F9EBC0",
-                  "icon": "Icons/luce.svg",
+                  "icon": "leafy/sun",
                   "input": true,
                   "instancePosition": {},
                   "instanceStyle": {
@@ -559,7 +559,7 @@
                 },
                 {
                   "backgroundColor": "#C4CAD5",
-                  "icon": "Icons/water_drop.svg",
+                  "icon": "leafy/water_drop",
                   "input": true,
                   "instancePosition": {},
                   "instanceStyle": {
@@ -646,7 +646,7 @@
               "instances": [
                 {
                   "backgroundColor": "#E7B6B7",
-                  "icon": "Icons/termostato.svg",
+                  "icon": "leafy/thermostat",
                   "input": true,
                   "instancePosition": {},
                   "instanceStyle": {
@@ -659,7 +659,7 @@
                 },
                 {
                   "backgroundColor": "#DDC0B0",
-                  "icon": "Icons/terreno.svg",
+                  "icon": "leafy/grass",
                   "input": true,
                   "instancePosition": {},
                   "instanceStyle": {

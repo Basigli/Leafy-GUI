@@ -57,10 +57,10 @@
             },
             "props": {
               "elementStyle": {
-                "marginBottom": "20px",
-                "marginLeft": "20px",
-                "marginRight": "20px",
-                "marginTop": "20px"
+                "marginBottom": "50px",
+                "marginLeft": "50px",
+                "marginRight": "50px",
+                "marginTop": "50px"
               },
               "path": "FRWK/Faceplates/Cards/GreenHouseCard"
             },
@@ -91,6 +91,7 @@
     "props": {
       "direction": "column",
       "style": {
+        "backgroundColor": "#DBC2AAAD",
         "classes": "Colors/BackgroundColorLight"
       }
     },

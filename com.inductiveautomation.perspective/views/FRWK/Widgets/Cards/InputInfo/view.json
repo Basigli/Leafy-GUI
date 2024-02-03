@@ -1,7 +1,7 @@
 {
   "custom": {},
   "params": {
-    "image": "Icons/sun_non_active.svg",
+    "image": "leafy/sun",
     "paramsName": "@ui.params.lightQuantity@",
     "paramsValue": "value",
     "textColor": "#000000"
@@ -36,21 +36,21 @@
         "children": [
           {
             "meta": {
-              "name": "Image"
+              "name": "Icon"
             },
             "position": {
               "basis": "100px",
-              "grow": 1
+              "shrink": 0
             },
             "propConfig": {
-              "props.source": {
+              "props.path": {
                 "binding": {
                   "config": {
                     "path": "view.params.image"
                   },
                   "transforms": [
                     {
-                      "code": "\treturn \u0027/system/images/\u0027 + value",
+                      "code": "\treturn value",
                       "type": "script"
                     }
                   ],
@@ -58,12 +58,7 @@
                 }
               }
             },
-            "props": {
-              "fit": {
-                "mode": "fill"
-              }
-            },
-            "type": "ia.display.image"
+            "type": "ia.display.icon"
           },
           {
             "meta": {

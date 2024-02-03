@@ -1,13 +1,13 @@
 {
   "custom": {
     "UVLight": true,
-    "airHumidity": "75",
-    "airTemperature": "30",
-    "irrigationPump": false,
+    "airHumidity": "61",
+    "airTemperature": "26",
+    "irrigationPump": true,
     "isTankEmpty": false,
-    "lightQuantity": "81",
+    "lightQuantity": "65",
     "name": "Stable",
-    "terrainHumidity": "0",
+    "terrainHumidity": "80",
     "ventilation": true
   },
   "params": {
@@ -299,28 +299,28 @@
               },
               "instances": [
                 {
-                  "icon": "Icons/thermostat.svg",
+                  "icon": "leafy/thermostat",
                   "instancePosition": {},
                   "instanceStyle": {
                     "classes": ""
                   }
                 },
                 {
-                  "icon": "Icons/water_pump_non_active.svg",
+                  "icon": "leafy/water_pump",
                   "instancePosition": {},
                   "instanceStyle": {
                     "classes": ""
                   }
                 },
                 {
-                  "icon": "Icons/air.svg",
+                  "icon": "leafy/air",
                   "instancePosition": {},
                   "instanceStyle": {
                     "classes": ""
                   }
                 },
                 {
-                  "icon": "Icons/sun_non_active.svg",
+                  "icon": "leafy/sun",
                   "instancePosition": {},
                   "instanceStyle": {
                     "classes": ""
@@ -366,13 +366,13 @@
     "props": {
       "direction": "column",
       "style": {
-        "backgroundColor": "#CDB59F",
+        "background": "linear-gradient(145deg, #b9a38f, #dbc2aa)",
         "borderBottomLeftRadius": "60px",
         "borderBottomRightRadius": "60px",
         "borderStyle": "none",
         "borderTopLeftRadius": "60px",
         "borderTopRightRadius": "60px",
-        "boxShadow": "8px 7px 6px 2px rgba(123,122,121,0.64)",
+        "boxShadow": "20px 20px 60px #ae9a87,\n             -20px -20px 60px #ecd0b7",
         "color": "#62584E",
         "cursor": "pointer"
       }

@@ -1,3 +1,11 @@
+from frwk.db.classes import *
+
+input_sensors_table = DBObject(frwk.db.constants.Tables.INPUT_SENSORS)
+output_actuators_table = DBObject(frwk.db.constants.Tables.OUTPUT_ACTUATORS)
+presets_table = DBObject(frwk.db.constants.Tables.PRESETS)
+stages_table = DBObject(frwk.db.constants.Tables.STAGES)
+
+
 def log_input_sensors(greenhouse_id, air_hum, air_temp, light_quantity, terrain_hum, is_tank_empty):
 	"""
 	Saves input sensor data into the database.
@@ -26,16 +34,9 @@ def log_input_sensors(greenhouse_id, air_hum, air_temp, light_quantity, terrain_
 		'terrainHum': terrain_hum,
 		'timeStamp': system.date.now()
 	}
-	
-	try:
-		system.db.runNamedQuery('InsertIntoINPUT_SENSORS', params)
-		return True
-	except:
-		import traceback
-		core.utils.logger.exc('log_input_sensors', traceback.format_exc())
-		return False
-		
-		
+	input_sensors_table._insert(params)
+
+
 def log_output_actuators(greenhouse_id, irrigation_pump, uv_light, ventilation):
 	"""
 	Saves output actuator data into the database.
@@ -59,14 +60,8 @@ def log_output_actuators(greenhouse_id, irrigation_pump, uv_light, ventilation):
 		'ventilation': ventilation,
 		'timeStamp': system.date.now()
 	}
-	try:
-		system.db.runNamedQuery('InsertIntoOUTPUT_ACTUATORS', params)
-		return True
-	except:
-		import traceback
-		core.utils.logger.exc('log_input_sensors', traceback.format_exc())
-		return False
-	
+	output_actuators_table._insert(params)
+
 
 def get_sensors_data(greenhouse_id, start_date, end_date):
 	"""
@@ -83,19 +78,10 @@ def get_sensors_data(greenhouse_id, start_date, end_date):
 	Notes:
 	    This function retrieves sensor data from the database for a specific greenhouse within the specified date range. It returns the data as a list of records in PyDataSet format. If an error occurs during data retrieval, it logs the error and returns None.
 	"""
-	params = {
-		'greenHouseId': greenhouse_id,
-		'startDate': start_date,
-		'endDate': end_date
-	}
-	try:
-		return system.dataset.toPyDataSet(system.db.runNamedQuery('Select/GetSensorData', params))
-	except:
-		import traceback
-		core.utils.logger.exc('log_input_sensors', traceback.format_exc())
-		return 
-	
-	
+	where = "timeStamp BETWEEN ? AND ? AND greenHouseId = ?"
+	return system.dataset.toPyDataSet(input_sensors_table._get(where, [start_date, end_date, greenhouse_id]))	
+
+
 def get_actuators_data(greenhouse_id, start_date, end_date):
 	"""
     Retrieves actuator data from the database for a specified greenhouse within a given date range.
@@ -111,18 +97,9 @@ def get_actuators_data(greenhouse_id, start_date, end_date):
     Notes:
         This function retrieves actuator data from the database for a specific greenhouse within the specified date range. It returns the data as a list of records in PyDataSet format. If an error occurs during data retrieval, it logs the error and returns None.
     """
-	params = {
-		'greenHouseId': greenhouse_id,
-		'startDate': start_date,
-		'endDate': end_date
-	}	
-	try:
-		return system.dataset.toPyDataSet(system.db.runNamedQuery('Select/GetActuatorsData', params))
-	except:
-		import traceback
-		core.utils.logger.exc('log_input_sensors', traceback.format_exc())
-		return
-	
+	where = "timeStamp BETWEEN ? AND ? AND greenHouseId = ?"
+	return system.dataset.toPyDataSet(output_actuators_table._get(where, [start_date, end_date, greenhouse_id]))
+
 
 def insert_new_preset(description, preset_name, preset_id):
 	"""
@@ -143,16 +120,15 @@ def insert_new_preset(description, preset_name, preset_id):
 		INSERT INTO presets (description, name, presetId) 
 		VALUES (?,?,?)
 	"""
-	args = [description, preset_name, preset_id]
-	try:
-		system.db.runPrepUpdate(query, args)
-		return True
-	except:
-		import traceback
-		core.utils.logger.exc('insert_new_preset', traceback.format_exc()) 
-		return False 
+	values = {
+		'description': description,
+		'name': preset_name,
+		'presetId': preset_id
+	}
 	
-	
+	presets_table._insert(values)
+
+
 def insert_new_stage(end_time, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_time):
 	"""
 	Inserts a new stage record into the database with specified parameters.
@@ -173,15 +149,14 @@ def insert_new_stage(end_time, high_setpoint, is_temp, low_setpoint, parameter_n
 	Notes:
 	    This function inserts a new stage record into the database with the provided parameters. 
 	"""
-	query = """
-		INSERT INTO stages (endTime, highSetpoint, isTemp, lowSetpoint, parameterName, presetId, stageNumber, startTime) 
-		VALUES (?,?,?,?,?,?,?,?)
-	"""
-	args = [end_time, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_time]
-	try:
-		system.db.runPrepUpdate(query, args)
-		return True
-	except:
-		import traceback
-		core.utils.logger.exc('insert_new_stage', traceback.format_exc()) 
-		return False
+	values = {
+		'endTime': end_time,
+		'highSetpoint': high_setpoint,
+		'isTemp': is_temp,
+		'lowSetpoint': low_setpoint,
+		'parameterName': parameter_name,
+		'presetId': preset_id,
+		'stageNumber': stage_number,
+		'startTime': start_time
+	}
+	stages_table._insert(values)

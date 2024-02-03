@@ -1,5 +1,5 @@
 from core.utils.testing.decorator import *
-
+from core.greenhouse.classes import Actuators, Sensors
 
 #@timed
 def day_avg(parameter_name, greenhouse_id, year, month, day):
@@ -19,9 +19,9 @@ def day_avg(parameter_name, greenhouse_id, year, month, day):
 	start_date = system.date.getDate(year, month, day)
 	end_date = system.date.getDate(year, month, day+1)
 	system.date.addMillis(end_date, -1)
-	if parameter_name in ['IrrigationPump', 'UVLight', 'Ventilation']:
+	if parameter_name in [Actuators.IRRIGATION, Actuators.UV_LIGHT, Actuators.VENTILATION]:
 		return day_avg_actuators(parameter_name, greenhouse_id, start_date, end_date)
-	elif parameter_name in ['AirHumidity', 'AirTemperature', 'AirQuantity', 'TerrainHumidity']:
+	elif parameter_name in [Sensors.AIR_HUM, Sensors.AIR_TEMP, Sensors.LIGHT_QUANTITY, Sensors.TERRAIN_HUM]:
 		return day_avg_sensors(parameter_name, greenhouse_id, start_date, end_date)
 	else:
 		core.utils.logger.err('core.greenhouse.statistics.day_avg', 'parameter not recognized')

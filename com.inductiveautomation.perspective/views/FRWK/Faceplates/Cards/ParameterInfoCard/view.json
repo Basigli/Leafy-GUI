@@ -4,17 +4,17 @@
       "$": [
         "ts",
         192,
-        1701879030437
+        1706967973170
       ],
-      "$ts": 1701879030437
+      "$ts": 1706967973170
     },
     "startDate": {
       "$": [
         "ts",
         192,
-        1701879030439
+        1706967973178
       ],
-      "$ts": 1701734400000
+      "$ts": 1706832000000
     }
   },
   "params": {
@@ -307,7 +307,7 @@
           },
           "transforms": [
             {
-              "code": "\treturn \u0027-11px 9px 6px 1px rgba(53,53,52,0.32)\u0027 if value else \u002711px 9px 6px 1px rgba(53,53,52,0.32)\u0027",
+              "code": "\treturn \u0027-10px 10px 30px #a9a9a9, 10px -10px 30px #e5e5e5\u0027 if value else \u002710px 10px 30px #a9a9a9, -10px -10px 30px #e5e5e5\u0027",
               "type": "script"
             }
           ],
@@ -329,7 +329,7 @@
         "borderBottomLeftRadius": "200px",
         "borderBottomRightRadius": "200px",
         "cursor": "pointer",
-        "opacity": "1,00"
+        "opacity": 1
       }
     },
     "type": "ia.container.flex"
