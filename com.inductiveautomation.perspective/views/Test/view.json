@@ -1,0 +1,183 @@
+{
+  "custom": {},
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 422
+    }
+  },
+  "root": {
+    "children": [
+      {
+        "meta": {
+          "name": "Progress"
+        },
+        "position": {
+          "basis": "20px"
+        },
+        "props": {
+          "track": {
+            "style": {
+              "borderBottomLeftRadius": "0px",
+              "borderBottomRightRadius": "0px",
+              "borderTopLeftRadius": "0px",
+              "borderTopRightRadius": "0px"
+            }
+          }
+        },
+        "type": "ia.display.progress"
+      },
+      {
+        "meta": {
+          "name": "Slider"
+        },
+        "position": {
+          "basis": "32px"
+        },
+        "props": {
+          "value": 48
+        },
+        "type": "ia.input.slider"
+      },
+      {
+        "meta": {
+          "name": "HorizontalMenu"
+        },
+        "position": {
+          "basis": "46px"
+        },
+        "props": {
+          "items": [
+            {
+              "enabled": true,
+              "icon": {
+                "path": ""
+              },
+              "items": [
+                {
+                  "enabled": true,
+                  "icon": {
+                    "color": "",
+                    "path": "material/link"
+                  },
+                  "items": [],
+                  "label": "Link to Google",
+                  "style": {
+                    "classes": ""
+                  },
+                  "target": "http://www.google.com"
+                }
+              ],
+              "label": "Menu Item",
+              "style": {
+                "classes": ""
+              },
+              "target": ""
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "color": "",
+                "path": "material/link"
+              },
+              "items": [],
+              "label": "Link to Google",
+              "style": {
+                "classes": ""
+              },
+              "target": "http://www.google.com"
+            },
+            {
+              "enabled": false,
+              "icon": {
+                "path": ""
+              },
+              "items": [],
+              "label": "Disabled Menu Item",
+              "style": {
+                "classes": ""
+              },
+              "target": ""
+            },
+            {
+              "enabled": true,
+              "icon": {
+                "path": ""
+              },
+              "items": [],
+              "label": "Last Menu Item",
+              "style": {
+                "classes": ""
+              },
+              "target": ""
+            }
+          ]
+        },
+        "type": "ia.navigation.horizontalmenu"
+      },
+      {
+        "meta": {
+          "name": "LinearScale"
+        },
+        "position": {
+          "basis": "318px"
+        },
+        "props": {
+          "indicators": [
+            {
+              "color": "",
+              "extent": 15,
+              "indicatorStyle": "range",
+              "label": "High",
+              "labelAngle": 270,
+              "labelColor": "",
+              "length": 25,
+              "opacity": 0.4,
+              "stroke": 1.5,
+              "value": 85
+            },
+            {
+              "color": "",
+              "extent": 2,
+              "indicatorStyle": "wedge",
+              "label": "Low",
+              "labelAngle": 270,
+              "labelColor": "",
+              "length": 25,
+              "opacity": 1,
+              "stroke": 2,
+              "value": 20
+            }
+          ]
+        },
+        "type": "ia.display.linear-scale"
+      },
+      {
+        "meta": {
+          "name": "MovingAnalogIndicator"
+        },
+        "position": {
+          "basis": "223px"
+        },
+        "props": {
+          "desiredHigh": 65,
+          "desiredLow": 40,
+          "highAlarm": 90,
+          "highHighAlarm": null,
+          "highInterlock": null,
+          "lowAlarm": 10,
+          "lowInterlock": null,
+          "lowLowAlarm": null
+        },
+        "type": "ia.display.moving-analog-indicator"
+      }
+    ],
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column"
+    },
+    "type": "ia.container.flex"
+  }
+}

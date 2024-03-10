@@ -6,6 +6,9 @@
       },
       {
         "id": "2"
+      },
+      {
+        "id": "3"
       }
     ]
   },
@@ -30,8 +33,8 @@
   },
   "props": {
     "defaultSize": {
-      "height": 733,
-      "width": 405
+      "height": 802,
+      "width": 624
     }
   },
   "root": {

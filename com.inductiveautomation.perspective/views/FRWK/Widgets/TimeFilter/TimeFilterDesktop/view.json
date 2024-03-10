@@ -30,8 +30,8 @@
   },
   "props": {
     "defaultSize": {
-      "height": 99,
-      "width": 869
+      "height": 94,
+      "width": 400
     }
   },
   "root": {
@@ -90,7 +90,13 @@
               }
             },
             "props": {
-              "formattedValue": "Aug 10, 2023 12:00 AM"
+              "formattedValue": "10 ago 2023 00:00",
+              "style": {
+                "borderBottomLeftRadius": "borderRadiusDefault",
+                "borderBottomRightRadius": "borderRadiusDefault",
+                "borderTopLeftRadius": "borderRadiusDefault",
+                "borderTopRightRadius": "borderRadiusDefault"
+              }
             },
             "type": "ia.input.date-time-input"
           },
@@ -130,7 +136,7 @@
               }
             },
             "props": {
-              "formattedValue": "Aug 17, 2023 12:00 AM"
+              "formattedValue": "17 ago 2023 00:00"
             },
             "type": "ia.input.date-time-input"
           }

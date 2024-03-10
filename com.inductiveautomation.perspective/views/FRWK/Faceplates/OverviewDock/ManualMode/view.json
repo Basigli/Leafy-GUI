@@ -1,8 +1,8 @@
 {
   "custom": {
-    "UVLight": true,
+    "UVLight": false,
     "irrigationPump": false,
-    "ventilation": true
+    "ventilation": false
   },
   "params": {
     "id": 1
@@ -16,7 +16,7 @@
           "references": {
             "id": "{view.params.id}"
           },
-          "tagPath": "[default]GreenHouses/{id}/UVLight"
+          "tagPath": "[default]GreenHouses/{id}/Actuators/UVLight"
         },
         "type": "tag"
       },
@@ -30,7 +30,7 @@
           "references": {
             "id": "{view.params.id}"
           },
-          "tagPath": "[default]GreenHouses/{id}/IrrigationPump"
+          "tagPath": "[default]GreenHouses/{id}/Actuators/IrrigationPump"
         },
         "type": "tag"
       },
@@ -44,7 +44,7 @@
           "references": {
             "id": "{view.params.id}"
           },
-          "tagPath": "[default]GreenHouses/{id}/Ventilation"
+          "tagPath": "[default]GreenHouses/{id}/Actuators/Ventilation"
         },
         "type": "tag"
       },

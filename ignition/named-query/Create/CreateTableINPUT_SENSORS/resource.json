@@ -18,7 +18,7 @@
     "cacheEnabled": false,
     "database": "LeafyData",
     "fallbackEnabled": false,
-    "lastModificationSignature": "4cbcccc7d2f51fa04ad8209f6d7e8ac49e6cc04bd1617ad217b0ca09f1a9a388",
+    "lastModificationSignature": "54c1db0aa078ba1ee34baf95d0e92fdf5d93cc6f01751dc0a17d1661c64d316f",
     "permissions": [
       {
         "zone": "",
@@ -27,7 +27,7 @@
     ],
     "lastModification": {
       "actor": "external",
-      "timestamp": "2024-02-03T17:14:37Z"
+      "timestamp": "2024-02-09T15:55:57Z"
     }
   }
 }

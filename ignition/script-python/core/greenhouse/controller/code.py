@@ -1,3 +1,5 @@
+from core.greenhouse.classes import *
+
 def get_greenhouses():
 	"""
 	Retrieves a dictionary of greenhouse tags with greenhouse IDs as keys.
@@ -8,7 +10,7 @@ def get_greenhouses():
 	Notes:
 	    This function retrieves a dictionary of greenhouse tags, where each tag is associated with a specific greenhouse ID. The dictionary is typically used to map greenhouse IDs to their corresponding tags, providing a convenient way to access information about available greenhouses within the system.
 	"""
-	return frwk.framework.tags.get_formatted_tags('[default]GreenHouses')
+	return frwk.framework.tags.get_formatted_tags(GREENHOUSE_BASE_PATH)
 
 
 def log_greenhouses_input_sensors():
@@ -159,7 +161,8 @@ def write_tag(tag_path, value):
 	    This function is used to write a value to a specific tag in the system. It takes the tag's path as a string and the value to be written. 
 	    The function performs a blocking write operation to update the tag's value. It does not return any value.
 	"""
-	system.tag.writeBlocking(tag_path, [value])
+	res = system.tag.writeBlocking(tag_path, [value])
+	
 
 
 def turn_off(greenhouse_id, actuator_name):
@@ -180,9 +183,9 @@ def turn_off(greenhouse_id, actuator_name):
 	    """
 	greenhouse = get_greenhouse_from_id(str(greenhouse_id))
 	
-	actuator_tag_path = greenhouse[actuator_name].tag_path
+	actuator_tag_path = core.greenhouse.classes.get_actuators_path(greenhouse_id) + "/"+ str(actuator_name)
 	
-	if not greenhouse[actuator_name].get_value():
+	if not greenhouse['Actuators'][actuator_name].get_value():
 		return True
 	
 	try:
@@ -214,12 +217,12 @@ def turn_on(greenhouse_id, actuator_name):
 	"""
 	greenhouse = get_greenhouse_from_id(str(greenhouse_id))
 	
-	actuator_tag_path = greenhouse[actuator_name].tag_path
+	actuator_tag_path = core.greenhouse.classes.get_actuators_path(greenhouse_id) + "/"+ str(actuator_name)
 	
-	if greenhouse[actuator_name].get_value():
+	if greenhouse['Actuators'][actuator_name].get_value():
 		return True
 
-	if actuator_name == core.greenhouse.classes.Actuators.IRRIGATION and greenhouse[core.greenhouse.classes.Sensors.IS_TANK_EMPTY].get_value():
+	if actuator_name == core.greenhouse.classes.Actuators.IRRIGATION and greenhouse['Sensors'][core.greenhouse.classes.Sensors.IS_TANK_EMPTY].get_value():
 		return False
 	
 	try:
@@ -246,7 +249,9 @@ def get_all_formatted_greenhouse():
         It provides a convenient way to access and display information about all greenhouses within the system.
     """
 	greenhouses = get_greenhouses()
-	return [{'label': value['Name'].get_value(), 'value': value['Id'].get_value()} for key, value in greenhouses.items()]
+	print greenhouses
+	#return [{'label': value.get('Info').get('Name').get_value(), 'value': value.get('Info').get('Id').get_value()} for key, value in greenhouses.items()]
+	return [{'label': value['Info']['Name'].get_value(), 'value': value['Info']['Id'].get_value()} for key, value in greenhouses.items()]
 
 
 def create_or_override_tag(tag_path, name, value):
@@ -302,7 +307,7 @@ def greenhouse_auto_mode(greenhouse, greenhouse_id):
 	    It then retrieves the current stage and manages each actuator's parameters using the `parameter_handler` function. 
 	    This function is typically used to automate greenhouse operations based on predefined presets.
 	"""
-	current_preset_id = greenhouse['PresetId'].get_value()
+	current_preset_id = greenhouse['Info']['PresetId'].get_value()
 	current_preset = get_preset_from_id(current_preset_id)
 	stages = current_preset['Stages']
 	current_stage = get_current_stage(stages)
@@ -327,8 +332,8 @@ def get_auto_from_greenhouse(greenhouse_id):
 	    This function retrieves the 'Auto' status of a greenhouse by reading the corresponding tag based on its unique ID. 
 	    It returns a boolean value indicating whether the greenhouse is in auto mode (True) or manual mode (False). If an error occurs while reading the tag, it returns -1.
 	"""
-	base_path = '[default]GreenHouses/'
-	tag_path = base_path + str(greenhouse_id) + '/Auto'
+	tag_path = GREENHOUSE_BASE_PATH + '/' + str(greenhouse_id) + INFO_RELATIVE_PATH + '/Auto'
+	
 	try:
 		return system.tag.readBlocking(tag_path)[0].value
 	except:
@@ -349,8 +354,7 @@ def get_preset_id_from_greenhouse(greenhouse_id):
 	    This function retrieves the preset ID of a greenhouse by reading the corresponding tag based on its unique ID. 
 	    It returns an integer representing the preset ID associated with the greenhouse. If an error occurs while reading the tag or the preset ID is not found, it returns -1.
 	"""
-	base_path = '[default]GreenHouses/'
-	tag_path = base_path + str(greenhouse_id) + '/PresetId'
+	tag_path = GREENHOUSE_BASE_PATH + '/' + str(greenhouse_id) + INFO_RELATIVE_PATH + '/PresetId'
 	try:
 		return system.tag.readBlocking(tag_path)[0].value
 	except:
@@ -371,7 +375,7 @@ def greenhouses_auto_mode():
     """
 	greenhouses = get_greenhouses()
 	for greenhouse_id, greenhouse in greenhouses.items():
-		auto_mode = greenhouse['Auto'].get_value()
+		auto_mode = get_auto_from_greenhouse(greenhouse_id)
 		if auto_mode:
 			greenhouse_auto_mode(greenhouse, greenhouse_id)
 
@@ -390,7 +394,7 @@ def set_auto(greenhouse_id, is_auto):
 	"""
 	
 	greenhouse = get_greenhouse_from_id(greenhouse_id)
-	path = greenhouse['Auto'].tag_path
+	path = greenhouse['Info']['Auto'].tag_path
 	try:
 		write_tag(path, is_auto)
 		core.utils.logger.info('set_auto()', 'set auto mode to {} for greenhouse: {}'.format(is_auto, greenhouse_id))
@@ -711,7 +715,7 @@ def set_preset_to_greenhouse(preset_id, greenhouse_id):
 	"""
 	
 	greenhouse = get_greenhouse_from_id(greenhouse_id)
-	path = greenhouse['PresetId'].tag_path
+	path = greenhouse['Info']['PresetId'].tag_path
 	try:
 		write_tag(path, int(preset_id))
 		core.utils.logger.info('assign_preset_to_greenhouse()', 'assigned preset {} to greenhouse: {}'.format(is_auto, greenhouse_id))
@@ -763,7 +767,7 @@ def store_new_stage_to_db(stage_number, preset_id):
 		start_time = stage.get(parameter_name).get('StartTime').get_value()
 		frwk.db.database.insert_new_stage(end_time, high_setpoint, is_temp, low_setpoint, parameter_name, preset_id, stage_number, start_time)
 
-
+#---- Not working ----
 def read_param_from_tag(greenhouse_id, parameter_name):
 	"""
 	Reads the value of a parameter from the tag
@@ -776,5 +780,8 @@ def read_param_from_tag(greenhouse_id, parameter_name):
 		str / int / bool : the current value of said parameter
 	"""
 	greenhouse = get_greenhouse_from_id(str(greenhouse_id))
-	return greenhouse[parameter_name].get_value() 
+	try:
+		return greenhouse['Actuators'][parameter_name].get_value()
+	except:
+		return greenhouse['Sensors'][parameter_name].get_value()
 	

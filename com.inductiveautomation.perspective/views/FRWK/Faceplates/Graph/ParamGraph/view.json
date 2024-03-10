@@ -1,5 +1,6 @@
 {
   "custom": {
+    "dataSource": "histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/1/Sensors/terrainhumidity",
     "tagName": "terrainhumidity"
   },
   "params": {
@@ -7,12 +8,12 @@
       "$": [
         "ts",
         192,
-        1695994727511
+        1710064286910
       ],
-      "$ts": 1698310377000
+      "$ts": 1710669177000
     },
     "greenHouseId": 1,
-    "isInput": false,
+    "isInput": true,
     "lineColor": "value",
     "paramName": "terrainHum",
     "render": "line",
@@ -20,12 +21,32 @@
       "$": [
         "ts",
         192,
-        1693041263324
+        1710064295330
       ],
-      "$ts": 1693440000000
+      "$ts": 1706749200000
     }
   },
   "propConfig": {
+    "custom.dataSource": {
+      "binding": {
+        "config": {
+          "struct": {
+            "id": "{view.params.greenHouseId}",
+            "isInput": "{view.params.isInput}",
+            "paramName": "{view.custom.tagName}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\tif value.isInput:\n\t\treturn \u0027histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/\u0027 + str(value.id) + \u0027/Sensors/\u0027 + str(value.paramName)\n\telse:\n\t\treturn \u0027histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/\u0027 + str(value.id) + \u0027/Actuators/\u0027 + str(value.paramName)",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
     "custom.tagName": {
       "binding": {
         "config": {
@@ -92,19 +113,9 @@
           "props.pens[0].data.source": {
             "binding": {
               "config": {
-                "struct": {
-                  "id": "{view.params.greenHouseId}",
-                  "paramName": "{view.custom.tagName}"
-                },
-                "waitOnAll": true
+                "path": "view.custom.dataSource"
               },
-              "transforms": [
-                {
-                  "code": "\treturn \u0027histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/\u0027 + str(value.id) + \u0027/\u0027 + str(value.paramName)",
-                  "type": "script"
-                }
-              ],
-              "type": "expr-struct"
+              "type": "property"
             }
           },
           "props.pens[0].display.styles.highlighted.stroke.color": {
@@ -154,18 +165,18 @@
               "$": [
                 "ts",
                 0,
-                1696001173378
+                1710065639593
               ],
-              "$ts": 1696001161057
+              "$ts": 1710065624775
             },
             "rangeSelectorPen": "histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/1/ventilation",
             "rangeStartDate": {
               "$": [
                 "ts",
                 0,
-                1696001173378
+                1710065639593
               ],
-              "$ts": 1695997573057
+              "$ts": 1710062036775
             },
             "tagBrowserStartPath": "[default]GreenHouses/",
             "unitOfTime": 1,

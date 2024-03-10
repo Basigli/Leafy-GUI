@@ -80,7 +80,7 @@
         "$": [
           "ts",
           192,
-          1693247191972
+          1708619382054
         ],
         "$ts": 1692230400000
       },
@@ -89,7 +89,7 @@
           "$": [
             "ts",
             192,
-            1693247191972
+            1708619382054
           ],
           "$ts": 1692309600000
         },
@@ -100,7 +100,7 @@
           "$": [
             "ts",
             192,
-            1693247191972
+            1708619382054
           ],
           "$ts": 1692306000000
         }
@@ -109,7 +109,7 @@
         "$": [
           "ts",
           192,
-          1693247191972
+          1708619382054
         ],
         "$ts": 1691625600000
       },
@@ -118,7 +118,7 @@
           "$": [
             "ts",
             192,
-            1693247191972
+            1708619382054
           ],
           "$ts": 1692309600000
         },
@@ -129,7 +129,7 @@
           "$": [
             "ts",
             192,
-            1693247191972
+            1708619382054
           ],
           "$ts": 1693137600682
         }
@@ -139,7 +139,7 @@
           "$": [
             "ts",
             192,
-            1693247191972
+            1708619382054
           ],
           "$ts": 1692309600000
         },
@@ -150,7 +150,7 @@
           "$": [
             "ts",
             192,
-            1693247191972
+            1708619382054
           ],
           "$ts": 1692302400000
         }
@@ -253,7 +253,7 @@
   "props": {
     "defaultSize": {
       "height": 412,
-      "width": 985
+      "width": 813
     }
   },
   "root": {
@@ -261,50 +261,57 @@
       {
         "children": [
           {
+            "children": [
+              {
+                "meta": {
+                  "name": "Title"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "config": {
+                        "struct": {
+                          "locale": "{session.props.locale}",
+                          "stageNumber": "{view.params.stageNumber}"
+                        },
+                        "waitOnAll": true
+                      },
+                      "transforms": [
+                        {
+                          "code": "\treturn system.util.translate(\u0027@ui.text.stage@\u0027, value.locale) + \u0027 \u0027 + str(value.stageNumber)",
+                          "type": "script"
+                        }
+                      ],
+                      "type": "expr-struct"
+                    }
+                  }
+                },
+                "props": {
+                  "style": {
+                    "textAlign": "left"
+                  }
+                },
+                "type": "ia.display.label"
+              }
+            ],
             "meta": {
-              "name": "Title"
+              "name": "StageContainer"
             },
             "position": {
               "basis": "150px"
             },
-            "props": {
-              "style": {
-                "textAlign": "right"
-              },
-              "text": "@ui.text.stage@"
-            },
-            "type": "ia.display.label"
-          },
-          {
-            "meta": {
-              "name": "StageNumber"
-            },
-            "position": {
-              "basis": "50px"
-            },
-            "propConfig": {
-              "props.text": {
-                "binding": {
-                  "config": {
-                    "path": "view.params.stageNumber"
-                  },
-                  "type": "property"
-                }
-              }
-            },
-            "props": {
-              "style": {
-                "marginLeft": "10px"
-              }
-            },
-            "type": "ia.display.label"
+            "type": "ia.container.flex"
           },
           {
             "meta": {
               "name": "TimeFilter"
             },
             "position": {
-              "basis": "876px"
+              "grow": 1,
+              "shrink": 0
             },
             "propConfig": {
               "props.params.endDate": {
@@ -340,7 +347,8 @@
         },
         "props": {
           "style": {
-            "backgroundColor": "#D5D5D5"
+            "backgroundColor": "#D5D5D5",
+            "paddingLeft": "20px"
           }
         },
         "type": "ia.container.flex"
@@ -491,8 +499,15 @@
           }
         },
         "props": {
-          "alignItems": "center",
+          "alignItems": "flex-start",
           "direction": "column",
+          "elementPosition": {
+            "shrink": 0
+          },
+          "elementStyle": {
+            "marginLeft": "20px",
+            "marginRight": "20px"
+          },
           "instances": [
             {
               "instancePosition": {},
@@ -519,7 +534,9 @@
               "parameterNameUI": "@ui.params.UVLight@"
             }
           ],
-          "path": "FRWK/Widgets/Preset/ParameterPreset"
+          "path": "FRWK/Widgets/Preset/ParameterPreset",
+          "useDefaultViewHeight": false,
+          "useDefaultViewWidth": false
         },
         "type": "ia.display.flex-repeater"
       }

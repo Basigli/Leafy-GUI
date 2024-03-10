@@ -1,17 +1,6 @@
 {
   "custom": {
-    "greenhouses": [
-      {
-        "greenhouseId": 1,
-        "greenhouseName": "Stable",
-        "selected": true
-      },
-      {
-        "greenhouseId": 2,
-        "greenhouseName": "Main Testing",
-        "selected": false
-      }
-    ]
+    "greenhouses": null
   },
   "params": {
     "selectedId": 2

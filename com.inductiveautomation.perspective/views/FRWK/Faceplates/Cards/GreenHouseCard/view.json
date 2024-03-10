@@ -1,14 +1,14 @@
 {
   "custom": {
     "UVLight": true,
-    "airHumidity": "61",
-    "airTemperature": "26",
-    "irrigationPump": true,
-    "isTankEmpty": false,
-    "lightQuantity": "65",
-    "name": "Stable",
-    "terrainHumidity": "80",
-    "ventilation": true
+    "airHumidity": "50",
+    "airTemperature": "40",
+    "irrigationPump": false,
+    "isTankEmpty": 0,
+    "lightQuantity": "20",
+    "name": "Test MQTT",
+    "terrainHumidity": "57",
+    "ventilation": false
   },
   "params": {
     "id": 1
@@ -22,7 +22,7 @@
           "references": {
             "id": "{view.params.id}"
           },
-          "tagPath": "[default]GreenHouses/{id}/UVLight"
+          "tagPath": "[default]GreenHouses/{id}/Actuators/UVLight"
         },
         "type": "tag"
       },
@@ -36,7 +36,7 @@
           "references": {
             "id": "{view.params.id}"
           },
-          "tagPath": "[default]GreenHouses/{id}/AirHumidity"
+          "tagPath": "[default]GreenHouses/{id}/Sensors/AirHumidity"
         },
         "transforms": [
           {
@@ -57,7 +57,7 @@
           "references": {
             "id": "{view.params.id}"
           },
-          "tagPath": "[default]GreenHouses/{id}/AirTemperature"
+          "tagPath": "[default]GreenHouses/{id}/Sensors/AirTemperature"
         },
         "transforms": [
           {
@@ -78,7 +78,7 @@
           "references": {
             "id": "{view.params.id}"
           },
-          "tagPath": "[default]GreenHouses/{id}/IrrigationPump"
+          "tagPath": "[default]GreenHouses/{id}/Actuators/IrrigationPump"
         },
         "type": "tag"
       },
@@ -92,7 +92,7 @@
           "references": {
             "id": "{view.params.id}"
           },
-          "tagPath": "[default]GreenHouses/{id}/IsTankEmpty"
+          "tagPath": "[default]GreenHouses/{id}/Sensors/IsTankEmpty"
         },
         "type": "tag"
       },
@@ -106,7 +106,7 @@
           "references": {
             "id": "{view.params.id}"
           },
-          "tagPath": "[default]GreenHouses/{id}/LightQuantity"
+          "tagPath": "[default]GreenHouses/{id}/Sensors/LightQuantity"
         },
         "transforms": [
           {
@@ -127,7 +127,7 @@
           "references": {
             "id": "{view.params.id}"
           },
-          "tagPath": "[default]GreenHouses/{id}/Name"
+          "tagPath": "[default]GreenHouses/{id}/Info/Name"
         },
         "type": "tag"
       },
@@ -141,7 +141,7 @@
           "references": {
             "id": "{view.params.id}"
           },
-          "tagPath": "[default]GreenHouses/{id}/TerrainHumidity"
+          "tagPath": "[default]GreenHouses/{id}/Sensors/TerrainHumidity"
         },
         "transforms": [
           {
@@ -162,7 +162,7 @@
           "references": {
             "id": "{view.params.id}"
           },
-          "tagPath": "[default]GreenHouses/{id}/Ventilation"
+          "tagPath": "[default]GreenHouses/{id}/Actuators/Ventilation"
         },
         "type": "tag"
       },
@@ -300,6 +300,7 @@
               "instances": [
                 {
                   "icon": "leafy/thermostat",
+                  "iconColor": "#C93F49",
                   "instancePosition": {},
                   "instanceStyle": {
                     "classes": ""
@@ -307,6 +308,7 @@
                 },
                 {
                   "icon": "leafy/water_pump",
+                  "iconColor": "#002060",
                   "instancePosition": {},
                   "instanceStyle": {
                     "classes": ""
@@ -314,6 +316,7 @@
                 },
                 {
                   "icon": "leafy/air",
+                  "iconColor": "#DAE3F3",
                   "instancePosition": {},
                   "instanceStyle": {
                     "classes": ""
@@ -321,6 +324,7 @@
                 },
                 {
                   "icon": "leafy/sun",
+                  "iconColor": "#F4F183",
                   "instancePosition": {},
                   "instanceStyle": {
                     "classes": ""

@@ -1,14 +1,14 @@
 {
   "custom": {
-    "UVLight": true,
-    "airHumidity": "61",
-    "airTemperature": "26",
-    "irrigationPump": true,
-    "isTankEmpty": false,
-    "lightQuantity": "65",
-    "name": "Stable",
-    "terrainHumidity": "80",
-    "ventilation": true
+    "UVLight": false,
+    "airHumidity": "50",
+    "airTemperature": "40",
+    "irrigationPump": false,
+    "isTankEmpty": 0,
+    "lightQuantity": "20",
+    "name": "Test MQTT",
+    "terrainHumidity": "54",
+    "ventilation": false
   },
   "params": {
     "greenHouseId": 1
@@ -22,7 +22,7 @@
           "references": {
             "greenHouseId": "{view.params.greenHouseId}"
           },
-          "tagPath": "[default]GreenHouses/{greenHouseId}/UVLight"
+          "tagPath": "[default]GreenHouses/{greenHouseId}/Actuators/UVLight"
         },
         "type": "tag"
       },
@@ -36,7 +36,7 @@
           "references": {
             "greenHouseId": "{view.params.greenHouseId}"
           },
-          "tagPath": "[default]GreenHouses/{greenHouseId}/AirHumidity"
+          "tagPath": "[default]GreenHouses/{greenHouseId}/Sensors/AirHumidity"
         },
         "transforms": [
           {
@@ -57,7 +57,7 @@
           "references": {
             "greenHouseId": "{view.params.greenHouseId}"
           },
-          "tagPath": "[default]GreenHouses/{greenHouseId}/AirTemperature"
+          "tagPath": "[default]GreenHouses/{greenHouseId}/Sensors/AirTemperature"
         },
         "transforms": [
           {
@@ -78,7 +78,7 @@
           "references": {
             "greenHouseId": "{view.params.greenHouseId}"
           },
-          "tagPath": "[default]GreenHouses/{greenHouseId}/IrrigationPump"
+          "tagPath": "[default]GreenHouses/{greenHouseId}/Actuators/IrrigationPump"
         },
         "type": "tag"
       },
@@ -92,7 +92,7 @@
           "references": {
             "greenHouseId": "{view.params.greenHouseId}"
           },
-          "tagPath": "[default]GreenHouses/{greenHouseId}/IsTankEmpty"
+          "tagPath": "[default]GreenHouses/{greenHouseId}/Sensors/IsTankEmpty"
         },
         "type": "tag"
       },
@@ -106,7 +106,7 @@
           "references": {
             "greenHouseId": "{view.params.greenHouseId}"
           },
-          "tagPath": "[default]GreenHouses/{greenHouseId}/LightQuantity"
+          "tagPath": "[default]GreenHouses/{greenHouseId}/Sensors/LightQuantity"
         },
         "transforms": [
           {
@@ -127,7 +127,7 @@
           "references": {
             "greenHouseId": "{view.params.greenHouseId}"
           },
-          "tagPath": "[default]GreenHouses/{greenHouseId}/Name"
+          "tagPath": "[default]GreenHouses/{greenHouseId}/Info/Name"
         },
         "type": "tag"
       },
@@ -141,7 +141,7 @@
           "references": {
             "greenHouseId": "{view.params.greenHouseId}"
           },
-          "tagPath": "[default]GreenHouses/{greenHouseId}/TerrainHumidity"
+          "tagPath": "[default]GreenHouses/{greenHouseId}/Sensors/TerrainHumidity"
         },
         "transforms": [
           {
@@ -162,7 +162,7 @@
           "references": {
             "greenHouseId": "{view.params.greenHouseId}"
           },
-          "tagPath": "[default]GreenHouses/{greenHouseId}/Ventilation"
+          "tagPath": "[default]GreenHouses/{greenHouseId}/Actuators/Ventilation"
         },
         "type": "tag"
       },

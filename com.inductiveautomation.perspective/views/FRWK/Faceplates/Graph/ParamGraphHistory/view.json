@@ -1,5 +1,6 @@
 {
   "custom": {
+    "dataSource": "histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/1/Actuators/terrainhumidity",
     "tagName": "terrainhumidity"
   },
   "params": {
@@ -26,6 +27,26 @@
     }
   },
   "propConfig": {
+    "custom.dataSource": {
+      "binding": {
+        "config": {
+          "struct": {
+            "id": "{view.params.greenHouseId}",
+            "isInput": "{view.params.isInput}",
+            "paramName": "{view.custom.tagName}"
+          },
+          "waitOnAll": true
+        },
+        "transforms": [
+          {
+            "code": "\tif value.isInput:\n\t\treturn \u0027histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/\u0027 + str(value.id) + \u0027/Sensors/\u0027 + str(value.paramName)\n\telse:\n\t\treturn \u0027histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/\u0027 + str(value.id) + \u0027/Actuators/\u0027 + str(value.paramName)",
+            "type": "script"
+          }
+        ],
+        "type": "expr-struct"
+      },
+      "persistent": true
+    },
     "custom.tagName": {
       "binding": {
         "config": {
@@ -124,19 +145,9 @@
           "props.pens[0].data.source": {
             "binding": {
               "config": {
-                "struct": {
-                  "id": "{view.params.greenHouseId}",
-                  "paramName": "{view.custom.tagName}"
-                },
-                "waitOnAll": true
+                "path": "view.custom.dataSource"
               },
-              "transforms": [
-                {
-                  "code": "\treturn \u0027histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/\u0027 + str(value.id) + \u0027/\u0027 + str(value.paramName)",
-                  "type": "script"
-                }
-              ],
-              "type": "expr-struct"
+              "type": "property"
             }
           },
           "props.pens[0].display.styles.highlighted.stroke.color": {

@@ -1,3 +1,18 @@
+GREENHOUSE_BASE_PATH = '[default]GreenHouses'
+ACTUATORS_RELATIVE_PATH = '/Actuators'
+SENSORS_RELATIVE_PATH = '/Sensors'
+INFO_RELATIVE_PATH = '/Info'
+
+
+def get_actuators_path(greenhouse_id):
+	return GREENHOUSE_BASE_PATH + '/%s'%(greenhouse_id) + ACTUATORS_RELATIVE_PATH
+
+
+def get_sensors_path(greenhouse_id):
+	return GREENHOUSE_BASE_PATH + '/%s'%(greenhouse_id) + SENSORS_RELATIVE_PATH
+
+
+
 class Actuators():
 	IRRIGATION = 'IrrigationPump'
 	UV_LIGHT = 'UVLight'
@@ -10,6 +25,19 @@ class Sensors():
 	IS_TANK_EMPTY = 'IsTankEmpty'
 	LIGHT_QUANTITY = 'LightQuantity'
 	TERRAIN_HUM = 'TerrainHumidity'
+
+
+class MeasureUnit():
+	CELSIUS = '°C'
+	PERC = '%'
+
+MeasureUnitForSensor = {
+	Sensors.AIR_HUM: MeasureUnit.PERC,
+	Sensors.AIR_TEMP: MeasureUnit.CELSIUS,
+	Sensors.IS_TANK_EMPTY: None,
+	Sensors.LIGHT_QUANTITY: MeasureUnit.PERC,
+	Sensors.TERRAIN_HUM: MeasureUnit.PERC
+}
 
 
 SensorForActuator = {
@@ -44,15 +72,14 @@ TagNamesToDB = {
 
 
 class Parameter():
-	def __init__(self, name, value ):
+	def __init__(self, name, value, measure_unit):
 		self.name = name
 		self.value = value
+		self.measure_unit = measure_unit
+
 
 
 class Greenhouse():
-	def __init__(self, id, name):
+	def __init__(self, id):
 		self.id = id
-		self.name = name
-	
-	def to_payload(self):
-		return {'id': self.id, 'name': self.name}
+		self.name = system.tag.readBlocking(tagPaths)[0].getValue()

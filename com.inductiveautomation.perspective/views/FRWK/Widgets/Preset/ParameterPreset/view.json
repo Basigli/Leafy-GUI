@@ -26,6 +26,7 @@
     "highSetpoint": "",
     "isTemp": false,
     "lowSetpoint": "",
+    "measureUnit": "°",
     "parameterName": "value",
     "parameterNameUI": "@ui.params.ventilation@",
     "startTime": {
@@ -72,6 +73,10 @@
       "paramDirection": "output",
       "persistent": true
     },
+    "params.measureUnit": {
+      "paramDirection": "input",
+      "persistent": true
+    },
     "params.parameterName": {
       "paramDirection": "input",
       "persistent": true
@@ -98,7 +103,8 @@
           "name": "Parameter"
         },
         "position": {
-          "basis": "127px"
+          "basis": "120px",
+          "shrink": 0
         },
         "propConfig": {
           "props.text": {
@@ -122,7 +128,8 @@
           "name": "StartTime"
         },
         "position": {
-          "basis": "170px"
+          "basis": "170px",
+          "shrink": 0
         },
         "propConfig": {
           "props.enabled": {
@@ -196,7 +203,8 @@
           "name": "EndTime"
         },
         "position": {
-          "basis": "170px"
+          "basis": "170px",
+          "shrink": 0
         },
         "propConfig": {
           "props.enabled": {
@@ -362,8 +370,7 @@
       "name": "root"
     },
     "props": {
-      "alignItems": "center",
-      "justify": "center"
+      "alignItems": "center"
     },
     "type": "ia.container.flex"
   }

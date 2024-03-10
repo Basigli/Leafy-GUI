@@ -39,7 +39,7 @@
               "name": "Icon"
             },
             "position": {
-              "basis": "100px",
+              "basis": "80px",
               "shrink": 0
             },
             "propConfig": {
@@ -56,6 +56,12 @@
                   ],
                   "type": "property"
                 }
+              }
+            },
+            "props": {
+              "style": {
+                "marginLeft": "10px",
+                "marginRight": "10px"
               }
             },
             "type": "ia.display.icon"
