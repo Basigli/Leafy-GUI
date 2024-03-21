@@ -7,7 +7,7 @@
     "isTankEmpty": 0,
     "lightQuantity": "20",
     "name": "Test MQTT",
-    "terrainHumidity": "54",
+    "terrainHumidity": "46",
     "ventilation": false
   },
   "params": {

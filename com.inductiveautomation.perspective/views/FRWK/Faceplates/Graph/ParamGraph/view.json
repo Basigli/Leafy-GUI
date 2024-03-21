@@ -165,18 +165,18 @@
               "$": [
                 "ts",
                 0,
-                1710065639593
+                1710340717432
               ],
-              "$ts": 1710065624775
+              "$ts": 1710340705175
             },
             "rangeSelectorPen": "histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/1/ventilation",
             "rangeStartDate": {
               "$": [
                 "ts",
                 0,
-                1710065639593
+                1710340717432
               ],
-              "$ts": 1710062036775
+              "$ts": 1710337117175
             },
             "tagBrowserStartPath": "[default]GreenHouses/",
             "unitOfTime": 1,

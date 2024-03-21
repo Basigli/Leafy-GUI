@@ -18,7 +18,3 @@ def tank_empty_alert(greenhouse_id):
 	print("Type: %s, Value: %s " % (type(message), message))
 	text = "Greenhouse %s: The tank is empty. Irrigation has been paused. Refill the tank to resume operation" % greenhouse_id
 	bot.sendMessage(chat_id=chat_id, text=text)
-	
-
-
-

@@ -1,6 +1,6 @@
 {
   "custom": {
-    "dataSource": "histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/1/Actuators/terrainhumidity",
+    "dataSource": "histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/1/Sensors/terrainhumidity",
     "tagName": "terrainhumidity"
   },
   "params": {
@@ -8,12 +8,12 @@
       "$": [
         "ts",
         192,
-        1696001468341
+        1710333781004
       ],
-      "$ts": 1696063977000
+      "$ts": 1710323577000
     },
     "greenHouseId": 1,
-    "isInput": false,
+    "isInput": true,
     "lineColor": "value",
     "paramName": "terrainHum",
     "render": "line",
@@ -21,9 +21,9 @@
       "$": [
         "ts",
         192,
-        1696001456949
+        1710333768197
       ],
-      "$ts": 1695859200000
+      "$ts": 1710205200000
     }
   },
   "propConfig": {
@@ -209,6 +209,7 @@
         },
         "props": {
           "config": {
+            "measureOfTime": "weeks",
             "rangeSelectorPen": "histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/1/terrainhumidity",
             "tagBrowserStartPath": "[default]GreenHouses/",
             "unitOfTime": 1,
@@ -232,7 +233,7 @@
               },
               "display": {
                 "breakLine": true,
-                "interpolation": "curveLinear",
+                "interpolation": "curveBasis",
                 "radius": 3,
                 "styles": {
                   "highlighted": {

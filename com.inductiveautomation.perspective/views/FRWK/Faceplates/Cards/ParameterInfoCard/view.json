@@ -4,17 +4,17 @@
       "$": [
         "ts",
         192,
-        1710063784606
+        1710341431738
       ],
-      "$ts": 1710063784605
+      "$ts": 1710341431738
     },
     "startDate": {
       "$": [
         "ts",
         192,
-        1710063784606
+        1710341431743
       ],
-      "$ts": 1709942400000
+      "$ts": 1710201600000
     }
   },
   "params": {
@@ -242,7 +242,7 @@
             "modal": true,
             "overlayDismiss": true,
             "resizable": false,
-            "showCloseIcon": true,
+            "showCloseIcon": false,
             "type": "open",
             "viewParams": {
               "endDate": "{view.custom.endDate}",

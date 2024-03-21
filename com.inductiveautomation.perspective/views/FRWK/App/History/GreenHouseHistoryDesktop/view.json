@@ -246,7 +246,7 @@
               },
               {
                 "meta": {
-                  "name": "TerrainHumGraph"
+                  "name": "TankGraph"
                 },
                 "position": {
                   "basis": "320px"
@@ -279,9 +279,10 @@
                 },
                 "props": {
                   "params": {
-                    "isInput": true,
-                    "lineColor": "#A54C1F",
-                    "paramName": "terrainHum"
+                    "isInput": false,
+                    "lineColor": "#767171",
+                    "paramName": "isTankEmpty",
+                    "render": "step line"
                   },
                   "path": "FRWK/Faceplates/Graph/ParamGraphHistory"
                 },
@@ -390,50 +391,6 @@
               },
               {
                 "meta": {
-                  "name": "TankGraph"
-                },
-                "position": {
-                  "basis": "320px"
-                },
-                "propConfig": {
-                  "props.params.endDate": {
-                    "binding": {
-                      "config": {
-                        "path": "view.custom.endDate"
-                      },
-                      "type": "property"
-                    }
-                  },
-                  "props.params.greenHouseId": {
-                    "binding": {
-                      "config": {
-                        "path": "view.params.id"
-                      },
-                      "type": "property"
-                    }
-                  },
-                  "props.params.startDate": {
-                    "binding": {
-                      "config": {
-                        "path": "view.custom.startDate"
-                      },
-                      "type": "property"
-                    }
-                  }
-                },
-                "props": {
-                  "params": {
-                    "isInput": false,
-                    "lineColor": "#767171",
-                    "paramName": "isTankEmpty",
-                    "render": "step line"
-                  },
-                  "path": "FRWK/Faceplates/Graph/ParamGraphHistory"
-                },
-                "type": "ia.display.view"
-              },
-              {
-                "meta": {
                   "name": "LightGraph"
                 },
                 "position": {
@@ -470,6 +427,49 @@
                     "isInput": true,
                     "lineColor": "#EDAF01",
                     "paramName": "lightQuantity"
+                  },
+                  "path": "FRWK/Faceplates/Graph/ParamGraphHistory"
+                },
+                "type": "ia.display.view"
+              },
+              {
+                "meta": {
+                  "name": "TerrainHumGraph"
+                },
+                "position": {
+                  "basis": "320px"
+                },
+                "propConfig": {
+                  "props.params.endDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.endDate"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.greenHouseId": {
+                    "binding": {
+                      "config": {
+                        "path": "view.params.id"
+                      },
+                      "type": "property"
+                    }
+                  },
+                  "props.params.startDate": {
+                    "binding": {
+                      "config": {
+                        "path": "view.custom.startDate"
+                      },
+                      "type": "property"
+                    }
+                  }
+                },
+                "props": {
+                  "params": {
+                    "isInput": true,
+                    "lineColor": "#A54C1F",
+                    "paramName": "terrainHum"
                   },
                   "path": "FRWK/Faceplates/Graph/ParamGraphHistory"
                 },

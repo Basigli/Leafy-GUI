@@ -3,7 +3,8 @@
   "params": {},
   "props": {
     "defaultSize": {
-      "width": 422
+      "height": 866,
+      "width": 636
     }
   },
   "root": {
@@ -170,6 +171,328 @@
           "lowLowAlarm": null
         },
         "type": "ia.display.moving-analog-indicator"
+      },
+      {
+        "meta": {
+          "name": "CylindricalTank"
+        },
+        "position": {
+          "basis": "117px"
+        },
+        "props": {
+          "style": {
+            "paddingLeft": "100px",
+            "paddingRight": "100px"
+          }
+        },
+        "type": "ia.display.cylindrical-tank"
+      },
+      {
+        "meta": {
+          "name": "PowerChart"
+        },
+        "position": {
+          "basis": "600px"
+        },
+        "props": {
+          "config": {
+            "rangeEndDate": {
+              "$": [
+                "ts",
+                0,
+                1711017211998
+              ],
+              "$ts": 1711017114661
+            },
+            "rangeStartDate": {
+              "$": [
+                "ts",
+                0,
+                1711017211998
+              ],
+              "$ts": 1710988410661
+            }
+          },
+          "interaction": {
+            "chartZoomLevel": 1,
+            "rangeZoomLevel": 1
+          },
+          "pens": [
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/1/sensors/airtemperature"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#63BEA2",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#63BEA2",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "airtemperature",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/1/sensors/lightquantity"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#FC8D62",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FC8D62",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#FC8D62",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#FC8D62",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#FC8D62",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#FC8D62",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#FC8D62",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#FC8D62",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "lightquantity",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/1/sensors/terrainhumidity"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#8DA0CB",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#8DA0CB",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#8DA0CB",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#8DA0CB",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#8DA0CB",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#8DA0CB",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#8DA0CB",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#8DA0CB",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "terrainhumidity",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            },
+            {
+              "axis": "",
+              "data": {
+                "aggregateMode": "default",
+                "source": "histprov:LeafyData:/drv:ignition-desktop-sl4satr:default:/tag:greenhouses/1/sensors/airhumidity"
+              },
+              "display": {
+                "breakLine": true,
+                "interpolation": "curveLinear",
+                "radius": 3,
+                "styles": {
+                  "highlighted": {
+                    "fill": {
+                      "color": "#E78AC3",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#E78AC3",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  },
+                  "muted": {
+                    "fill": {
+                      "color": "#E78AC3",
+                      "opacity": 0.4
+                    },
+                    "stroke": {
+                      "color": "#E78AC3",
+                      "dashArray": 0,
+                      "opacity": 0.4,
+                      "width": 1
+                    }
+                  },
+                  "normal": {
+                    "fill": {
+                      "color": "#E78AC3",
+                      "opacity": 0.8
+                    },
+                    "stroke": {
+                      "color": "#E78AC3",
+                      "dashArray": 0,
+                      "opacity": 0.8,
+                      "width": 1
+                    }
+                  },
+                  "selected": {
+                    "fill": {
+                      "color": "#E78AC3",
+                      "opacity": 1
+                    },
+                    "stroke": {
+                      "color": "#E78AC3",
+                      "dashArray": 0,
+                      "opacity": 1,
+                      "width": 1
+                    }
+                  }
+                },
+                "type": "line"
+              },
+              "enabled": true,
+              "name": "airhumidity",
+              "plot": 0,
+              "selectable": true,
+              "visible": true
+            }
+          ]
+        },
+        "type": "ia.chart.powerchart"
       }
     ],
     "meta": {
